@@ -3,9 +3,9 @@
   --accent: #C8102E;
   --accent-border: rgba(200, 16, 46, 0.3);
   --text: #e8eaf0;
-  --muted: #6b7280;
-  --faint: #374151;
-  --border: rgba(255, 255, 255, 0.07);
+  --muted: #8b9ab0;
+  --faint: #4b5a6e;
+  --border: rgba(255, 255, 255, 0.13);
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
@@ -111,6 +111,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   min-height: 0;
 }
 
@@ -142,14 +143,14 @@
 }
 
 .sub {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: var(--muted);
   margin-bottom: 12px;
 }
 
 .sub strong {
-  color: var(--text);
+  color: #ddeeff;
   font-weight: 600;
 }
 
@@ -176,6 +177,18 @@
   flex-direction: column;
   justify-content: center;
   padding: 48px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.form-card-header {
+  margin-bottom: 20px;
+}
+
+.form-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
 form {
@@ -213,7 +226,7 @@ form {
 
 .field input,
 .field textarea {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 9px 13px;
@@ -278,6 +291,32 @@ form {
 
 .success p { font-size: 0.85rem; color: var(--muted); }
 
+/* ── Form trust / email cta ────────────────────────────────── */
+
+.form-trust {
+  font-size: 0.72rem;
+  color: var(--faint);
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+.form-email-cta {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 6px;
+}
+
+.form-email-cta a {
+  color: var(--accent);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+
+.form-email-cta a:hover { opacity: 1; }
+
 /* ── Responsive ────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
@@ -291,7 +330,7 @@ form {
     padding: 40px 24px 32px;
   }
 
-  .form-card { padding: 32px 24px 48px; }
+  .form-card { padding: 32px 24px 48px; border-left: none; }
 
   .form-row { grid-template-columns: 1fr; }
 
