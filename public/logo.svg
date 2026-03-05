@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240">
+  <defs>
+    <!-- Left half of the diagonal cut (green/pitch side) -->
+    <clipPath id="lp">
+      <polygon points="0,0 112,0 88,240 0,240"/>
+    </clipPath>
+    <!-- Right half of the diagonal cut (blue side) -->
+    <clipPath id="rp">
+      <polygon points="112,0 200,0 200,240 88,240"/>
+    </clipPath>
+    <!-- B letterform clipped to left half -->
+    <clipPath id="b-left" clipPathUnits="userSpaceOnUse">
+      <text x="6" y="218"
+        font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+        font-weight="900" font-size="212" clip-path="url(#lp)">B</text>
+    </clipPath>
+    <!-- B letterform clipped to right half -->
+    <clipPath id="b-right" clipPathUnits="userSpaceOnUse">
+      <text x="6" y="218"
+        font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+        font-weight="900" font-size="212" clip-path="url(#rp)">B</text>
+    </clipPath>
+  </defs>
+
+  <!-- Green pitch section (left of diagonal) -->
+  <g clip-path="url(#b-left)">
+    <rect x="0" y="0" width="200" height="240" fill="#1e7b2e"/>
+    <!-- Halfway line -->
+    <line x1="0" y1="120" x2="200" y2="120" stroke="white" stroke-width="3.5" opacity="0.6"/>
+    <!-- Centre circle -->
+    <circle cx="54" cy="120" r="34" fill="none" stroke="white" stroke-width="2.5" opacity="0.55"/>
+    <!-- Top penalty area -->
+    <rect x="14" y="38" width="70" height="52" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+    <!-- Bottom penalty area -->
+    <rect x="14" y="150" width="70" height="52" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Blue B section (right of diagonal) -->
+  <g clip-path="url(#b-right)">
+    <rect x="0" y="0" width="200" height="240" fill="#1a50c8"/>
+  </g>
+
+  <!-- Diagonal divider line (white) -->
+  <line x1="112" y1="0" x2="88" y2="240" stroke="white" stroke-width="4"/>
+</svg>
