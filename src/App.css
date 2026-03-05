@@ -1,8 +1,6 @@
 :root {
   --bg: #0a0e1a;
-  --card: rgba(17, 24, 46, 0.82);
   --accent: #C8102E;
-  --accent-dim: rgba(200, 16, 46, 0.08);
   --accent-border: rgba(200, 16, 46, 0.3);
   --text: #e8eaf0;
   --muted: #6b7280;
@@ -31,7 +29,7 @@
   transform: perspective(640px) rotateX(52deg) rotateZ(-8deg);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.055;
+  opacity: 0.13;
 }
 
 .pitch-inner {
@@ -91,6 +89,7 @@
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 48px;
   border-bottom: 1px solid var(--border);
   background: rgba(10, 14, 26, 0.6);
@@ -99,15 +98,12 @@
 }
 
 .logo {
-  font-family: var(--font-mono);
   font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: #fff;
   text-transform: uppercase;
 }
-
-.dot { color: var(--accent); }
 
 /* ── Main split ────────────────────────────────────────────── */
 
@@ -125,14 +121,12 @@
   flex-direction: column;
   justify-content: center;
   padding: 48px 64px 48px 48px;
-  border-right: 1px solid var(--border);
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
   font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 22px;
@@ -144,31 +138,36 @@
   color: #fff;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .sub {
-  font-size: 0.92rem;
-  line-height: 1.75;
+  font-size: 0.95rem;
+  line-height: 1.8;
   color: var(--muted);
-  margin-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.sub strong {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .sub--cta {
-  margin-bottom: 28px;
-  color: #9ca3af;
+  margin-bottom: 32px;
 }
 
 .email-link {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
+  font-size: 0.78rem;
+  color: var(--accent);
   text-decoration: none;
   letter-spacing: 0.04em;
-  transition: color 0.15s;
+  transition: color 0.15s, opacity 0.15s;
+  opacity: 0.85;
 }
 
-.email-link:hover { color: var(--text); }
+.email-link:hover { opacity: 1; }
 
 /* ── Form card (right) ─────────────────────────────────────── */
 
@@ -177,10 +176,6 @@
   flex-direction: column;
   justify-content: center;
   padding: 48px;
-  background: var(--card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-left: 1px solid var(--border);
 }
 
 form {
@@ -268,7 +263,6 @@ form {
 }
 
 .success-mark {
-  font-family: var(--font-mono);
   font-size: 1.4rem;
   color: var(--accent);
   margin-bottom: 14px;
@@ -295,8 +289,6 @@ form {
 
   .copy {
     padding: 40px 24px 32px;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
   }
 
   .form-card { padding: 32px 24px 48px; }

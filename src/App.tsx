@@ -3,50 +3,21 @@ import './App.css'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
-// ─── Soccer ball cursor ──────────────────────────────────────────────────────
+// ─── Soccer ball cursor (SVG outline) ────────────────────────────────────────
 
 function useSoccerBallCursor() {
   useEffect(() => {
-    const SIZE = 30
-    const canvas = document.createElement('canvas')
-    canvas.width = SIZE
-    canvas.height = SIZE
-    const ctx = canvas.getContext('2d')!
-    const cx = SIZE / 2
-    const cy = SIZE / 2
-    const r = SIZE / 2 - 1.5
-
-    // White ball
-    ctx.beginPath()
-    ctx.arc(cx, cy, r, 0, Math.PI * 2)
-    ctx.fillStyle = '#f0f0f0'
-    ctx.fill()
-    ctx.strokeStyle = '#bbb'
-    ctx.lineWidth = 0.8
-    ctx.stroke()
-
-    // Black pentagon patches (Telstar pattern)
-    ctx.fillStyle = '#111'
-    function pentagon(x: number, y: number, pr: number, startDeg: number) {
-      ctx.beginPath()
-      for (let i = 0; i < 5; i++) {
-        const a = ((i * 72) + startDeg - 90) * (Math.PI / 180)
-        i === 0 ? ctx.moveTo(x + pr * Math.cos(a), y + pr * Math.sin(a))
-                : ctx.lineTo(x + pr * Math.cos(a), y + pr * Math.sin(a))
-      }
-      ctx.closePath()
-      ctx.fill()
-    }
-
-    pentagon(cx, cy, r * 0.3, 0)
-    const d = r * 0.57
-    for (let i = 0; i < 5; i++) {
-      const a = (i * 72 - 90) * (Math.PI / 180)
-      pentagon(cx + d * Math.cos(a), cy + d * Math.sin(a), r * 0.27, i * 72)
-    }
-
-    const url = canvas.toDataURL()
-    document.body.style.cursor = `url(${url}) ${SIZE / 2} ${SIZE / 2}, auto`
+    // Clean white SVG soccer ball — outline style
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="white" stroke="#333" stroke-width="4"/>
+      <polygon points="50,18 61,26 57,39 43,39 39,26" fill="#222" stroke="white" stroke-width="2"/>
+      <polygon points="80,35 88,47 80,57 68,53 68,40" fill="#222" stroke="white" stroke-width="2"/>
+      <polygon points="73,72 61,78 50,70 53,57 68,53" fill="#222" stroke="white" stroke-width="2"/>
+      <polygon points="27,72 32,57 47,57 50,70 39,78" fill="#222" stroke="white" stroke-width="2"/>
+      <polygon points="20,35 32,40 32,53 20,57 12,47" fill="#222" stroke="white" stroke-width="2"/>
+    </svg>`
+    const encoded = `data:image/svg+xml;base64,${btoa(svg)}`
+    document.body.style.cursor = `url(${encoded}) 14 14, auto`
     return () => { document.body.style.cursor = '' }
   }, [])
 }
@@ -175,7 +146,7 @@ function ContactForm() {
         <textarea id="note" name="note" rows={2} placeholder="Position, league, or any context..." value={form.note} onChange={change} />
       </div>
       <button type="submit" className="submit" disabled={loading}>
-        {loading ? 'Submitting…' : 'Request a Demo'}
+        {loading ? 'Submitting…' : 'Request a Report'}
       </button>
     </form>
   )
@@ -202,20 +173,23 @@ export default function App() {
 
       <div className="page">
         <nav className="nav">
-          <div className="logo">BLUNDELL<span className="dot">.</span>ANALYTICS</div>
+          <div className="logo">BLUNDELL ANALYTICS</div>
         </nav>
 
         <main className="main">
           <div className="copy">
-            <p className="eyebrow">Transfer Intelligence</p>
+            <p className="eyebrow">Transfer Market Intelligence</p>
             <h1 className="headline">
-              Transfer decisions<br />are capital decisions.
+              Smarter transfers.<br />Backed by data.
             </h1>
             <p className="sub">
-              Quantitative recruitment intelligence,<br />delivered before the window opens.
+              We help your club make <strong>smarter and more tactical transfer decisions</strong>,
+              backed by <strong>robust mathematical and statistical models</strong> and extensive data.
             </p>
             <p className="sub sub--cta">
-              Request a demo — we'll run the analysis<br />for a position of your choice.
+              Reach out for a <strong>customised report</strong> for your club — including{' '}
+              <strong>potential transfer shortlists</strong>, <strong>risk assessment</strong>,{' '}
+              <strong>tactical assessments</strong>, <strong>financial information</strong> and more.
             </p>
             <a href="mailto:info@blundellanalytics.ca" className="email-link">
               info@blundellanalytics.ca
