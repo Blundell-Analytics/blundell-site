@@ -63,12 +63,8 @@ function BackgroundCanvas() {
         }
       }
 
-      // Dots
+      // Dots — move particles (no rendering)
       pts.forEach(p => {
-        ctx.fillStyle = `rgba(232,234,240,${0.04 + p.z * 0.11})`
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, 0.5 + p.z * 1.6, 0, Math.PI * 2)
-        ctx.fill()
         p.x += p.vx
         p.y += p.vy
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1
@@ -160,6 +156,15 @@ export default function App() {
     <>
       <BackgroundCanvas />
 
+      {/* CSS 3D pitch — full-page background */}
+      <div className="pitch-3d" aria-hidden="true">
+        <div className="pitch-inner">
+          <div className="pitch-halfway" />
+          <div className="pitch-box pitch-box--top" />
+          <div className="pitch-box pitch-box--bottom" />
+        </div>
+      </div>
+
       <div className="page">
         <nav className="nav">
           <div className="logo">BLUNDELL ANALYTICS</div>
@@ -167,28 +172,20 @@ export default function App() {
 
         <main className="main">
           <div className="copy">
-            {/* CSS 3D pitch — clipped to left column */}
-            <div className="pitch-3d" aria-hidden="true">
-              <div className="pitch-inner">
-                <div className="pitch-halfway" />
-                <div className="pitch-circle" />
-                <div className="pitch-box pitch-box--top" />
-                <div className="pitch-box pitch-box--bottom" />
-              </div>
-            </div>
-
             <p className="eyebrow animate-fade-up" style={{ animationDelay: '0.05s' }}>Transfer Market Intelligence</p>
             <h1 className="headline animate-fade-up" style={{ animationDelay: '0.15s' }}>
               Every transfer decision<br />has a cost. Make it<br />a calculated one.
             </h1>
             <p className="sub animate-fade-up" style={{ animationDelay: '0.28s' }}>
-              We help your club make <strong>smarter and more tactical transfer decisions</strong>,
-              backed by <strong>robust mathematical and statistical models</strong> and extensive data.
+              We help your club make smarter and more tactical{' '}
+              <span className="kw">transfer decisions</span>, backed by robust{' '}
+              <span className="kw">mathematical and statistical models</span> and extensive data.
             </p>
             <p className="sub animate-fade-up" style={{ animationDelay: '0.38s' }}>
               Reach out for a <strong>customised report</strong> for your club — including{' '}
-              <strong>potential transfer shortlists</strong>, <strong>risk assessment</strong>,{' '}
-              <strong>tactical assessments</strong>, <strong>financial information</strong> and more.
+              potential <span className="kw">transfer</span> shortlists,{' '}
+              <strong>risk assessments</strong>, <strong>tactical analysis</strong>,{' '}
+              <strong>financial information</strong> and more.
             </p>
           </div>
 

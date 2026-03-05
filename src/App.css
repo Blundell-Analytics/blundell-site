@@ -21,15 +21,15 @@
 /* ── 3D pitch ──────────────────────────────────────────────── */
 
 .pitch-3d {
-  position: absolute;
-  bottom: -22%;
-  left: -18%;
-  width: 68vw;
-  height: 56vw;
-  transform: perspective(640px) rotateX(52deg) rotateZ(-8deg);
+  position: fixed;
+  bottom: -35%;
+  left: -20%;
+  width: 145vw;
+  height: 110vw;
+  transform: perspective(1100px) rotateX(52deg) rotateZ(-5deg);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.22;
+  opacity: 0.18;
 }
 
 .pitch-inner {
@@ -118,8 +118,6 @@
 /* ── Copy (left) ───────────────────────────────────────────── */
 
 .copy {
-  position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -152,6 +150,11 @@
 }
 
 .sub strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.kw {
   color: var(--accent);
   font-weight: 600;
 }
@@ -164,7 +167,6 @@
   flex-direction: column;
   justify-content: center;
   padding: 48px;
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .form-card-header {
