@@ -1,21 +1,41 @@
-# React + TypeScript + Vite
+# Blundell Analytics — Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing landing page for **Blundell Analytics**, a B2B football transfer intelligence company. The page promotes the MOCFM Transfer Intelligence Platform and drives demo requests from club decision-makers.
 
-While this project uses React, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+## Stack
 
-## Deploy Your Own
+- React 18 + TypeScript
+- Vite
+- Plain CSS (no framework)
+- Vercel Analytics + Speed Insights
 
-Deploy your own Vite project with Vercel.
+## Design
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/framework-boilerplates/vite-react&template=vite-react)
+Dark, data-first aesthetic — `#0a0e1a` background, `#00c48c` accent, Inter + JetBrains Mono typography. Single CTA throughout: **Request a Demo**.
 
-_Live Example: https://vite-react-example.vercel.app_
+## Page Sections
 
-### Deploying From Your Terminal
+1. **Hero** — headline, sub-headline, CTA
+2. **Five Objectives** — Business Value, Tactical Fit, Injury Risk, Managerial Fit, Deal Feasibility
+3. **Scale & Coverage** — proof-point stat callouts (266 fields, 7 sources, 6 leagues, 3 seasons, 123 outputs, 5 objectives)
+4. **How It Works** — 3-step process
+5. **The Deliverable** — feature list + blurred report mockup
+6. **Request a Demo** — contact form
 
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+## Development
 
-```shell
-$ vercel
+```bash
+npm install
+npm run dev
 ```
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deploy
+
+Deployed via Vercel. Push to `main` triggers a production deployment.
