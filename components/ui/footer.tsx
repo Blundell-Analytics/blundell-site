@@ -40,7 +40,7 @@ function FooterBottom({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="footer-bottom"
       className={cn(
-        "border-border dark:border-border/15 text-muted-foreground mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row",
+        "border-border dark:border-border/15 text-white/50 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row",
         className,
       )}
       {...props}

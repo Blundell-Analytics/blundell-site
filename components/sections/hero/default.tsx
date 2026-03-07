@@ -1,149 +1,146 @@
-import { type VariantProps } from "class-variance-authority";
-import { ArrowRightIcon } from "lucide-react";
-import { ReactNode } from "react";
+"use client";
 
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { FormEvent, useState, useEffect } from "react";
 
-import Github from "../../logos/github";
-import { Badge } from "../../ui/badge";
-import { Button, buttonVariants } from "../../ui/button";
-import Glow from "../../ui/glow";
-import { Mockup, MockupFrame } from "../../ui/mockup";
-import Screenshot from "../../ui/screenshot";
-import { Section } from "../../ui/section";
+import Glow from "@/components/ui/glow";
 
-interface HeroButtonProps {
-  href: string;
-  text: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-}
+export default function Hero() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [stars, setStars] = useState<
+    { width: string; height: string; top: string; left: string; opacity: number }[]
+  >([]);
 
-interface HeroProps {
-  title?: string;
-  description?: string;
-  mockup?: ReactNode | false;
-  badge?: ReactNode | false;
-  buttons?: HeroButtonProps[] | false;
-  className?: string;
-}
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 60 }).map(() => ({
+        width: Math.random() < 0.2 ? "2px" : "1px",
+        height: Math.random() < 0.2 ? "2px" : "1px",
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        opacity: Math.random() * 0.7 + 0.3,
+      }))
+    );
+  }, []);
 
-export default function Hero({
-  title = "Every transfer decision has a cost. Make it a calculated one.",
-  description = "We help your club make smarter and more tactical transfer decisions, backed by robust mathematical and statistical models and extensive data.",
-  mockup = (
-    <div className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-muted/20 sm:h-[450px] lg:h-[550px]">
-      <span className="text-muted-foreground font-medium text-center">React App<br />Screenshot (Main)</span>
-    </div>
-  ),
-  badge = (
-    <Badge variant="outline" className="animate-appear">
-      <span className="text-muted-foreground">
-        Transfer Market Intelligence
-      </span>
-      <a href="/#contact" className="flex items-center gap-1">
-        Request a Report
-        <ArrowRightIcon className="size-3" />
-      </a>
-    </Badge>
-  ),
-  buttons = [
-    {
-      href: "/#contact",
-      text: "Request a Report",
-      variant: "default",
-    },
-    {
-      href: "#methodology",
-      text: "Explore Methodology",
-      variant: "glow",
-    },
-  ],
-  className,
-}: HeroProps) {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (email) setSubmitted(true);
+  };
+
   return (
-    <Section
-      className={cn(
-        "fade-bottom overflow-hidden pb-0 sm:pb-0 md:pb-0",
-        className,
-      )}
+    <section
+      className="relative w-full bg-black overflow-hidden flex flex-col items-center justify-center px-6"
+      style={{ height: "100dvh" }}
     >
-      <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
-        <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
-          {badge !== false && badge}
-          <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
-            {title}
-          </h1>
-          <p className="text-md animate-appear text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance opacity-0 delay-100 sm:text-xl">
-            {description}
-          </p>
-          {buttons !== false && buttons.length > 0 && (
-            <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
-              {buttons.map((button, index) => (
-                <Button
-                  key={index}
-                  variant={button.variant || "default"}
-                  size="lg"
-                  asChild
-                >
-                  <a href={button.href}>
-                    {button.icon}
-                    {button.text}
-                    {button.iconRight}
-                  </a>
-                </Button>
-              ))}
-            </div>
-          )}
-          {mockup !== false && (
-            <div className="relative w-full pt-12 pb-24 flex justify-center">
-              {/* Left Screen */}
-              <div className="absolute left-[-2%] sm:left-[2%] lg:left-[5%] top-[30%] w-[50%] sm:w-[45%] lg:w-[40%] z-0 -rotate-6 opacity-80 blur-[1px] hover:blur-none hover:opacity-100 hover:z-20 hover:scale-105 transition-all duration-500 hidden sm:block">
-                <MockupFrame size="small" className="shadow-2xl">
-                  <Mockup type="responsive" className="bg-background/90 w-full rounded-xl border-0">
-                    <div className="flex h-[200px] w-full items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-muted/20 sm:h-[350px] lg:h-[450px]">
-                      <span className="text-muted-foreground font-medium text-center">React App<br />Screenshot (Left)</span>
-                    </div>
-                  </Mockup>
-                </MockupFrame>
-              </div>
+      {/* Glow */}
+      <Glow variant="top" className="opacity-40" />
 
-              {/* Right Screen */}
-              <div className="absolute right-[-2%] sm:right-[2%] lg:right-[5%] top-[30%] w-[50%] sm:w-[45%] lg:w-[40%] z-0 rotate-6 opacity-80 blur-[1px] hover:blur-none hover:opacity-100 hover:z-20 hover:scale-105 transition-all duration-500 hidden sm:block">
-                <MockupFrame size="small" className="shadow-2xl">
-                  <Mockup type="responsive" className="bg-background/90 w-full rounded-xl border-0">
-                    <div className="flex h-[200px] w-full items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 bg-muted/20 sm:h-[350px] lg:h-[450px]">
-                      <span className="text-muted-foreground font-medium text-center">React App<br />Screenshot (Right)</span>
-                    </div>
-                  </Mockup>
-                </MockupFrame>
-              </div>
-
-              {/* Main Center Screen */}
-              <div className="relative z-10 w-full sm:w-[65%] lg:w-[55%] mt-8 sm:mt-0 transition-transform duration-500 hover:scale-[1.02]">
-                <MockupFrame
-                  className="animate-appear opacity-0 delay-700 shadow-2xl"
-                  size="small"
-                >
-                  <Mockup
-                    type="responsive"
-                    className="bg-background/90 w-full rounded-xl border-0"
-                  >
-                    {mockup}
-                  </Mockup>
-                </MockupFrame>
-              </div>
-
-              <Glow
-                variant="top"
-                className="animate-appear-zoom opacity-0 delay-1000 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1]"
-              />
-            </div>
-          )}
-        </div>
+      {/* Starfield */}
+      <div className="absolute inset-0 pointer-events-none">
+        {stars.map((star, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: star.width,
+              height: star.height,
+              top: star.top,
+              left: star.left,
+              opacity: star.opacity,
+            }}
+          />
+        ))}
       </div>
-    </Section>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center gap-8">
+        <h1
+          className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight text-white"
+          style={{ fontFamily: "var(--font-jakarta)" }}
+        >
+          Every transfer decision has a cost. Make it{" "}
+          <em
+            style={{
+              fontStyle: "italic",
+              fontFamily: "var(--font-playfair)",
+              color: "transparent",
+              backgroundImage:
+                "linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #bfdbfe 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+            }}
+          >
+            a calculated one.
+          </em>
+        </h1>
+
+        <p
+          className="text-sm sm:text-base text-white/40 font-light leading-relaxed max-w-xl"
+          style={{ fontFamily: "var(--font-jakarta)" }}
+        >
+          We help clubs make smarter{" "}
+          <span className="text-white/70 font-medium">transfer decisions</span>{" "}
+          backed by robust{" "}
+          <span className="text-white/70 font-medium">
+            mathematical and statistical models
+          </span>
+          . Reach out for a{" "}
+          <span className="text-white/70 font-medium">customised report</span>{" "}
+          — tactical analysis, risk assessments, and shortlists.
+        </p>
+
+        {submitted ? (
+          <div
+            className="w-full rounded-xl border border-blue-500/30 bg-blue-500/10 px-6 py-4 text-sm text-blue-200"
+            style={{ fontFamily: "var(--font-jakarta)" }}
+          >
+            ✓ We&apos;ll be in touch within 48 hours.
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="flex w-full flex-col sm:flex-row items-center gap-3"
+          >
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your club email address"
+              className="h-12 w-full rounded-xl border border-white/10 bg-white/5 px-5 text-sm text-white placeholder:text-white/30 outline-none focus:border-white/20 transition-colors"
+              style={{ fontFamily: "var(--font-jakarta)" }}
+            />
+            <button
+              type="submit"
+              className="group h-12 shrink-0 flex items-center justify-center gap-2 rounded-xl bg-white px-7 text-sm font-semibold text-black hover:bg-white/90 transition-colors"
+              style={{ fontFamily: "var(--font-jakarta)" }}
+            >
+              Request a Report
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </form>
+        )}
+
+        <p
+          className="text-[11px] text-white/25"
+          style={{ fontFamily: "var(--font-jakarta)" }}
+        >
+          No commitment. Responses within 48 hours.
+        </p>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40">
+        <span
+          className="text-[10px] uppercase tracking-widest text-white/60"
+          style={{ fontFamily: "var(--font-jakarta)" }}
+        >
+          Scroll
+        </span>
+        <ChevronDown className="size-4 text-white animate-bounce" />
+      </div>
+    </section>
   );
 }

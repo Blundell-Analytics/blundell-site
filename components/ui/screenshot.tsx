@@ -13,6 +13,7 @@ interface ScreenshotProps {
   width: number;
   height: number;
   className?: string;
+  priority?: boolean;
 }
 
 export default function Screenshot({
@@ -22,6 +23,7 @@ export default function Screenshot({
   width,
   height,
   className,
+  priority = false,
 }: ScreenshotProps) {
   const { resolvedTheme } = useTheme();
   const [src, setSrc] = useState<string | null>(null);
@@ -48,7 +50,8 @@ export default function Screenshot({
       alt={alt}
       width={width}
       height={height}
-      className={className}
+      className={cn("transition-all duration-300 hover:scale-[1.02]", className)}
+      priority={priority}
     />
   );
 }
