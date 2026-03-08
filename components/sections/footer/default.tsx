@@ -1,0 +1,42 @@
+import { Mail } from "lucide-react";
+import { siteConfig } from "@/config/site";
+
+export default function FooterSection() {
+  return (
+    <footer
+      className="w-full bg-black relative z-10"
+      style={{ fontFamily: "var(--font-jakarta)" }}
+    >
+      {/* Strong top separator */}
+      <div
+        style={{
+          height: "1px",
+          background: "linear-gradient(to right, transparent, rgba(0, 74, 173, 0.5) 30%, rgba(0, 74, 173, 0.5) 70%, transparent)",
+        }}
+      />
+      {/* Footer content */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "12px",
+          padding: "24px 24px",
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
+        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+          All Rights Reserved. © 2026 Blundell Analytics.
+        </span>
+        <a
+          href={siteConfig.links.email}
+          className="hover:text-[#004aad] transition-colors"
+          aria-label="Email us"
+          style={{ color: "rgba(255,255,255,0.6)" }}
+        >
+          <Mail className="size-3.5" />
+        </a>
+      </div>
+    </footer>
+  );
+}
