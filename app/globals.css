@@ -120,8 +120,8 @@
 
 :root {
   /* Accent colors — blue to match logo */
-  --brand: oklch(62% 0.2 262);
-  --brand-foreground: oklch(70% 0.18 262);
+  --brand: #004aad;
+  --brand-foreground: #6699ff;
 
   /* Customized shadcn/ui colors */
   --background: oklch(97.65% 0.001 17.18);
@@ -169,8 +169,8 @@
 
 .dark {
   /* Accent colors — blue to match logo */
-  --brand: oklch(65% 0.22 262);
-  --brand-foreground: oklch(75% 0.18 262);
+  --brand: #004aad;
+  --brand-foreground: #6699ff;
 
   /* Customized shadcn/ui colors */
   --background: oklch(0.141 0.005 285.823);

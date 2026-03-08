@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import Glow from "@/components/ui/glow";
 import { Mockup, MockupFrame } from "@/components/ui/mockup";
@@ -28,13 +29,14 @@ const TABS = [
 
 export default function DashboardShowcase() {
   const [active, setActive] = useState(0);
+  const [isEnlarged, setIsEnlarged] = useState(false);
 
   return (
-    <section className="w-full bg-black py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative w-full bg-black pt-12 pb-24 px-6 overflow-hidden">
+      <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-20" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#004aad] to-transparent mb-12" />
 
         {/* Heading */}
         <div className="text-center mb-12">
@@ -63,7 +65,7 @@ export default function DashboardShowcase() {
               className={[
                 "px-5 py-2 rounded-lg text-sm font-medium border transition-all duration-150",
                 i === active
-                  ? "bg-blue-500/15 text-blue-300 border-blue-500/40"
+                  ? "bg-[#004aad]/15 text-[#004aad] border-[#004aad]/40"
                   : "text-white/40 border-white/10 hover:text-white/70 hover:border-white/20",
               ].join(" ")}
             >
@@ -81,22 +83,54 @@ export default function DashboardShowcase() {
         </p>
 
         {/* Mockup */}
-        <div className="relative">
-          <MockupFrame size="small">
-            <Mockup type="responsive" className="w-full border-0 bg-zinc-950">
-              {TABS.map((tab, i) => (
-                <img
-                  key={tab.screenshot}
-                  src={tab.screenshot}
-                  alt={tab.label}
-                  className="w-full block"
-                  style={{ display: i === active ? "block" : "none" }}
-                />
-              ))}
-            </Mockup>
-          </MockupFrame>
-          <Glow variant="top" className="opacity-20 pointer-events-none" />
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative max-w-4xl mx-auto"
+        >
+          <button
+            type="button"
+            className="w-full text-left transition-transform duration-300 hover:scale-[1.02] cursor-zoom-in group"
+            onClick={() => setIsEnlarged(true)}
+          >
+            <div className="absolute inset-0 z-10 hidden group-hover:flex items-center justify-center bg-black/20 rounded-xl transition-all">
+              <span className="bg-black/60 text-white text-sm px-4 py-2 rounded-full backdrop-blur-md border border-white/10">Click to enlarge</span>
+            </div>
+            <MockupFrame size="small">
+              <Mockup type="responsive" className="w-full border-0 bg-zinc-950">
+                {TABS.map((tab, i) => (
+                  <img
+                    key={tab.screenshot}
+                    src={tab.screenshot}
+                    alt={tab.label}
+                    className="w-full block"
+                    style={{ display: i === active ? "block" : "none" }}
+                  />
+                ))}
+              </Mockup>
+            </MockupFrame>
+            <Glow variant="top" className="opacity-20 pointer-events-none" />
+          </button>
+        </motion.div>
+
+        {/* Modal for enlarged image */}
+        {isEnlarged && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8 cursor-zoom-out backdrop-blur-sm transition-opacity"
+            onClick={() => setIsEnlarged(false)}
+          >
+            <div className="relative max-w-[95vw] max-h-[95vh] w-full flex justify-center">
+              <img
+                src={TABS[active].screenshot}
+                alt={TABS[active].label}
+                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-white/10"
+              />
+              <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-sm">Click anywhere to close</p>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

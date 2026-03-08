@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -7,7 +10,10 @@ interface NavbarProps {
 
 export default function Navbar({ className }: NavbarProps) {
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         "absolute top-0 left-0 right-0 z-50 flex items-center justify-center px-6 py-5",
         className,
@@ -15,22 +21,25 @@ export default function Navbar({ className }: NavbarProps) {
     >
       <a
         href={siteConfig.url}
-        className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
-        style={{ fontFamily: "var(--font-jakarta)" }}
+        className="hover:opacity-80 transition-opacity"
+        style={{ 
+          fontFamily: "var(--font-jakarta)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "-4px" /* Negative space-y-1 equivalent */
+        }}
       >
-        <div
-          className="size-10 shrink-0"
-          style={{
-            backgroundImage: "url(/logo.png)",
-            backgroundSize: "320%",
-            backgroundPosition: "center",
-          }}
-          aria-hidden="true"
+        <img
+          src="/logo_1.png"
+          alt="Blundell Analytics Logo"
+          className="h-16 sm:h-20 w-auto shrink-0 object-contain drop-shadow-lg"
         />
-        <span className="text-sm font-medium tracking-widest text-white/60 uppercase">
+        <span className="text-sm font-medium tracking-[0.2em] text-white/50 uppercase">
           Blundell Analytics
         </span>
       </a>
-    </header>
+    </motion.header>
   );
 }

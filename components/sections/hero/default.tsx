@@ -2,31 +2,23 @@
 
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { FormEvent, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 import Glow from "@/components/ui/glow";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { Meteors } from "@/components/ui/meteors";
+import { Particles } from "@/components/ui/particles";
 
 export default function Hero() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [stars, setStars] = useState<
-    { width: string; height: string; top: string; left: string; opacity: number }[]
-  >([]);
-
-  useEffect(() => {
-    setStars(
-      Array.from({ length: 60 }).map(() => ({
-        width: Math.random() < 0.2 ? "2px" : "1px",
-        height: Math.random() < 0.2 ? "2px" : "1px",
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        opacity: Math.random() * 0.7 + 0.3,
-      }))
-    );
-  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (email) {
+      window.location.href = `mailto:info@blundellanalytics.ca?subject=Report Request&body=Hi, I would like to request a customized report for my club. My email is ${email}.`;
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -37,27 +29,39 @@ export default function Hero() {
       {/* Glow */}
       <Glow variant="top" className="opacity-40" />
 
-      {/* Starfield */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((star, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white"
-            style={{
-              width: star.width,
-              height: star.height,
-              top: star.top,
-              left: star.left,
-              opacity: star.opacity,
-            }}
-          />
-        ))}
+      {/* Dynamic Backgrounds */}
+      <div className="absolute inset-0">
+        <InteractiveGridPattern 
+          className="absolute inset-0 bg-transparent" 
+          cellSize={40} glowColor="rgba(0, 74, 173, 0.35)" borderColor="rgba(255, 255, 255, 0.045)"
+        />
+        {/* 
+        <Particles 
+          className="absolute inset-0 bg-transparent" 
+          quantity={60} ease={80} color="#004aad" refresh 
+        />
+        <Meteors count={15} color="#60a5fa" tailColor="rgba(0, 74, 173, 0.4)" />
+        */}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center gap-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="relative z-10 w-full text-center"
+        style={{
+            maxWidth: "42rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1.5rem", /* 24px - easy to change! */
+            margin: "0 auto",
+          }}
+        >
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight text-white"
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight text-white"
           style={{ fontFamily: "var(--font-jakarta)" }}
         >
           Every transfer decision has a cost. Make it{" "}
@@ -93,7 +97,7 @@ export default function Hero() {
 
         {submitted ? (
           <div
-            className="w-full rounded-xl border border-blue-500/30 bg-blue-500/10 px-6 py-4 text-sm text-blue-200"
+            className="w-full rounded-xl border border-[#004aad]/30 bg-[#004aad]/10 px-6 py-4 text-sm text-[#004aad]"
             style={{ fontFamily: "var(--font-jakarta)" }}
           >
             ✓ We&apos;ll be in touch within 48 hours.
@@ -129,10 +133,15 @@ export default function Hero() {
         >
           No commitment. Responses within 48 hours.
         </p>
-      </div>
+        </motion.div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40">
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 0.4 }} 
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+      >
         <span
           className="text-[10px] uppercase tracking-widest text-white/60"
           style={{ fontFamily: "var(--font-jakarta)" }}
@@ -140,7 +149,7 @@ export default function Hero() {
           Scroll
         </span>
         <ChevronDown className="size-4 text-white animate-bounce" />
-      </div>
+      </motion.div>
     </section>
   );
 }
