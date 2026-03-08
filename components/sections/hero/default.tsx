@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { FormEvent, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import Glow from "@/components/ui/glow";
@@ -9,17 +8,11 @@ import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern
 import { Meteors } from "@/components/ui/meteors";
 import { Particles } from "@/components/ui/particles";
 
-export default function Hero() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+const scrollToContact = () => {
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+};
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      window.location.href = `mailto:info@blundellanalytics.ca?subject=Report Request&body=Hi, I would like to request a customized report for my club. My email is ${email}.`;
-      setSubmitted(true);
-    }
-  };
+export default function Hero() {
 
   return (
     <section
@@ -31,8 +24,8 @@ export default function Hero() {
 
       {/* Dynamic Backgrounds */}
       <div className="absolute inset-0">
-        <InteractiveGridPattern 
-          className="absolute inset-0 bg-transparent" 
+        <InteractiveGridPattern
+          className="absolute inset-0 bg-transparent"
           cellSize={40} glowColor="rgba(0, 74, 173, 0.35)" borderColor="rgba(255, 255, 255, 0.045)"
         />
         {/* 
@@ -45,21 +38,22 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="relative z-10 w-full text-center"
         style={{
-            maxWidth: "42rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1.5rem", /* 24px - easy to change! */
-            margin: "0 auto",
-          }}
-        >
+          maxWidth: "42rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "2rem", /* 24px - easy to change! */
+          margin: "0 auto",
+          marginTop: "40px", /* Increase this (e.g., '40px') to push the title further down from the logo */
+        }}
+      >
         <h1
           className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight text-white"
           style={{ fontFamily: "var(--font-jakarta)" }}
@@ -95,37 +89,15 @@ export default function Hero() {
           — tactical analysis, risk assessments, and shortlists.
         </p>
 
-        {submitted ? (
-          <div
-            className="w-full rounded-xl border border-[#004aad]/30 bg-[#004aad]/10 px-6 py-4 text-sm text-[#004aad]"
-            style={{ fontFamily: "var(--font-jakarta)" }}
-          >
-            ✓ We&apos;ll be in touch within 48 hours.
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="flex w-full flex-col sm:flex-row items-center gap-3"
-          >
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your club email address"
-              className="h-12 w-full rounded-xl border border-white/10 bg-white/5 px-5 text-sm text-white placeholder:text-white/30 outline-none focus:border-white/20 transition-colors"
-              style={{ fontFamily: "var(--font-jakarta)" }}
-            />
-            <button
-              type="submit"
-              className="group h-12 shrink-0 flex items-center justify-center gap-2 rounded-xl bg-white px-7 text-sm font-semibold text-black hover:bg-white/90 transition-colors"
-              style={{ fontFamily: "var(--font-jakarta)" }}
-            >
-              Request a Report
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </button>
-          </form>
-        )}
+        {/* CTA button */}
+        <button
+          onClick={scrollToContact}
+          className="group h-12 shrink-0 flex items-center justify-center gap-2 rounded-xl bg-white px-7 text-sm font-semibold text-black hover:bg-white/90 transition-colors"
+          style={{ fontFamily: "var(--font-jakarta)" }}
+        >
+          Request a Report
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+        </button>
 
         <p
           className="text-[11px] text-white/25"
@@ -133,12 +105,12 @@ export default function Hero() {
         >
           No commitment. Responses within 48 hours.
         </p>
-        </motion.div>
+      </motion.div>
 
       {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 0.4 }} 
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
         transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
       >

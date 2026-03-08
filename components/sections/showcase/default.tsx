@@ -41,14 +41,18 @@ export default function DashboardShowcase() {
         {/* Heading */}
         <div className="text-center mb-12">
           <p
-            className="text-[11px] uppercase tracking-[0.2em] text-white/30 mb-3"
-            style={{ fontFamily: "var(--font-jakarta)" }}
+            className="text-[11px] uppercase tracking-[0.2em] mb-3"
+            style={{ fontFamily: "var(--font-jakarta)", color: "#004aad" }}
           >
             The Platform
           </p>
           <h2
-            className="text-2xl sm:text-3xl font-semibold text-white/80"
-            style={{ fontFamily: "var(--font-jakarta)" }}
+            style={{ 
+              fontFamily: "var(--font-jakarta)",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.8)"
+            }}
           >
             Every decision, backed by data
           </h2>
