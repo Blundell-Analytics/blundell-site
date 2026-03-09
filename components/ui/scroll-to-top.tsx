@@ -31,14 +31,14 @@ export default function ScrollToTop() {
         height: "44px",
         borderRadius: "12px",
         border: "1px solid rgba(0, 74, 173, 0.4)",
-        background: "rgba(0, 0, 0, 0.7)",
+        background: "var(--scroll-bg)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         cursor: "pointer",
-        color: "rgba(255,255,255,0.7)",
+        color: "var(--scroll-fg)",
         transition: "opacity 0.3s ease, transform 0.2s ease, border-color 0.2s",
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
@@ -46,11 +46,11 @@ export default function ScrollToTop() {
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0, 74, 173, 0.9)";
-        (e.currentTarget as HTMLButtonElement).style.color = "white";
+        (e.currentTarget as HTMLButtonElement).style.color = "var(--foreground)";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0, 74, 173, 0.4)";
-        (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.7)";
+        (e.currentTarget as HTMLButtonElement).style.color = "var(--scroll-fg)";
       }}
     >
       <ArrowUp size={18} />

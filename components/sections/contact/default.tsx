@@ -37,11 +37,11 @@ export default function ContactSection() {
     width: "100%",
     height: "48px",
     borderRadius: "12px",
-    border: "1px solid rgba(255,255,255,0.1)",
-    background: "rgba(255,255,255,0.03)",
+    border: "1px solid var(--input-border)",
+    background: "var(--input-bg)",
     padding: "0 20px",
     fontSize: "14px",
-    color: "white",
+    color: "var(--foreground)",
     outline: "none",
     fontFamily: "var(--font-jakarta)",
     transition: "border-color 0.2s",
@@ -50,7 +50,7 @@ export default function ContactSection() {
   const labelStyle: React.CSSProperties = {
     fontSize: "11px",
     fontWeight: 500,
-    color: "rgba(255,255,255,0.5)",
+    color: "var(--fg-muted)",
     textTransform: "uppercase",
     letterSpacing: "0.1em",
     fontFamily: "var(--font-jakarta)",
@@ -62,14 +62,13 @@ export default function ContactSection() {
     <section
       id="contact"
       style={{
-        background: "black",
         width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         padding: "80px 24px",
         position: "relative",
-        zIndex: 10,
+        zIndex: 1,
       }}
     >
       {/* Top separator */}
@@ -109,7 +108,7 @@ export default function ContactSection() {
           style={{
             fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
             fontWeight: 600,
-            color: "white",
+            color: "var(--foreground)",
             lineHeight: 1.15,
             fontFamily: "var(--font-jakarta)",
           }}
@@ -120,7 +119,7 @@ export default function ContactSection() {
           style={{
             marginTop: "12px",
             fontSize: "14px",
-            color: "rgba(255,255,255,0.4)",
+            color: "var(--fg-muted)",
             lineHeight: 1.7,
             fontFamily: "var(--font-jakarta)",
           }}
@@ -135,8 +134,8 @@ export default function ContactSection() {
         style={{
           width: "100%",
           maxWidth: "560px",
-          background: "rgba(255,255,255,0.02)",
-          border: "1px solid rgba(255,255,255,0.07)",
+          background: "var(--bg-card)",
+          border: "1px solid var(--bg-card-border)",
           borderRadius: "20px",
           padding: "40px",
         }}
@@ -157,7 +156,7 @@ export default function ContactSection() {
               style={{
                 fontSize: "16px",
                 fontWeight: 500,
-                color: "white",
+                color: "var(--foreground)",
                 fontFamily: "var(--font-jakarta)",
               }}
             >
@@ -166,12 +165,12 @@ export default function ContactSection() {
             <p
               style={{
                 fontSize: "13px",
-                color: "rgba(255,255,255,0.4)",
+                color: "var(--fg-muted)",
                 fontFamily: "var(--font-jakarta)",
               }}
             >
               Check that your mail client sent the email to{" "}
-              <span style={{ color: "rgba(255,255,255,0.7)" }}>
+              <span style={{ color: "var(--fg-medium)" }}>
                 info@blundellanalytics.ca
               </span>
             </p>
@@ -197,7 +196,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   style={inputStyle}
                   onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                  onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
                 />
               </div>
               <div>
@@ -214,7 +213,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   style={inputStyle}
                   onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                  onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
                 />
               </div>
             </div>
@@ -234,7 +233,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 style={inputStyle}
                 onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
               />
             </div>
 
@@ -242,7 +241,7 @@ export default function ContactSection() {
             <div>
               <label htmlFor="clubName" style={labelStyle}>
                 Club Name{" "}
-                <span style={{ color: "rgba(255,255,255,0.25)", fontWeight: 400 }}>
+                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>
                   — optional
                 </span>
               </label>
@@ -255,7 +254,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 style={inputStyle}
                 onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
               />
             </div>
 
@@ -263,7 +262,7 @@ export default function ContactSection() {
             <div>
               <label htmlFor="message" style={labelStyle}>
                 Message{" "}
-                <span style={{ color: "rgba(255,255,255,0.25)", fontWeight: 400 }}>
+                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>
                   — optional
                 </span>
               </label>
@@ -281,13 +280,14 @@ export default function ContactSection() {
                   resize: "none",
                 }}
                 onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
               />
             </div>
 
             {/* Submit */}
             <button
               type="submit"
+              className="btn-primary"
               style={{
                 alignSelf: "flex-end",
                 display: "flex",
@@ -296,21 +296,12 @@ export default function ContactSection() {
                 height: "48px",
                 padding: "0 28px",
                 borderRadius: "12px",
-                background: "white",
-                color: "black",
                 fontSize: "14px",
                 fontWeight: 600,
                 fontFamily: "var(--font-jakarta)",
                 cursor: "pointer",
                 border: "none",
-                transition: "background 0.2s, transform 0.1s",
               }}
-              onMouseEnter={(e) =>
-                ((e.target as HTMLButtonElement).style.background = "rgba(255,255,255,0.88)")
-              }
-              onMouseLeave={(e) =>
-                ((e.target as HTMLButtonElement).style.background = "white")
-              }
             >
               Send Request
               <ArrowRight size={16} />
@@ -323,7 +314,7 @@ export default function ContactSection() {
         style={{
           marginTop: "24px",
           fontSize: "11px",
-          color: "rgba(255,255,255,0.25)",
+          color: "var(--fg-subtle)",
           fontFamily: "var(--font-jakarta)",
         }}
       >
