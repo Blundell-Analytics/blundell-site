@@ -14,11 +14,8 @@ export interface InteractiveGridPatternProps {
   borderColor?: string
   /** Mouse proximity radius for subtle highlighting */
   proximity?: number
-}
-
-interface CellState {
-  hovered: boolean
-  proximity: number // 0-1 based on distance from mouse
+  /** Track mouse from window events instead of div events (for fixed/pointer-events-none containers) */
+  useWindowMouse?: boolean
 }
 
 export function InteractiveGridPattern({
@@ -28,6 +25,7 @@ export function InteractiveGridPattern({
   glowColor = "rgba(34, 211, 238, 0.4)",
   borderColor = "rgba(63, 63, 70, 0.4)",
   proximity = 100,
+  useWindowMouse = false,
 }: InteractiveGridPatternProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [grid, setGrid] = useState({ rows: 0, cols: 0, scale: 1 })
@@ -58,6 +56,30 @@ export function InteractiveGridPattern({
     return () => ro.disconnect()
   }, [updateGrid])
 
+  // Window-level mouse tracking for fixed/pointer-events-none containers
+  useEffect(() => {
+    if (!useWindowMouse) return
+
+    const handleMove = (e: MouseEvent) => {
+      const container = containerRef.current
+      if (!container) return
+      const rect = container.getBoundingClientRect()
+      setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+    }
+
+    const handleLeave = () => {
+      setMousePos({ x: -1000, y: -1000 })
+      setHoveredCell(null)
+    }
+
+    window.addEventListener("mousemove", handleMove)
+    document.documentElement.addEventListener("mouseleave", handleLeave)
+    return () => {
+      window.removeEventListener("mousemove", handleMove)
+      document.documentElement.removeEventListener("mouseleave", handleLeave)
+    }
+  }, [useWindowMouse])
+
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const container = containerRef.current
     if (!container) return
@@ -73,12 +95,21 @@ export function InteractiveGridPattern({
   const scaledCellSize = cellSize * grid.scale
   const scaledProximity = proximity * grid.scale
 
+  // Derive hovered cell directly from mouse position (works for both modes)
+  const hoveredFromPos =
+    mousePos.x >= 0 && mousePos.y >= 0
+      ? Math.floor(mousePos.y / scaledCellSize) * grid.cols +
+        Math.floor(mousePos.x / scaledCellSize)
+      : null
+
+  const activeHoveredCell = useWindowMouse ? hoveredFromPos : hoveredCell
+
   return (
     <div
       ref={containerRef}
       className={cn("absolute inset-0 overflow-hidden", className)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={useWindowMouse ? undefined : handleMouseMove}
+      onMouseLeave={useWindowMouse ? undefined : handleMouseLeave}
     >
       {/* Grid */}
       <div className="absolute inset-0">
@@ -92,7 +123,7 @@ export function InteractiveGridPattern({
               const dy = mousePos.y - cellY
               const distance = Math.sqrt(dx * dx + dy * dy)
               const proximityFactor = Math.max(0, 1 - distance / scaledProximity)
-              const isHovered = hoveredCell === index
+              const isHovered = activeHoveredCell === index
 
               return (
                 <div
@@ -112,8 +143,8 @@ export function InteractiveGridPattern({
                       : "none",
                     transitionDuration: isHovered ? "0ms" : "1000ms",
                   }}
-                  onMouseEnter={() => setHoveredCell(index)}
-                  onMouseLeave={() => setHoveredCell(null)}
+                  onMouseEnter={useWindowMouse ? undefined : () => setHoveredCell(index)}
+                  onMouseLeave={useWindowMouse ? undefined : () => setHoveredCell(null)}
                 />
               )
             })}
@@ -131,12 +162,12 @@ export function InteractiveGridPattern({
         }}
       />
 
-      {/* Vignette */}
+      {/* Vignette — soft fade at viewport edges */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 0%, transparent 30%, rgba(10,10,10,0.8) 100%)",
+            "radial-gradient(ellipse at center, transparent 0%, transparent 30%, var(--grid-vignette) 100%)",
         }}
       />
 

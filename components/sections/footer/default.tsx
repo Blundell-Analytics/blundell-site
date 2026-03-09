@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 export default function FooterSection() {
   return (
     <footer
-      className="w-full bg-black relative z-10"
+      className="w-full relative z-10"
       style={{ fontFamily: "var(--font-jakarta)" }}
     >
       {/* Strong top separator */}
@@ -22,17 +22,17 @@ export default function FooterSection() {
           justifyContent: "center",
           gap: "12px",
           padding: "24px 24px",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
+          borderTop: "1px solid var(--bg-card-border)",
         }}
       >
-        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+        <span style={{ fontSize: "11px", color: "var(--fg-medium)", textTransform: "uppercase", letterSpacing: "0.15em" }}>
           All Rights Reserved. © 2026 Blundell Analytics.
         </span>
         <a
           href={siteConfig.links.email}
           className="hover:text-[#004aad] transition-colors"
           aria-label="Email us"
-          style={{ color: "rgba(255,255,255,0.6)" }}
+          style={{ color: "var(--fg-medium)" }}
         >
           <Mail className="size-3.5" />
         </a>

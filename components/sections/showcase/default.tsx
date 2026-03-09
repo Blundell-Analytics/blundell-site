@@ -32,7 +32,10 @@ export default function DashboardShowcase() {
   const [isEnlarged, setIsEnlarged] = useState(false);
 
   return (
-    <section className="relative w-full bg-black pt-12 pb-24 px-6 overflow-hidden">
+    <section
+      className="relative w-full pt-12 pb-24 px-6 overflow-hidden"
+      style={{ zIndex: 1 }}
+    >
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* Divider */}
@@ -47,11 +50,11 @@ export default function DashboardShowcase() {
             The Platform
           </p>
           <h2
-            style={{ 
+            style={{
               fontFamily: "var(--font-jakarta)",
               fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
               fontWeight: 600,
-              color: "rgba(255,255,255,0.8)"
+              color: "var(--fg-medium)",
             }}
           >
             Every decision, backed by data
@@ -70,7 +73,7 @@ export default function DashboardShowcase() {
                 "px-5 py-2 rounded-lg text-sm font-medium border transition-all duration-150",
                 i === active
                   ? "bg-[#004aad]/15 text-[#004aad] border-[#004aad]/40"
-                  : "text-white/40 border-white/10 hover:text-white/70 hover:border-white/20",
+                  : "text-black/40 dark:text-white/40 border-black/10 dark:border-white/10 hover:text-black/70 dark:hover:text-white/70 hover:border-black/20 dark:hover:border-white/20",
               ].join(" ")}
             >
               {tab.label}
@@ -80,14 +83,14 @@ export default function DashboardShowcase() {
 
         {/* Description */}
         <p
-          className="text-center text-sm text-white/40 mb-10 max-w-lg mx-auto leading-relaxed"
-          style={{ fontFamily: "var(--font-jakarta)" }}
+          className="text-center text-sm mb-10 max-w-lg mx-auto leading-relaxed"
+          style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-muted)" }}
         >
           {TABS[active].description}
         </p>
 
         {/* Mockup */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
