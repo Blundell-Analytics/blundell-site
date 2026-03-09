@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     creator: "@blundellanalytics",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
 };

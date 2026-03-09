@@ -3,34 +3,52 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+const TIMELINE_OPTIONS = [
+  "As soon as possible",
+  "Within 2 weeks",
+  "This month",
+  "No rush",
+];
+
 export default function ContactSection() {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     clubEmail: "",
     clubName: "",
+    role: "",
+    timeline: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Report Request from " + form.clubName || "a Club");
-    const body = encodeURIComponent(
-      `Hi Blundell Analytics,\n\nI would like to request a customised report.\n\n` +
-      `Name: ${form.firstName} ${form.lastName}\n` +
-      `Club: ${form.clubName || "N/A"}\n` +
-      `Email: ${form.clubEmail}\n` +
-      (form.message ? `\nMessage:\n${form.message}` : "")
-    );
-    window.location.href = `mailto:info@blundellanalytics.ca?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -57,6 +75,11 @@ export default function ContactSection() {
     marginBottom: "8px",
     display: "block",
   };
+
+  const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    (e.target.style.borderColor = "rgba(0,74,173,0.5)");
+  const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    (e.target.style.borderColor = "var(--input-border)");
 
   return (
     <section
@@ -85,13 +108,7 @@ export default function ContactSection() {
       />
 
       {/* Header */}
-      <div
-        style={{
-          textAlign: "center",
-          maxWidth: "36rem",
-          marginBottom: "48px",
-        }}
-      >
+      <div style={{ textAlign: "center", maxWidth: "36rem", marginBottom: "48px" }}>
         <p
           style={{
             fontSize: "11px",
@@ -169,10 +186,8 @@ export default function ContactSection() {
                 fontFamily: "var(--font-jakarta)",
               }}
             >
-              Check that your mail client sent the email to{" "}
-              <span style={{ color: "var(--fg-medium)" }}>
-                info@blundellanalytics.ca
-              </span>
+              A confirmation has been sent to{" "}
+              <span style={{ color: "var(--fg-medium)" }}>{form.clubEmail}</span>
             </p>
           </div>
         ) : (
@@ -180,23 +195,17 @@ export default function ContactSection() {
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
           >
-            {/* First + Last name row */}
+            {/* First + Last name */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
               <div>
                 <label htmlFor="firstName" style={labelStyle}>
                   First Name <span style={{ color: "#004aad" }}>*</span>
                 </label>
                 <input
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                  required
+                  id="firstName" name="firstName" type="text" required
                   placeholder="Jane"
-                  value={form.firstName}
-                  onChange={handleChange}
-                  style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
+                  value={form.firstName} onChange={handleChange}
+                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
                 />
               </div>
               <div>
@@ -204,16 +213,10 @@ export default function ContactSection() {
                   Last Name <span style={{ color: "#004aad" }}>*</span>
                 </label>
                 <input
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  required
+                  id="lastName" name="lastName" type="text" required
                   placeholder="Smith"
-                  value={form.lastName}
-                  onChange={handleChange}
-                  style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
+                  value={form.lastName} onChange={handleChange}
+                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
                 />
               </div>
             </div>
@@ -224,69 +227,85 @@ export default function ContactSection() {
                 Club Email Address <span style={{ color: "#004aad" }}>*</span>
               </label>
               <input
-                id="clubEmail"
-                name="clubEmail"
-                type="email"
-                required
+                id="clubEmail" name="clubEmail" type="email" required
                 placeholder="jane@yourclub.com"
-                value={form.clubEmail}
-                onChange={handleChange}
-                style={inputStyle}
-                onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
+                value={form.clubEmail} onChange={handleChange}
+                style={inputStyle} onFocus={onFocus} onBlur={onBlur}
               />
             </div>
 
-            {/* Club name (optional) */}
+            {/* Club name + Role */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div>
+                <label htmlFor="clubName" style={labelStyle}>
+                  Club Name{" "}
+                  <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
+                </label>
+                <input
+                  id="clubName" name="clubName" type="text"
+                  placeholder="FC Example"
+                  value={form.clubName} onChange={handleChange}
+                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+                />
+              </div>
+              <div>
+                <label htmlFor="role" style={labelStyle}>
+                  Role / Title{" "}
+                  <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
+                </label>
+                <input
+                  id="role" name="role" type="text"
+                  placeholder="Head of Recruitment"
+                  value={form.role} onChange={handleChange}
+                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
+                />
+              </div>
+            </div>
+
+            {/* Timeline */}
             <div>
-              <label htmlFor="clubName" style={labelStyle}>
-                Club Name{" "}
-                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>
-                  — optional
-                </span>
+              <label htmlFor="timeline" style={labelStyle}>
+                Timeline{" "}
+                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
               </label>
-              <input
-                id="clubName"
-                name="clubName"
-                type="text"
-                placeholder="FC Example"
-                value={form.clubName}
-                onChange={handleChange}
-                style={inputStyle}
-                onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
-              />
+              <select
+                id="timeline" name="timeline"
+                value={form.timeline} onChange={handleChange}
+                style={{ ...inputStyle, cursor: "pointer", appearance: "none" }}
+                onFocus={onFocus} onBlur={onBlur}
+              >
+                <option value="">When do you need this?</option>
+                {TIMELINE_OPTIONS.map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
             </div>
 
-            {/* Message (optional) */}
+            {/* Message */}
             <div>
               <label htmlFor="message" style={labelStyle}>
                 Message{" "}
-                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>
-                  — optional
-                </span>
+                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
               </label>
               <textarea
-                id="message"
-                name="message"
-                rows={4}
+                id="message" name="message" rows={4}
                 placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
-                value={form.message}
-                onChange={handleChange}
-                style={{
-                  ...inputStyle,
-                  height: "auto",
-                  padding: "14px 20px",
-                  resize: "none",
-                }}
-                onFocus={(e) => (e.target.style.borderColor = "rgba(0,74,173,0.5)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--input-border)")}
+                value={form.message} onChange={handleChange}
+                style={{ ...inputStyle, height: "auto", padding: "14px 20px", resize: "none" }}
+                onFocus={onFocus} onBlur={onBlur}
               />
             </div>
+
+            {error && (
+              <p style={{ fontSize: "13px", color: "#ef4444", fontFamily: "var(--font-jakarta)" }}>
+                {error}
+              </p>
+            )}
 
             {/* Submit */}
             <button
               type="submit"
+              disabled={loading}
               className="btn-primary"
               style={{
                 alignSelf: "flex-end",
@@ -299,12 +318,14 @@ export default function ContactSection() {
                 fontSize: "14px",
                 fontWeight: 600,
                 fontFamily: "var(--font-jakarta)",
-                cursor: "pointer",
+                cursor: loading ? "wait" : "pointer",
                 border: "none",
+                opacity: loading ? 0.7 : 1,
+                transition: "opacity 0.2s",
               }}
             >
-              Send Request
-              <ArrowRight size={16} />
+              {loading ? "Sending…" : "Send Request"}
+              {!loading && <ArrowRight size={16} />}
             </button>
           </form>
         )}
