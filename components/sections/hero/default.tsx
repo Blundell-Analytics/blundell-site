@@ -80,13 +80,6 @@ export default function Hero() {
           Request a Report
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </button>
-
-        <p
-          className="text-[11px]"
-          style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-subtle)" }}
-        >
-          No commitment. Responses within 48 hours.
-        </p>
       </motion.div>
 
       {/* Scroll indicator */}
