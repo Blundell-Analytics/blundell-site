@@ -7,13 +7,6 @@ export default function FooterSection() {
       className="w-full relative z-10"
       style={{ fontFamily: "var(--font-jakarta)" }}
     >
-      {/* Strong top separator */}
-      <div
-        style={{
-          height: "1px",
-          background: "linear-gradient(to right, transparent, rgba(0, 74, 173, 0.5) 30%, rgba(0, 74, 173, 0.5) 70%, transparent)",
-        }}
-      />
       {/* Footer content */}
       <div
         style={{

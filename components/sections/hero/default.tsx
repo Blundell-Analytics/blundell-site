@@ -4,13 +4,20 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 import Glow from "@/components/ui/glow";
+import { TypingText } from "@/components/ui/typing-text";
+
+const TYPING_PHRASES = [
+  "a calculated one.",
+  "a quantified one.",
+  "an informed one.",
+  "a data-driven one.",
+];
 
 const scrollToContact = () => {
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 };
 
 export default function Hero() {
-
   return (
     <section
       className="relative w-full overflow-hidden flex flex-col items-center justify-center px-6"
@@ -41,19 +48,19 @@ export default function Hero() {
           style={{ fontFamily: "var(--font-jakarta)", color: "var(--foreground)" }}
         >
           Every transfer decision has a cost. Make it{" "}
-          <em
+          <TypingText
+            texts={TYPING_PHRASES}
             style={{
               fontStyle: "italic",
               fontFamily: "var(--font-playfair)",
-              color: "transparent",
-              backgroundImage:
-                "linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #bfdbfe 100%)",
+              background: "linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+              display: "inline-block",
             }}
-          >
-            a calculated one.
-          </em>
+          />
         </h1>
 
         <p
@@ -61,13 +68,11 @@ export default function Hero() {
           style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-muted)" }}
         >
           We help clubs make smarter{" "}
-          <span style={{ color: "var(--fg-medium)", fontWeight: 500 }}>transfer decisions</span>{" "}
-          backed by robust{" "}
-          <span style={{ color: "var(--fg-medium)", fontWeight: 500 }}>
-            mathematical and statistical models
-          </span>
-          . Reach out for a{" "}
-          <span style={{ color: "var(--fg-medium)", fontWeight: 500 }}>customised report</span>{" "}
+          <span style={{ fontWeight: 600, color: "var(--fg-medium)" }}>transfer decisions</span>{" "}
+          backed by{" "}
+          <span style={{ fontWeight: 600, color: "var(--fg-medium)" }}>quantitative models and five-objective scoring</span>
+          . Commission a{" "}
+          <span style={{ fontWeight: 600, color: "var(--fg-medium)" }}>customised report</span>{" "}
           — tactical analysis, risk assessments, and shortlists.
         </p>
 
@@ -77,7 +82,7 @@ export default function Hero() {
           className="group h-12 shrink-0 flex items-center justify-center gap-2 rounded-xl px-7 text-sm font-semibold btn-primary"
           style={{ fontFamily: "var(--font-jakarta)" }}
         >
-          Request a Report
+          Commission a Report
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </button>
       </motion.div>

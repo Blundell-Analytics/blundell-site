@@ -33,13 +33,10 @@ export default function DashboardShowcase() {
 
   return (
     <section
-      className="relative w-full pt-12 pb-24 px-6 overflow-hidden"
+      className="relative w-full py-24 px-6 overflow-hidden"
       style={{ zIndex: 1 }}
     >
       <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#004aad] to-transparent mb-12" />
 
         {/* Heading */}
         <div className="text-center mb-12">
@@ -47,7 +44,7 @@ export default function DashboardShowcase() {
             className="text-[11px] uppercase tracking-[0.2em] mb-3"
             style={{ fontFamily: "var(--font-jakarta)", color: "#004aad" }}
           >
-            The Platform
+            Transfer Intelligence
           </p>
           <h2
             style={{
@@ -57,7 +54,7 @@ export default function DashboardShowcase() {
               color: "var(--fg-medium)",
             }}
           >
-            Every decision, backed by data
+            One score. Every dimension.
           </h2>
         </div>
 
@@ -68,13 +65,13 @@ export default function DashboardShowcase() {
               key={i}
               type="button"
               onClick={() => setActive(i)}
-              style={{ fontFamily: "var(--font-jakarta)" }}
-              className={[
-                "px-5 py-2 rounded-lg text-sm font-medium border transition-all duration-150",
-                i === active
-                  ? "bg-[#004aad]/15 text-[#004aad] border-[#004aad]/40"
-                  : "text-black/40 dark:text-white/40 border-black/10 dark:border-white/10 hover:text-black/70 dark:hover:text-white/70 hover:border-black/20 dark:hover:border-white/20",
-              ].join(" ")}
+              style={{
+                fontFamily: "var(--font-jakarta)",
+                background: i === active ? "rgba(0, 74, 173, 0.12)" : "var(--bg-card)",
+                color: i === active ? "#004aad" : "var(--fg-muted)",
+                borderColor: i === active ? "rgba(0, 74, 173, 0.4)" : "var(--bg-card-border)",
+              }}
+              className="px-5 py-2 rounded-lg text-sm font-medium border transition-all duration-200 backdrop-blur-md hover:opacity-80"
             >
               {tab.label}
             </button>

@@ -89,23 +89,11 @@ export default function ContactSection() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "80px 24px",
+        padding: "96px 24px",
         position: "relative",
         zIndex: 1,
       }}
     >
-      {/* Top separator */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "1px",
-          background:
-            "linear-gradient(to right, transparent, rgba(0, 74, 173, 0.4) 30%, rgba(0, 74, 173, 0.4) 70%, transparent)",
-        }}
-      />
 
       {/* Header */}
       <div style={{ textAlign: "center", maxWidth: "36rem", marginBottom: "48px" }}>
@@ -130,7 +118,7 @@ export default function ContactSection() {
             fontFamily: "var(--font-jakarta)",
           }}
         >
-          Request a customised report
+          Your club's analysis starts here
         </h2>
         <p
           style={{
@@ -141,8 +129,7 @@ export default function ContactSection() {
             fontFamily: "var(--font-jakarta)",
           }}
         >
-          Fill in your details and we'll get back to you within 48 hours with a
-          personalised analysis for your club.
+          Tell us about your club and we'll deliver a tailored report within 48 hours.
         </p>
       </div>
 
@@ -177,7 +164,7 @@ export default function ContactSection() {
                 fontFamily: "var(--font-jakarta)",
               }}
             >
-              Thanks — we'll be in touch within 48 hours!
+              Your request is in — we'll have your report underway within 48 hours.
             </p>
             <p
               style={{
@@ -324,7 +311,7 @@ export default function ContactSection() {
                 transition: "opacity 0.2s",
               }}
             >
-              {loading ? "Sending…" : "Send Request"}
+              {loading ? "Sending…" : "Commission a Report"}
               {!loading && <ArrowRight size={16} />}
             </button>
           </form>
