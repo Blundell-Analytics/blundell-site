@@ -1,45 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
-
-  return (
-    <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Toggle theme"
-      style={{
-        width: "36px",
-        height: "36px",
-        borderRadius: "10px",
-        border: "1px solid rgba(0, 74, 173, 0.3)",
-        background: "var(--scroll-bg)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        color: "var(--fg-medium)",
-        transition: "border-color 0.2s, color 0.2s",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0, 74, 173, 0.7)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0, 74, 173, 0.3)";
-      }}
-    >
-      {isDark ? <Sun size={15} /> : <Moon size={15} />}
-    </button>
-  );
-}
 
 interface NavbarProps {
   className?: string;
@@ -80,17 +43,6 @@ export default function Navbar({ className }: NavbarProps) {
           Blundell Analytics
         </span>
       </a>
-
-      <div
-        style={{
-          position: "fixed",
-          top: "20px",
-          right: "24px",
-          zIndex: 100,
-        }}
-      >
-        <ThemeToggle />
-      </div>
     </motion.header>
   );
 }

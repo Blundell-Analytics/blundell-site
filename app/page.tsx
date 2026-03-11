@@ -3,7 +3,7 @@ import Hero from "../components/sections/hero/default";
 import Navbar from "../components/sections/navbar/default";
 import DashboardShowcase from "../components/sections/showcase/default";
 import ContactSection from "../components/sections/contact/default";
-import ScrollToTop from "../components/ui/scroll-to-top";
+import FloatingActions from "../components/ui/floating-actions";
 import { PageBackground } from "../components/ui/page-background";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       <DashboardShowcase />
       <ContactSection />
       <Footer />
-      <ScrollToTop />
+      <FloatingActions />
     </main>
   );
 }
