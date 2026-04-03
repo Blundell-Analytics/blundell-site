@@ -41,17 +41,18 @@ export default function DashboardShowcase() {
         {/* Heading */}
         <div className="text-center mb-12">
           <p
-            className="text-[11px] uppercase tracking-[0.2em] mb-3"
-            style={{ fontFamily: "var(--font-jakarta)", color: "#004aad" }}
+            className="text-sm uppercase tracking-[0.15em] mb-3"
+            style={{ fontFamily: "var(--font-jakarta)", color: "#004aad", fontWeight: 500 }}
           >
             Transfer Intelligence
           </p>
           <h2
             style={{
               fontFamily: "var(--font-jakarta)",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
               fontWeight: 600,
               color: "var(--fg-medium)",
+              lineHeight: 1.15,
             }}
           >
             One score. Every dimension.
@@ -80,7 +81,7 @@ export default function DashboardShowcase() {
 
         {/* Description */}
         <p
-          className="text-center text-sm mb-10 max-w-lg mx-auto leading-relaxed"
+          className="text-center text-sm mb-10 max-w-2xl mx-auto leading-relaxed"
           style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-muted)" }}
         >
           {TABS[active].description}
@@ -92,7 +93,7 @@ export default function DashboardShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative max-w-4xl mx-auto"
+          className="relative"
         >
           <button
             type="button"
