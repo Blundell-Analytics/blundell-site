@@ -41,46 +41,58 @@ export default function DashboardShowcase() {
         {/* Heading */}
         <div className="text-center mb-12">
           <p
-            className="text-[11px] uppercase tracking-[0.2em] mb-3"
-            style={{ fontFamily: "var(--font-jakarta)", color: "#004aad" }}
+            className="text-sm uppercase tracking-[0.15em] mb-3"
+            style={{ fontFamily: "var(--font-jakarta)", color: "#004aad", fontWeight: 500 }}
           >
             Transfer Intelligence
           </p>
           <h2
             style={{
               fontFamily: "var(--font-jakarta)",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
               fontWeight: 600,
-              color: "var(--fg-medium)",
+              color: "var(--foreground)",
+              lineHeight: 1.15,
             }}
           >
             One score. Every dimension.
           </h2>
         </div>
 
-        {/* Tab buttons */}
-        <div className="flex justify-center gap-2 mb-6 flex-wrap">
-          {TABS.map((tab, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActive(i)}
-              style={{
-                fontFamily: "var(--font-jakarta)",
-                background: i === active ? "rgba(0, 74, 173, 0.12)" : "var(--bg-card)",
-                color: i === active ? "#004aad" : "var(--fg-muted)",
-                borderColor: i === active ? "rgba(0, 74, 173, 0.4)" : "var(--bg-card-border)",
-              }}
-              className="px-5 py-2 rounded-lg text-sm font-medium border transition-all duration-200 backdrop-blur-md hover:opacity-80"
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Pill tabs */}
+        <div
+          className="flex justify-center mb-6"
+          style={{ fontFamily: "var(--font-jakarta)" }}
+        >
+          <div
+            className="inline-flex p-1 rounded-full text-sm gap-1"
+            style={{ background: "var(--bg-card)", border: "1px solid var(--bg-card-border)" }}
+          >
+            {TABS.map((tab, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActive(i)}
+                className="relative cursor-pointer rounded-full py-2 px-6 font-medium transition-colors duration-200 z-10"
+                style={{ color: active === i ? "#fff" : "var(--fg-muted)" }}
+              >
+                {active === i && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: "#004aad" }}
+                    transition={{ type: "tween", duration: 0.25, ease: "easeInOut" }}
+                  />
+                )}
+                <span className="relative z-10">{tab.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Description */}
         <p
-          className="text-center text-sm mb-10 max-w-lg mx-auto leading-relaxed"
+          className="text-center text-sm mb-10 mx-auto leading-relaxed"
           style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-muted)" }}
         >
           {TABS[active].description}
@@ -92,7 +104,7 @@ export default function DashboardShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative max-w-4xl mx-auto"
+          className="relative"
         >
           <button
             type="button"

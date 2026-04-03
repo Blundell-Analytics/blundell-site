@@ -3,13 +3,6 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const TIMELINE_OPTIONS = [
-  "As soon as possible",
-  "Within 2 weeks",
-  "This month",
-  "No rush",
-];
-
 export default function ContactSection() {
   const [form, setForm] = useState({
     firstName: "",
@@ -17,7 +10,6 @@ export default function ContactSection() {
     clubEmail: "",
     clubName: "",
     role: "",
-    timeline: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -99,10 +91,11 @@ export default function ContactSection() {
       <div style={{ textAlign: "center", maxWidth: "36rem", marginBottom: "48px" }}>
         <p
           style={{
-            fontSize: "11px",
+            fontSize: "14px",
+            fontWeight: 500,
             color: "#004aad",
             textTransform: "uppercase",
-            letterSpacing: "0.2em",
+            letterSpacing: "0.15em",
             fontFamily: "var(--font-jakarta)",
             marginBottom: "12px",
           }}
@@ -111,7 +104,7 @@ export default function ContactSection() {
         </p>
         <h2
           style={{
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+            fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 600,
             color: "var(--foreground)",
             lineHeight: 1.15,
@@ -135,9 +128,10 @@ export default function ContactSection() {
 
       {/* Form card */}
       <div
+        className=""
         style={{
           width: "100%",
-          maxWidth: "560px",
+          maxWidth: "720px",
           background: "var(--bg-card)",
           border: "1px solid var(--bg-card-border)",
           borderRadius: "20px",
@@ -247,25 +241,6 @@ export default function ContactSection() {
                   style={inputStyle} onFocus={onFocus} onBlur={onBlur}
                 />
               </div>
-            </div>
-
-            {/* Timeline */}
-            <div>
-              <label htmlFor="timeline" style={labelStyle}>
-                Timeline{" "}
-                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
-              </label>
-              <select
-                id="timeline" name="timeline"
-                value={form.timeline} onChange={handleChange}
-                style={{ ...inputStyle, cursor: "pointer", appearance: "none" }}
-                onFocus={onFocus} onBlur={onBlur}
-              >
-                <option value="">When do you need this?</option>
-                {TIMELINE_OPTIONS.map((o) => (
-                  <option key={o} value={o}>{o}</option>
-                ))}
-              </select>
             </div>
 
             {/* Message */}
