@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUp, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { AnimatePresence, motion } from "framer-motion";
+import { animate, AnimatePresence, motion } from "framer-motion";
 
 export default function FloatingActions() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,7 +61,13 @@ export default function FloatingActions() {
           >
             <div className="w-6 border-t border-border" />
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() =>
+                animate(window.scrollY, 0, {
+                  duration: 0.6,
+                  ease: "easeInOut",
+                  onUpdate: (v) => window.scrollTo(0, v),
+                })
+              }
               aria-label="Scroll to top"
               className="group flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             >

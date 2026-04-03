@@ -311,7 +311,7 @@ export default function ContactSection() {
                 transition: "opacity 0.2s",
               }}
             >
-              {loading ? "Sending…" : "Commission a Report"}
+              {loading ? "Sending…" : "Request a Report"}
               {!loading && <ArrowRight size={16} />}
             </button>
           </form>

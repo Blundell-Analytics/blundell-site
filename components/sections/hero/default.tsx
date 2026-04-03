@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 
 import Glow from "@/components/ui/glow";
 import { TypingText } from "@/components/ui/typing-text";
@@ -14,7 +14,13 @@ const TYPING_PHRASES = [
 ];
 
 const scrollToContact = () => {
-  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const el = document.getElementById("contact");
+  if (!el) return;
+  animate(window.scrollY, el.offsetTop, {
+    duration: 0.8,
+    ease: "easeInOut",
+    onUpdate: (v) => window.scrollTo(0, v),
+  });
 };
 
 export default function Hero() {
@@ -82,7 +88,7 @@ export default function Hero() {
           className="group h-12 shrink-0 flex items-center justify-center gap-2 rounded-xl px-7 text-sm font-semibold btn-primary"
           style={{ fontFamily: "var(--font-jakarta)" }}
         >
-          Commission a Report
+          Request a Report
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </button>
       </motion.div>
