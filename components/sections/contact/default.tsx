@@ -99,10 +99,11 @@ export default function ContactSection() {
       <div style={{ textAlign: "center", maxWidth: "36rem", marginBottom: "48px" }}>
         <p
           style={{
-            fontSize: "11px",
+            fontSize: "14px",
+            fontWeight: 500,
             color: "#004aad",
             textTransform: "uppercase",
-            letterSpacing: "0.2em",
+            letterSpacing: "0.15em",
             fontFamily: "var(--font-jakarta)",
             marginBottom: "12px",
           }}
@@ -111,7 +112,7 @@ export default function ContactSection() {
         </p>
         <h2
           style={{
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+            fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 600,
             color: "var(--foreground)",
             lineHeight: 1.15,
