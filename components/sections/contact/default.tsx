@@ -138,7 +138,7 @@ export default function ContactSection() {
       <div
         style={{
           width: "100%",
-          maxWidth: "560px",
+          maxWidth: "720px",
           background: "var(--bg-card)",
           border: "1px solid var(--bg-card-border)",
           borderRadius: "20px",
