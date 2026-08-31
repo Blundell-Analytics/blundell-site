@@ -8,11 +8,10 @@ import { SectionHeader } from "@/components/ui/section";
 const FIELD =
   "w-full bg-transparent py-4 text-sm text-fg outline-none placeholder:text-fg-4 focus:placeholder:text-fg-4";
 
-const ROW =
-  "grid grid-cols-1 border-b border-hairline md:grid-cols-12 md:items-start md:gap-x-10";
+const ROW = "border-b border-hairline py-4";
 
 const LABEL =
-  "pt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-4 md:col-span-3 md:pt-4";
+  "mb-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-fg-4";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -60,10 +59,10 @@ export default function ContactSection() {
         lead="Tell us about your club and we'll deliver a tailored report within 48 hours."
       />
 
-      <div className="rail rule-t grid grid-cols-1 gap-6 py-12 lg:grid-cols-12 lg:gap-10 lg:py-16">
-        <p className="eyebrow lg:col-span-3 lg:pt-2">The brief</p>
+      <div className="rail rule-t py-11 lg:py-14">
+        <p className="eyebrow mb-6">The brief</p>
 
-        <div className="lg:col-span-9">
+        <div>
           {submitted ? (
             <div className="max-w-xl space-y-5">
               <div className="flex items-center gap-2.5">
@@ -88,105 +87,93 @@ export default function ContactSection() {
                   <label htmlFor="firstName" className={LABEL}>
                     First Name <span className="text-mark">*</span>
                   </label>
-                  <div className="md:col-span-9">
-                    <input
-                      id="firstName"
-                      name="firstName"
-                      type="text"
-                      required
-                      placeholder="Jane"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      className={FIELD}
-                    />
-                  </div>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    required
+                    placeholder="Jane"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
                 </div>
 
                 <div className={ROW}>
                   <label htmlFor="lastName" className={LABEL}>
                     Last Name <span className="text-mark">*</span>
                   </label>
-                  <div className="md:col-span-9">
-                    <input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      required
-                      placeholder="Smith"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      className={FIELD}
-                    />
-                  </div>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    required
+                    placeholder="Smith"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
                 </div>
 
                 <div className={ROW}>
                   <label htmlFor="clubEmail" className={LABEL}>
                     Club Email Address <span className="text-mark">*</span>
                   </label>
-                  <div className="md:col-span-9">
-                    <input
-                      id="clubEmail"
-                      name="clubEmail"
-                      type="email"
-                      required
-                      placeholder="jane@yourclub.com"
-                      value={form.clubEmail}
-                      onChange={handleChange}
-                      className={FIELD}
-                    />
-                  </div>
+                  <input
+                    id="clubEmail"
+                    name="clubEmail"
+                    type="email"
+                    required
+                    placeholder="jane@yourclub.com"
+                    value={form.clubEmail}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
                 </div>
 
                 <div className={ROW}>
                   <label htmlFor="clubName" className={LABEL}>
                     Club Name <span className="text-fg-4">— optional</span>
                   </label>
-                  <div className="md:col-span-9">
-                    <input
-                      id="clubName"
-                      name="clubName"
-                      type="text"
-                      placeholder="FC Example"
-                      value={form.clubName}
-                      onChange={handleChange}
-                      className={FIELD}
-                    />
-                  </div>
+                  <input
+                    id="clubName"
+                    name="clubName"
+                    type="text"
+                    placeholder="FC Example"
+                    value={form.clubName}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
                 </div>
 
                 <div className={ROW}>
                   <label htmlFor="role" className={LABEL}>
                     Role / Title <span className="text-fg-4">— optional</span>
                   </label>
-                  <div className="md:col-span-9">
-                    <input
-                      id="role"
-                      name="role"
-                      type="text"
-                      placeholder="Head of Recruitment"
-                      value={form.role}
-                      onChange={handleChange}
-                      className={FIELD}
-                    />
-                  </div>
+                  <input
+                    id="role"
+                    name="role"
+                    type="text"
+                    placeholder="Head of Recruitment"
+                    value={form.role}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
                 </div>
 
                 <div className={ROW}>
                   <label htmlFor="message" className={LABEL}>
                     Message <span className="text-fg-4">— optional</span>
                   </label>
-                  <div className="md:col-span-9">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
-                      value={form.message}
-                      onChange={handleChange}
-                      className={`${FIELD} resize-none`}
-                    />
-                  </div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
+                    value={form.message}
+                    onChange={handleChange}
+                    className={`${FIELD} resize-none`}
+                  />
                 </div>
               </div>
 

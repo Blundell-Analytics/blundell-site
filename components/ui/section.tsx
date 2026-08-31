@@ -4,9 +4,9 @@ import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 /**
- * One header treatment for every section: a mono label in the left column, the
- * heading and any lead copy in the right. Using it everywhere is what makes the
- * page read as one document rather than a stack of unrelated bands.
+ * One header treatment, and one left edge. The label sits above the heading
+ * rather than in its own column — a label column pushes headings inward while
+ * body content stays on the rail, which is what made the page look misaligned.
  */
 export function SectionHeader({
   label,
@@ -20,44 +20,21 @@ export function SectionHeader({
   children?: ReactNode;
 }) {
   return (
-    <div className="rail rule-t grid grid-cols-1 gap-6 py-14 lg:grid-cols-12 lg:gap-10 lg:py-20">
-      <p className="eyebrow lg:col-span-3 lg:pt-2">{label}</p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        className="lg:col-span-9"
-      >
-        <h2 className="display-lg text-fg max-w-2xl">{title}</h2>
-        {lead && (
-          <p className="text-fg-3 mt-6 max-w-2xl text-base leading-relaxed">
-            {lead}
-          </p>
-        )}
-        {children}
-      </motion.div>
-    </div>
-  );
-}
-
-/** Body row on the same grid, for content that follows a SectionHeader. */
-export function SectionBody({
-  label,
-  children,
-  className = "",
-}: {
-  label?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`rail rule-t grid grid-cols-1 gap-6 py-12 lg:grid-cols-12 lg:gap-10 lg:py-16 ${className}`}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className="rail rule-t py-11 lg:py-14"
     >
-      <p className="eyebrow lg:col-span-3 lg:pt-2">{label ?? ""}</p>
-      <div className="lg:col-span-9">{children}</div>
-    </div>
+      <p className="eyebrow mb-4">{label}</p>
+      <h2 className="display-lg text-fg max-w-2xl">{title}</h2>
+      {lead && (
+        <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed">
+          {lead}
+        </p>
+      )}
+      {children}
+    </motion.div>
   );
 }

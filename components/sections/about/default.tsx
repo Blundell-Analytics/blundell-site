@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionBody, SectionHeader } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section";
 
 /** How an engagement actually runs — kept to three lines, not three cards. */
 const STAGES = [
@@ -37,12 +37,13 @@ export default function About() {
         </p>
       </SectionHeader>
 
-      <SectionBody label="How it works">
-        <ol className="divide-hairline border-hairline divide-y border-t">
+      <div className="rail rule-t py-11 lg:py-14">
+        <p className="eyebrow mb-6">How it works</p>
+        <ol className="divide-hairline border-hairline max-w-4xl divide-y border-t">
           {STAGES.map((s) => (
             <li
               key={s.n}
-              className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-12 sm:gap-6"
+              className="grid grid-cols-1 gap-1 py-4 sm:grid-cols-12 sm:gap-6"
             >
               <span className="text-mark font-mono text-[11px] tracking-[0.14em] sm:col-span-1 sm:pt-1">
                 {s.n}
@@ -50,13 +51,13 @@ export default function About() {
               <span className="text-fg text-base font-medium sm:col-span-3">
                 {s.t}
               </span>
-              <span className="text-fg-3 max-w-xl text-sm leading-relaxed sm:col-span-8">
+              <span className="text-fg-3 text-sm leading-relaxed sm:col-span-8">
                 {s.d}
               </span>
             </li>
           ))}
         </ol>
-      </SectionBody>
+      </div>
     </section>
   );
 }
