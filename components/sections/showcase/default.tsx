@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { SectionHeader } from "@/components/ui/section";
+
 const VIEWS = [
   {
     label: "Transfer Scout",
@@ -38,17 +40,11 @@ export default function DashboardShowcase() {
 
   return (
     <section id="platform" className="bg-ink relative z-10">
-      <div className="rail rule-t rule-b py-14 lg:py-16">
-        <p className="eyebrow mb-6">The Platform</p>
-        <h2 className="display-lg text-fg max-w-2xl">
-          One score. Every dimension.
-        </h2>
-        <p className="text-fg-3 mt-6 max-w-xl text-base leading-relaxed">
-          Every engagement comes with the working platform behind it, not just a
-          document. Three views, one ranked list, and the reasoning attached to
-          each name on it.
-        </p>
-      </div>
+      <SectionHeader
+        label="The platform"
+        title="One score. Every dimension."
+        lead="Every engagement comes with the working platform behind it, not just a document. Three views, one ranked list, and the reasoning attached to each name on it."
+      />
 
       {/* Tab strip */}
       <div
@@ -99,7 +95,7 @@ export default function DashboardShowcase() {
 
       {/* Application window */}
       <div className="rail py-10 lg:py-14">
-        <div className="border-hairline bg-panel border">
+        <div className="border-hairline bg-panel mx-auto max-w-3xl border">
           <div className="border-hairline flex items-center justify-between gap-4 border-b px-4 py-3">
             <div className="flex items-center gap-2.5">
               <span className="bg-mark size-1.5 shrink-0" />
@@ -133,12 +129,8 @@ export default function DashboardShowcase() {
             </AnimatePresence>
           </button>
         </div>
-      </div>
 
-      {/* Caption */}
-      <div className="rail rule-t grid grid-cols-1 gap-4 py-8 lg:grid-cols-12 lg:gap-10">
-        <p className="eyebrow lg:col-span-4 lg:pt-1">Reading this view</p>
-        <p className="text-fg-3 max-w-2xl text-base leading-relaxed lg:col-span-8">
+        <p className="text-fg-3 mx-auto mt-5 max-w-3xl text-sm leading-relaxed">
           {view.caption}
         </p>
       </div>

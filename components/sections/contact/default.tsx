@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
+import { SectionHeader } from "@/components/ui/section";
+
 /** Borderless input sitting in a ruled table row. */
 const FIELD =
   "w-full bg-transparent py-4 text-sm text-fg outline-none placeholder:text-fg-4 focus:placeholder:text-fg-4";
@@ -52,19 +54,16 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="bg-ink relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className="rail border-hairline py-12 lg:col-span-4 lg:border-r lg:py-16">
-          <p className="eyebrow mb-5">Get in touch</p>
-          <h2 className="display-lg text-fg mb-6 max-w-sm">
-            Your club&apos;s analysis starts here
-          </h2>
-          <p className="text-fg-3 max-w-sm text-sm leading-relaxed lg:text-base">
-            Tell us about your club and we&apos;ll deliver a tailored report
-            within 48 hours.
-          </p>
-        </div>
+      <SectionHeader
+        label="Get in touch"
+        title="Your club's analysis starts here"
+        lead="Tell us about your club and we'll deliver a tailored report within 48 hours."
+      />
 
-        <div className="rail border-hairline border-t py-12 lg:col-span-8 lg:border-t-0 lg:py-16">
+      <div className="rail rule-t grid grid-cols-1 gap-6 py-12 lg:grid-cols-12 lg:gap-10 lg:py-16">
+        <p className="eyebrow lg:col-span-3 lg:pt-2">The brief</p>
+
+        <div className="lg:col-span-9">
           {submitted ? (
             <div className="max-w-xl space-y-5">
               <div className="flex items-center gap-2.5">

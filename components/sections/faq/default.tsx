@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { SectionHeader } from "@/components/ui/section";
+
 /** Company-level questions only — nothing about how the modelling works. */
 const ITEMS = [
   {
@@ -12,10 +14,6 @@ const ITEMS = [
   {
     q: "Which leagues and seasons do you cover?",
     a: "More than sixteen competitions, with squad history reaching back to 2015. If a specific market matters to you and is not already covered, say so in the brief and we will confirm whether it is feasible before any work starts.",
-  },
-  {
-    q: "Do we need our own analysts to use this?",
-    a: "No. The work is written for the people who make the decision, not for a data department to translate first. If you do have analysts, they get the underlying platform and can go as deep as they want.",
   },
   {
     q: "Is our brief confidential?",
@@ -32,12 +30,7 @@ export default function Faq() {
 
   return (
     <section id="faq" className="bg-ink relative z-10">
-      <div className="rail rule-t rule-b py-14 lg:py-16">
-        <p className="eyebrow mb-6">Questions</p>
-        <h2 className="display-lg text-fg max-w-2xl">
-          What clubs ask us first.
-        </h2>
-      </div>
+      <SectionHeader label="Questions" title="What clubs ask us first." />
 
       <div className="rail">
         {ITEMS.map((item, i) => {

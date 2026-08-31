@@ -14,14 +14,6 @@ const TYPING_PHRASES = [
   "a data-driven one.",
 ];
 
-/** Masthead strip. Sits below the fold, immediately after the statement. */
-const META = [
-  { k: "Discipline", v: "Transfer Intelligence" },
-  { k: "Model", v: "Five-Objective Scoring" },
-  { k: "Output", v: "Customised Report" },
-  { k: "Response", v: "Within 48 Hours" },
-];
-
 export default function Hero() {
   return (
     <>
@@ -69,11 +61,8 @@ export default function Hero() {
               <p className="text-fg-3 max-w-md text-sm leading-relaxed lg:text-base">
                 We help clubs make smarter{" "}
                 <span className="text-fg">transfer decisions</span> backed by{" "}
-                <span className="text-fg">
-                  quantitative models and five-objective scoring
-                </span>
-                . Commission a{" "}
-                <span className="text-fg">customised report</span> — tactical
+                <span className="text-fg">quantitative models</span>. Commission
+                a <span className="text-fg">customised report</span> — tactical
                 analysis, risk assessments, and shortlists.
               </p>
 
@@ -95,28 +84,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      <motion.dl
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="bg-ink rule-t rule-b relative z-10 grid grid-cols-2 lg:grid-cols-4"
-      >
-        {META.map((m, i) => (
-          <div
-            key={m.k}
-            className={`px-6 py-5 lg:px-10 2xl:px-16 ${
-              i % 2 === 1 ? "border-hairline border-l" : ""
-            } ${i < 2 ? "border-hairline border-b lg:border-b-0" : ""} ${
-              i === 2 ? "lg:border-hairline lg:border-l" : ""
-            }`}
-          >
-            <dt className="cell-label">{m.k}</dt>
-            <dd className="cell-value">{m.v}</dd>
-          </div>
-        ))}
-      </motion.dl>
     </>
   );
 }

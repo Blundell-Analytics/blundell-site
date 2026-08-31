@@ -82,9 +82,12 @@ export default function FooterSection() {
         <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
           All Rights Reserved. © 2026 Blundell Analytics.
         </span>
-        <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
-          Quantitative Football Transfer Intelligence
-        </span>
+        <a
+          href={siteConfig.links.email}
+          className="text-fg-4 hover:text-fg-3 font-mono text-[10px] tracking-[0.16em] uppercase transition-colors"
+        >
+          info@blundellanalytics.ca
+        </a>
       </div>
     </footer>
   );
