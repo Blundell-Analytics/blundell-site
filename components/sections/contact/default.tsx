@@ -1,13 +1,16 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Check } from "lucide-react";
 
-const FIELD_CLASS =
-  "w-full border border-white/12 bg-white/[0.02] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-white/40";
+/** Borderless input sitting in a ruled table row. */
+const FIELD =
+  "w-full bg-transparent py-4 text-sm text-white outline-none placeholder:text-neutral-600 focus:placeholder:text-neutral-500";
 
-const LABEL_CLASS =
-  "mb-2 block font-mono text-[10px] uppercase tracking-[0.12em] text-neutral-400";
+const ROW =
+  "grid grid-cols-1 border-b border-white/10 md:grid-cols-12 md:items-start";
+
+const LABEL =
+  "pt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-500 md:col-span-3 md:pt-4";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -48,57 +51,53 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-ink relative z-10 py-16 lg:py-24">
-      <div className="shell px-0 lg:px-8">
-        <div className="grid grid-cols-1 bg-[#111112] lg:grid-cols-8">
-          {/* Brief */}
-          <div className="flex items-center px-6 py-14 lg:col-span-3 lg:px-14 lg:py-20">
-            <div className="max-w-md">
-              <p className="eyebrow mb-6">Get in Touch</p>
-              <h2 className="display-lg mb-6 text-white">
-                Your club&apos;s analysis starts here.
-              </h2>
-              <p className="text-base leading-relaxed text-neutral-400">
-                Tell us the position, the budget and the constraint you are
-                actually solving for. We reply within 48 hours with scope,
-                timeline and price — before any commitment.
-              </p>
+    <section id="contact" className="bg-ink relative z-10">
+      <div className="rail rule-t rule-b py-6">
+        <div className="flex items-center gap-2.5">
+          <span className="bg-mark size-1.5" />
+          <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-500 uppercase">
+            02 — Get in Touch
+          </span>
+        </div>
+      </div>
 
-              <div className="mt-10 space-y-2.5 border-t border-white/20 pt-8">
-                <div className="cell">
-                  <div className="cell-label">Response time</div>
-                  <div className="cell-value">Within 48 hours</div>
-                </div>
-                <div className="cell">
-                  <div className="cell-label">Direct</div>
-                  <div className="cell-value">info@blundellanalytics.ca</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12">
+        <div className="rail border-white/10 py-12 lg:col-span-4 lg:border-r lg:py-20">
+          <h2 className="display-lg mb-6 max-w-sm text-white">
+            Your club&apos;s analysis starts here
+          </h2>
+          <p className="max-w-sm text-sm leading-relaxed text-neutral-400 lg:text-base">
+            Tell us about your club and we&apos;ll deliver a tailored report
+            within 48 hours.
+          </p>
+        </div>
 
-          {/* Form */}
-          <div className="border-t border-white/10 px-6 py-14 lg:col-span-5 lg:border-t-0 lg:border-l lg:px-14 lg:py-20">
-            {submitted ? (
-              <div className="flex h-full flex-col justify-center gap-4 py-10">
-                <span className="border-mark text-mark flex size-10 items-center justify-center border">
-                  <Check className="size-5" />
+        <div className="rail border-t border-white/10 py-12 lg:col-span-8 lg:border-t-0 lg:py-20">
+          {submitted ? (
+            <div className="max-w-xl space-y-5">
+              <div className="flex items-center gap-2.5">
+                <span className="bg-mark size-1.5" />
+                <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-400 uppercase">
+                  Received
                 </span>
-                <p className="display-md text-white">Your request is in.</p>
-                <p className="max-w-md text-sm leading-relaxed text-neutral-400">
-                  We&apos;ll have your report underway within 48 hours. A
-                  confirmation has been sent to{" "}
-                  <span className="font-mono text-white">{form.clubEmail}</span>
-                  .
-                </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="firstName" className={LABEL_CLASS}>
-                      First Name <span className="text-mark">*</span>
-                    </label>
+              <p className="display-md text-white">
+                Your request is in — we&apos;ll have your report underway within
+                48 hours.
+              </p>
+              <p className="text-sm text-neutral-400">
+                A confirmation has been sent to{" "}
+                <span className="font-mono text-white">{form.clubEmail}</span>
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="max-w-3xl">
+              <div className="border-t border-white/10">
+                <div className={ROW}>
+                  <label htmlFor="firstName" className={LABEL}>
+                    First Name <span className="text-mark">*</span>
+                  </label>
+                  <div className="md:col-span-9">
                     <input
                       id="firstName"
                       name="firstName"
@@ -107,13 +106,16 @@ export default function ContactSection() {
                       placeholder="Jane"
                       value={form.firstName}
                       onChange={handleChange}
-                      className={FIELD_CLASS}
+                      className={FIELD}
                     />
                   </div>
-                  <div>
-                    <label htmlFor="lastName" className={LABEL_CLASS}>
-                      Last Name <span className="text-mark">*</span>
-                    </label>
+                </div>
+
+                <div className={ROW}>
+                  <label htmlFor="lastName" className={LABEL}>
+                    Last Name <span className="text-mark">*</span>
+                  </label>
+                  <div className="md:col-span-9">
                     <input
                       id="lastName"
                       name="lastName"
@@ -122,32 +124,35 @@ export default function ContactSection() {
                       placeholder="Smith"
                       value={form.lastName}
                       onChange={handleChange}
-                      className={FIELD_CLASS}
+                      className={FIELD}
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="clubEmail" className={LABEL_CLASS}>
+                <div className={ROW}>
+                  <label htmlFor="clubEmail" className={LABEL}>
                     Club Email Address <span className="text-mark">*</span>
                   </label>
-                  <input
-                    id="clubEmail"
-                    name="clubEmail"
-                    type="email"
-                    required
-                    placeholder="jane@yourclub.com"
-                    value={form.clubEmail}
-                    onChange={handleChange}
-                    className={FIELD_CLASS}
-                  />
+                  <div className="md:col-span-9">
+                    <input
+                      id="clubEmail"
+                      name="clubEmail"
+                      type="email"
+                      required
+                      placeholder="jane@yourclub.com"
+                      value={form.clubEmail}
+                      onChange={handleChange}
+                      className={FIELD}
+                    />
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="clubName" className={LABEL_CLASS}>
-                      Club Name — Optional
-                    </label>
+                <div className={ROW}>
+                  <label htmlFor="clubName" className={LABEL}>
+                    Club Name{" "}
+                    <span className="text-neutral-600">— optional</span>
+                  </label>
+                  <div className="md:col-span-9">
                     <input
                       id="clubName"
                       name="clubName"
@@ -155,13 +160,17 @@ export default function ContactSection() {
                       placeholder="FC Example"
                       value={form.clubName}
                       onChange={handleChange}
-                      className={FIELD_CLASS}
+                      className={FIELD}
                     />
                   </div>
-                  <div>
-                    <label htmlFor="role" className={LABEL_CLASS}>
-                      Role / Title — Optional
-                    </label>
+                </div>
+
+                <div className={ROW}>
+                  <label htmlFor="role" className={LABEL}>
+                    Role / Title{" "}
+                    <span className="text-neutral-600">— optional</span>
+                  </label>
+                  <div className="md:col-span-9">
                     <input
                       id="role"
                       name="role"
@@ -169,45 +178,47 @@ export default function ContactSection() {
                       placeholder="Head of Recruitment"
                       value={form.role}
                       onChange={handleChange}
-                      className={FIELD_CLASS}
+                      className={FIELD}
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="message" className={LABEL_CLASS}>
-                    Message — Optional
+                <div className={ROW}>
+                  <label htmlFor="message" className={LABEL}>
+                    Message <span className="text-neutral-600">— optional</span>
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Positions you're looking to fill, budget envelope, or any specific analysis you need…"
-                    value={form.message}
-                    onChange={handleChange}
-                    className={`${FIELD_CLASS} resize-none`}
-                  />
+                  <div className="md:col-span-9">
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
+                      value={form.message}
+                      onChange={handleChange}
+                      className={`${FIELD} resize-none`}
+                    />
+                  </div>
                 </div>
+              </div>
 
-                {error && (
-                  <p className="font-mono text-xs text-red-400">{error}</p>
-                )}
+              {error && (
+                <p className="mt-5 font-mono text-xs text-red-400">{error}</p>
+              )}
 
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                  <span className="font-mono text-[10px] tracking-[0.12em] text-neutral-500 uppercase">
-                    No commitment
-                  </span>
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="btn-mono btn-primary disabled:cursor-wait disabled:opacity-70"
-                  >
-                    {loading ? "Sending…" : "Request a Report"}
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-mono btn-primary disabled:cursor-wait disabled:opacity-70"
+                >
+                  {loading ? "Sending…" : "Request a Report"}
+                </button>
+                <span className="font-mono text-[10px] tracking-[0.14em] text-neutral-600 uppercase">
+                  No commitment. Responses within 48 hours.
+                </span>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>

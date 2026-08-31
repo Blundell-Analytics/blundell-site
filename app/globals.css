@@ -128,7 +128,7 @@
   --btn-ghost-bg: rgba(255, 255, 255, 0.05);
   --btn-ghost-hover: rgba(255, 255, 255, 0.1);
 
-  --grid-border: rgba(255, 255, 255, 0.035);
+  --grid-border: rgba(255, 255, 255, 0.055);
 
   --background: var(--ink);
   --foreground: #ffffff;
@@ -170,8 +170,14 @@
 
   body {
     @apply bg-ink text-foreground;
-    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", sans-serif;
+    font-family:
+      var(--font-inter),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      sans-serif;
   }
 
   ::selection {
@@ -186,19 +192,28 @@
 }
 
 @layer components {
-  /* ── Layout shell ─────────────────────────────────────── */
+  /* ── Layout ───────────────────────────────────────────── */
 
-  /* The 98% / max-1600px rail every section sits on. */
-  .shell {
-    width: 98%;
-    max-width: 1600px;
-    margin-inline: auto;
+  /*
+   * Content runs edge to edge behind a fixed gutter, so hairline rules span
+   * the full viewport width rather than floating inside an inset panel.
+   */
+  .rail {
+    padding-inline: 1.5rem;
   }
 
-  @media (max-width: 1023px) {
-    .shell {
-      width: 100%;
+  @media (min-width: 1024px) {
+    .rail {
+      padding-inline: 2.5rem;
     }
+  }
+
+  /* Full-width hairline rules. */
+  .rule-t {
+    border-top: 1px solid var(--hairline);
+  }
+  .rule-b {
+    border-bottom: 1px solid var(--hairline);
   }
 
   /* ── Type utilities ───────────────────────────────────── */

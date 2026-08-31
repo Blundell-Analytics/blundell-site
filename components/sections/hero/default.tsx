@@ -1,154 +1,127 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { PageBackground } from "@/components/ui/page-background";
+import { TypingText } from "@/components/ui/typing-text";
 
-/** Sample composite-score readouts cycled through the hero telemetry panel. */
-const READOUTS = [
-  {
-    slot: "Target No. 07",
-    position: "Left-sided CB",
-    league: "Eredivisie",
-    fit: "8.4",
-    value: "€12.4m",
-    risk: "Low",
-    age: "22.3",
-    verdict: "SHORTLIST",
-  },
-  {
-    slot: "Target No. 12",
-    position: "Ball-carrying No. 8",
-    league: "Liga Portugal",
-    fit: "7.9",
-    value: "€8.1m",
-    risk: "Medium",
-    age: "24.1",
-    verdict: "MONITOR",
-  },
-  {
-    slot: "Target No. 21",
-    position: "Inverted RW",
-    league: "Championship",
-    fit: "9.1",
-    value: "€19.0m",
-    risk: "Low",
-    age: "21.7",
-    verdict: "PRIORITY",
-  },
+const TYPING_PHRASES = [
+  "a calculated one.",
+  "a quantified one.",
+  "an informed one.",
+  "a data-driven one.",
+];
+
+/** Masthead strip beneath the headline. */
+const META = [
+  { k: "Discipline", v: "Transfer Intelligence" },
+  { k: "Model", v: "Five-Objective Scoring" },
+  { k: "Output", v: "Customised Report" },
+  { k: "Response", v: "Within 48 Hours" },
 ];
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(
-      () => setIndex((i) => (i + 1) % READOUTS.length),
-      3800,
-    );
-    return () => clearInterval(id);
-  }, []);
-
-  const r = READOUTS[index];
-
   return (
-    <section className="bg-ink relative flex w-full flex-col justify-end overflow-hidden pt-32 pb-16 lg:min-h-screen lg:pt-44 lg:pb-20">
+    <section className="relative flex min-h-screen w-full flex-col justify-end overflow-hidden pt-28 lg:pt-32">
       <PageBackground />
-      {/* Vignette so the grid fades into the next section */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
 
-      <div className="shell relative z-10 grid grid-cols-1 items-end gap-14 px-4 lg:grid-cols-12 lg:gap-10 lg:px-8">
-        <motion.div
-          className="lg:col-span-7"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="mb-6 flex items-center gap-2.5">
-            <span className="bg-mark pulse-mark size-2" />
-            <span className="eyebrow">Quantitative Transfer Intelligence</span>
-          </div>
-
-          <h1 className="display-xl mb-7 max-w-4xl text-white">
-            Recruitment is capital allocation.
-          </h1>
-
-          <p className="max-w-lg text-base leading-relaxed text-neutral-300 md:text-lg">
-            Five objectives, one composite score. We model every candidate on
-            tactical fit, performance trajectory, risk, availability and price —
-            then hand you a ranked, defensible shortlist.
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#contact" className="btn-mono btn-primary">
-              Request a Report
-            </a>
-            <a href="#platform" className="btn-mono btn-ghost">
-              See the Platform
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Telemetry readout — the live-scoring panel */}
-        <motion.aside
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full border border-white/10 bg-[#111112]/60 p-5 backdrop-blur-[100px] lg:col-span-5 lg:ml-auto lg:max-w-[400px]"
-        >
-          <div className="mb-4 flex items-center gap-2 border-b border-white/10 pb-3">
-            <span className="bg-mark pulse-mark size-2" />
-            <span className="font-mono text-[10px] tracking-[0.12em] text-neutral-400 uppercase">
-              Composite Score — Live
-            </span>
-          </div>
-
-          <div key={index} className="animate-appear space-y-2.5">
-            <div className="cell flex items-center justify-between">
-              <div>
-                <div className="cell-label">Candidate</div>
-                <div className="cell-value">{r.slot}</div>
-              </div>
-              <span className="font-mono text-[10px] tracking-[0.1em] text-neutral-500 uppercase">
-                {r.verdict}
+      <div className="rail relative z-10 flex flex-1 flex-col justify-end pt-12 pb-14 lg:pt-24 lg:pb-20">
+        <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-8">
+          {/* Section marker */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2.5 lg:flex-col lg:items-start lg:gap-4">
+              <span className="bg-mark pulse-mark size-2" />
+              <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-500 uppercase lg:[writing-mode:vertical-rl]">
+                00 — Overview
               </span>
             </div>
-
-            <div className="cell">
-              <div className="cell-label">Profile</div>
-              <div className="cell-value">{r.position}</div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2.5">
-              <div className="cell">
-                <div className="cell-label">Fit score</div>
-                <div className="cell-value">{r.fit} / 10</div>
-              </div>
-              <div className="cell">
-                <div className="cell-label">Market value</div>
-                <div className="cell-value">{r.value}</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-2.5">
-              <div className="cell">
-                <div className="cell-label">Risk</div>
-                <div className="cell-value">{r.risk}</div>
-              </div>
-              <div className="cell">
-                <div className="cell-label">Age</div>
-                <div className="cell-value">{r.age}</div>
-              </div>
-              <div className="cell bg-white/[0.08]">
-                <div className="cell-label">League</div>
-                <div className="cell-value truncate text-[11px]">
-                  {r.league}
-                </div>
-              </div>
-            </div>
           </div>
-        </motion.aside>
+
+          {/* Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7"
+          >
+            <h1 className="display-xl text-white">
+              Every transfer decision has a cost. Make it{" "}
+              <span className="text-mark">
+                <TypingText texts={TYPING_PHRASES} />
+                <span
+                  aria-hidden
+                  className="ml-0.5 inline-block w-[0.06em] self-stretch"
+                  style={{
+                    animation: "cursor-blink 1s step-end infinite",
+                    borderLeft: "0.06em solid var(--mark)",
+                    height: "0.8em",
+                    verticalAlign: "-0.05em",
+                  }}
+                />
+              </span>
+            </h1>
+          </motion.div>
+
+          {/* Supporting copy */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.75,
+              delay: 0.15,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="lg:col-span-3"
+          >
+            <p className="max-w-sm text-sm leading-relaxed text-neutral-400 lg:text-base">
+              We help clubs make smarter{" "}
+              <span className="text-white">transfer decisions</span> backed by{" "}
+              <span className="text-white">
+                quantitative models and five-objective scoring
+              </span>
+              . Commission a{" "}
+              <span className="text-white">customised report</span> — tactical
+              analysis, risk assessments, and shortlists.
+            </p>
+
+            <a
+              href="#contact"
+              className="btn-mono btn-primary mt-7 inline-block"
+            >
+              Request a Report
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Masthead strip */}
+      <motion.dl
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="rule-t rule-b relative z-10 grid grid-cols-2 lg:grid-cols-4"
+      >
+        {META.map((m, i) => (
+          <div
+            key={m.k}
+            className={`px-6 py-5 lg:px-10 ${
+              i > 0 ? "lg:border-l lg:border-white/10" : ""
+            } ${i % 2 === 1 ? "border-l border-white/10 lg:border-l" : ""} ${
+              i < 2 ? "border-b border-white/10 lg:border-b-0" : ""
+            }`}
+          >
+            <dt className="cell-label">{m.k}</dt>
+            <dd className="cell-value">{m.v}</dd>
+          </div>
+        ))}
+      </motion.dl>
+
+      <div className="rail relative z-10 flex items-center gap-2 py-4 text-neutral-600">
+        <ChevronDown className="size-3.5 animate-bounce" />
+        <span className="font-mono text-[10px] tracking-[0.18em] uppercase">
+          Scroll
+        </span>
       </div>
     </section>
   );
