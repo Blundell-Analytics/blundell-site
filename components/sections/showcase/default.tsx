@@ -3,152 +3,141 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import Glow from "@/components/ui/glow";
-import { Mockup, MockupFrame } from "@/components/ui/mockup";
+interface Panel {
+  eyebrow: string;
+  title: string;
+  body: string;
+  screenshot: string;
+  readouts: { label: string; value: string }[];
+}
 
-const TABS = [
+const PANELS: Panel[] = [
   {
-    label: "Transfer Scout",
+    eyebrow: "Transfer Scout",
+    title: "Search the whole market.",
+    body: "Filter every player in the database by position, age, risk band, market value and tactical fit score. Narrow eleven thousand candidates to a working shortlist in a single pass.",
     screenshot: "/dashboard-scout.png",
-    description:
-      "Filter 1,000+ players by position, risk, market value and tactical fit score across every major league.",
+    readouts: [
+      { label: "Filters", value: "24" },
+      { label: "Leagues", value: "38" },
+      { label: "Response", value: "< 1s" },
+    ],
   },
   {
-    label: "Player Detail",
+    eyebrow: "Player Detail",
+    title: "Every dimension of a signing.",
+    body: "Tactical assessment, injury history, performance trajectory, contract position and deal summary in one view — with the reasoning behind each objective score laid out beside it.",
     screenshot: "/dashboard-player.png",
-    description:
-      "Deep tactical assessment, injury history, performance trajectory and deal summary — all in one view.",
+    readouts: [
+      { label: "Objectives", value: "5" },
+      { label: "Features", value: "240" },
+      { label: "History", value: "6 yrs" },
+    ],
   },
   {
-    label: "Pareto Analysis",
+    eyebrow: "Pareto Analysis",
+    title: "Find the value frontier.",
+    body: "Targets plotted by tactical fit against business case, bubble size weighted by composite score. The frontier shows you which signings nobody else has priced correctly yet.",
     screenshot: "/dashboard-pareto.png",
-    description:
-      "Identify best-value targets plotted by tactical fit vs. business case. Bubble size reflects overall fit score.",
+    readouts: [
+      { label: "Axes", value: "Fit × Cost" },
+      { label: "Weighting", value: "Composite" },
+      { label: "Export", value: "PDF / CSV" },
+    ],
   },
 ];
 
 export default function DashboardShowcase() {
-  const [active, setActive] = useState(0);
-  const [isEnlarged, setIsEnlarged] = useState(false);
+  const [zoomed, setZoomed] = useState<Panel | null>(null);
 
   return (
-    <section
-      className="relative w-full py-24 px-6 overflow-hidden"
-      style={{ zIndex: 1 }}
-    >
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <p
-            className="text-sm uppercase tracking-[0.15em] mb-3"
-            style={{ fontFamily: "var(--font-jakarta)", color: "#004aad", fontWeight: 500 }}
-          >
-            Transfer Intelligence
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-jakarta)",
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-              fontWeight: 600,
-              color: "var(--foreground)",
-              lineHeight: 1.15,
-            }}
-          >
+    <section id="platform" className="bg-ink relative z-10 py-16 lg:py-24">
+      <div className="shell px-0 lg:px-8">
+        <div className="mb-10 px-6 lg:mb-14 lg:px-0">
+          <p className="eyebrow mb-4">The Platform</p>
+          <h2 className="display-lg max-w-2xl text-white">
             One score. Every dimension.
           </h2>
         </div>
 
-        {/* Pill tabs */}
-        <div
-          className="flex justify-center mb-6"
-          style={{ fontFamily: "var(--font-jakarta)" }}
-        >
-          <div
-            className="inline-flex p-1 rounded-full text-sm gap-1"
-            style={{ background: "var(--bg-card)", border: "1px solid var(--bg-card-border)" }}
-          >
-            {TABS.map((tab, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setActive(i)}
-                className="relative cursor-pointer rounded-full py-2 px-6 font-medium transition-colors duration-200 z-10"
-                style={{ color: active === i ? "#fff" : "var(--fg-muted)" }}
+        <div className="space-y-6 lg:space-y-8">
+          {PANELS.map((panel, i) => (
+            <motion.div
+              key={panel.screenshot}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 bg-[#111112] lg:grid-cols-8"
+            >
+              {/* Copy — alternates side on desktop */}
+              <div
+                className={`flex items-center px-6 py-12 lg:col-span-3 lg:px-14 lg:py-16 ${
+                  i % 2 === 1 ? "lg:order-2" : ""
+                }`}
               >
-                {active === i && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 rounded-full"
-                    style={{ background: "#004aad" }}
-                    transition={{ type: "tween", duration: 0.25, ease: "easeInOut" }}
-                  />
-                )}
-                <span className="relative z-10">{tab.label}</span>
+                <div className="max-w-md">
+                  <div className="mb-5 flex items-center gap-2.5">
+                    <span className="bg-mark size-1.5" />
+                    <span className="font-mono text-xs tracking-[0.16em] text-neutral-400 uppercase">
+                      {panel.eyebrow}
+                    </span>
+                  </div>
+                  <h3 className="display-md mb-5 text-white">{panel.title}</h3>
+                  <p className="text-base leading-relaxed text-neutral-400">
+                    {panel.body}
+                  </p>
+
+                  <div className="mt-8 grid grid-cols-3 gap-2.5 border-t border-white/20 pt-8">
+                    {panel.readouts.map((r) => (
+                      <div key={r.label} className="cell">
+                        <div className="cell-label">{r.label}</div>
+                        <div className="cell-value">{r.value}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Screenshot */}
+              <button
+                type="button"
+                onClick={() => setZoomed(panel)}
+                aria-label={`Enlarge ${panel.eyebrow} screenshot`}
+                className={`group relative min-h-[280px] cursor-zoom-in overflow-hidden border-t border-white/10 bg-[#0e0e0f] lg:col-span-5 lg:min-h-[560px] lg:border-t-0 ${
+                  i % 2 === 1 ? "lg:order-1 lg:border-r" : "lg:border-l"
+                }`}
+              >
+                <img
+                  src={panel.screenshot}
+                  alt={`${panel.eyebrow} dashboard view`}
+                  className="absolute inset-0 size-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <span className="btn-mono absolute right-4 bottom-4 bg-black/70 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                  Enlarge
+                </span>
               </button>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
-
-        {/* Description */}
-        <p
-          className="text-center text-sm mb-10 mx-auto leading-relaxed"
-          style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-muted)" }}
-        >
-          {TABS[active].description}
-        </p>
-
-        {/* Mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative"
-        >
-          <button
-            type="button"
-            className="w-full text-left transition-transform duration-300 hover:scale-[1.02] cursor-zoom-in group"
-            onClick={() => setIsEnlarged(true)}
-          >
-            <div className="absolute inset-0 z-10 hidden group-hover:flex items-center justify-center bg-black/20 rounded-xl transition-all">
-              <span className="bg-black/60 text-white text-sm px-4 py-2 rounded-full backdrop-blur-md border border-white/10">Click to enlarge</span>
-            </div>
-            <MockupFrame size="small">
-              <Mockup type="responsive" className="w-full border-0 bg-zinc-950">
-                {TABS.map((tab, i) => (
-                  <img
-                    key={tab.screenshot}
-                    src={tab.screenshot}
-                    alt={tab.label}
-                    className="w-full block"
-                    style={{ display: i === active ? "block" : "none" }}
-                  />
-                ))}
-              </Mockup>
-            </MockupFrame>
-            <Glow variant="top" className="opacity-20 pointer-events-none" />
-          </button>
-        </motion.div>
-
-        {/* Modal for enlarged image */}
-        {isEnlarged && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8 cursor-zoom-out backdrop-blur-sm transition-opacity"
-            onClick={() => setIsEnlarged(false)}
-          >
-            <div className="relative max-w-[95vw] max-h-[95vh] w-full flex justify-center">
-              <img
-                src={TABS[active].screenshot}
-                alt={TABS[active].label}
-                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-white/10"
-              />
-              <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-sm">Click anywhere to close</p>
-            </div>
-          </div>
-        )}
-
       </div>
+
+      {zoomed && (
+        <div
+          className="fixed inset-0 z-[60] flex cursor-zoom-out items-center justify-center bg-black/92 p-4 backdrop-blur-sm sm:p-10"
+          onClick={() => setZoomed(null)}
+          role="presentation"
+        >
+          <img
+            src={zoomed.screenshot}
+            alt={`${zoomed.eyebrow} dashboard view, enlarged`}
+            className="max-h-[88vh] max-w-full border border-white/10 object-contain"
+          />
+          <span className="btn-mono absolute bottom-8 left-1/2 -translate-x-1/2 text-neutral-500">
+            Click anywhere to close
+          </span>
+        </div>
+      )}
     </section>
   );
 }
