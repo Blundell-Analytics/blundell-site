@@ -208,6 +208,12 @@
     }
   }
 
+  @media (min-width: 1536px) {
+    .rail {
+      padding-inline: 4rem;
+    }
+  }
+
   /* Full-width hairline rules. */
   .rule-t {
     border-top: 1px solid var(--hairline);

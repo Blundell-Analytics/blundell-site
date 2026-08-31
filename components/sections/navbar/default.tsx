@@ -38,7 +38,7 @@ export default function Navbar({ className }: NavbarProps) {
       <div className="flex h-14 items-stretch lg:h-16">
         <a
           href="/"
-          className="flex items-center gap-2.5 border-r border-white/10 px-5 transition-colors hover:bg-white/5 lg:px-8"
+          className="flex items-center gap-2.5 border-r border-white/10 px-6 transition-colors hover:bg-white/5 lg:px-10 2xl:px-16"
         >
           <img
             src="/logo_1.png"
@@ -51,7 +51,7 @@ export default function Navbar({ className }: NavbarProps) {
           </span>
         </a>
 
-        <div className="hidden flex-1 items-center px-6 lg:flex">
+        <div className="hidden flex-1 items-center px-8 lg:flex">
           <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-600 uppercase">
             Quantitative Football Transfer Intelligence
           </span>
@@ -99,7 +99,7 @@ export default function Navbar({ className }: NavbarProps) {
             key={link.href}
             href={link.href}
             onClick={() => setOpen(false)}
-            className="block border-t border-white/10 px-5 py-4 font-mono text-[11px] tracking-[0.14em] text-neutral-300 uppercase"
+            className="block border-t border-white/10 px-6 py-4 font-mono text-[11px] tracking-[0.14em] text-neutral-300 uppercase"
           >
             {link.label}
           </a>
@@ -107,7 +107,7 @@ export default function Navbar({ className }: NavbarProps) {
         <a
           href="#contact"
           onClick={() => setOpen(false)}
-          className="block border-t border-white/10 bg-white px-5 py-4 font-mono text-[11px] tracking-[0.14em] text-black uppercase"
+          className="block border-t border-white/10 bg-white px-6 py-4 font-mono text-[11px] tracking-[0.14em] text-black uppercase"
         >
           Request a Report
         </a>
