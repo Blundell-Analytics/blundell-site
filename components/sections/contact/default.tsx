@@ -7,7 +7,7 @@ const FIELD =
   "w-full bg-transparent py-4 text-sm text-white outline-none placeholder:text-neutral-600 focus:placeholder:text-neutral-500";
 
 const ROW =
-  "grid grid-cols-1 border-b border-white/10 md:grid-cols-12 md:items-start";
+  "grid grid-cols-1 border-b border-white/10 md:grid-cols-12 md:items-start md:gap-x-10";
 
 const LABEL =
   "pt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-500 md:col-span-3 md:pt-4";
