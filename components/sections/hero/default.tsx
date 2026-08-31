@@ -28,15 +28,6 @@ export default function Hero() {
       <section className="relative flex min-h-screen w-full flex-col overflow-hidden pt-14 lg:pt-16">
         <PageBackground />
 
-        <div className="rail rule-b relative z-10 py-5">
-          <div className="flex items-center gap-2.5">
-            <span className="bg-mark pulse-mark size-1.5" />
-            <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-500 uppercase">
-              00 — Overview
-            </span>
-          </div>
-        </div>
-
         <div className="rail relative z-10 flex flex-1 flex-col justify-end pt-12 pb-10 lg:pb-14">
           <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-10">
             <motion.h1

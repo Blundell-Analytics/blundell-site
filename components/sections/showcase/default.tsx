@@ -34,16 +34,8 @@ export default function DashboardShowcase() {
 
   return (
     <section id="platform" className="bg-ink relative z-10">
-      <div className="rail rule-b py-5">
-        <div className="flex items-center gap-2.5">
-          <span className="bg-mark size-1.5" />
-          <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-500 uppercase">
-            01 — Transfer Intelligence
-          </span>
-        </div>
-      </div>
-
       <div className="rail rule-b py-14 lg:py-20">
+        <p className="eyebrow mb-5">Transfer Intelligence</p>
         <h2 className="display-lg max-w-2xl text-white">
           One score. Every dimension.
         </h2>

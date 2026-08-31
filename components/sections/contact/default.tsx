@@ -52,17 +52,9 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="bg-ink relative z-10">
-      <div className="rail rule-t rule-b py-6">
-        <div className="flex items-center gap-2.5">
-          <span className="bg-mark size-1.5" />
-          <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-500 uppercase">
-            02 — Get in Touch
-          </span>
-        </div>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="rail border-white/10 py-12 lg:col-span-4 lg:border-r lg:py-20">
+          <p className="eyebrow mb-5">Get in touch</p>
           <h2 className="display-lg mb-6 max-w-sm text-white">
             Your club&apos;s analysis starts here
           </h2>

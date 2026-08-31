@@ -41,12 +41,12 @@ export default function Navbar({ className }: NavbarProps) {
           className="flex items-center gap-2.5 border-r border-white/10 px-6 transition-colors hover:bg-white/5 lg:px-10 2xl:px-16"
         >
           <img
-            src="/logo_1.png"
+            src="/logo-mark.png"
             alt=""
             aria-hidden
-            className="size-7 shrink-0 object-contain"
+            className="h-8 w-auto shrink-0 object-contain lg:h-9"
           />
-          <span className="font-mono text-[11px] font-medium tracking-[0.16em] text-white uppercase">
+          <span className="font-mono text-xs font-medium tracking-[0.16em] text-white uppercase">
             Blundell Analytics
           </span>
         </a>

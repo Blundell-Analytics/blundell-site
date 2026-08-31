@@ -4,12 +4,12 @@ export default function FooterSection() {
       <div className="rail flex flex-col gap-4 py-7 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2.5">
           <img
-            src="/logo_1.png"
+            src="/logo-mark.png"
             alt=""
             aria-hidden
-            className="size-6 object-contain"
+            className="h-7 w-auto object-contain"
           />
-          <span className="font-mono text-[10px] tracking-[0.16em] text-neutral-500 uppercase">
+          <span className="font-mono text-[11px] tracking-[0.16em] text-neutral-500 uppercase">
             Blundell Analytics
           </span>
         </div>
