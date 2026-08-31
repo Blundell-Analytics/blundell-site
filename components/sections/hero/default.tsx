@@ -101,7 +101,7 @@ export default function Hero() {
         {META.map((m, i) => (
           <div
             key={m.k}
-            className={`px-6 py-6 lg:px-10 2xl:px-16 ${
+            className={`px-6 py-5 lg:px-10 2xl:px-16 ${
               i % 2 === 1 ? "border-l border-white/10" : ""
             } ${i < 2 ? "border-b border-white/10 lg:border-b-0" : ""} ${
               i === 2 ? "lg:border-l lg:border-white/10" : ""

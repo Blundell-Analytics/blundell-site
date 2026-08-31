@@ -7,7 +7,7 @@ export default function FooterSection() {
             src="/logo-mark.png"
             alt=""
             aria-hidden
-            className="h-7 w-auto object-contain"
+            className="h-6 w-auto object-contain"
           />
           <span className="font-mono text-[11px] tracking-[0.16em] text-neutral-500 uppercase">
             Blundell Analytics

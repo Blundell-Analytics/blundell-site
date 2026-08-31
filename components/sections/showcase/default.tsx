@@ -34,9 +34,9 @@ export default function DashboardShowcase() {
 
   return (
     <section id="platform" className="bg-ink relative z-10">
-      <div className="rail rule-b py-14 lg:py-20">
-        <p className="eyebrow mb-5">Transfer Intelligence</p>
-        <h2 className="display-lg max-w-2xl text-white">
+      <div className="rail rule-b py-12 lg:py-16">
+        <p className="eyebrow mb-6">Transfer Intelligence</p>
+        <h2 className="display-xl max-w-5xl text-white">
           One score. Every dimension.
         </h2>
       </div>
@@ -67,12 +67,12 @@ export default function DashboardShowcase() {
             type="button"
             onClick={() => setEnlarged(view)}
             aria-label={`Enlarge ${view.label} view`}
-            className="group relative block w-full cursor-zoom-in overflow-hidden border-t border-white/10 bg-[#0e0e0f] lg:col-span-8 lg:border-t-0"
+            className="group relative flex cursor-zoom-in items-center justify-center overflow-hidden border-t border-white/10 bg-[#0e0e0f] p-5 lg:col-span-8 lg:border-t-0 lg:p-10"
           >
             <img
               src={view.screenshot}
               alt={`${view.label} dashboard view`}
-              className="block w-full transition-transform duration-700 group-hover:scale-[1.015]"
+              className="block max-h-[320px] w-auto max-w-full border border-white/10 object-contain transition-transform duration-700 group-hover:scale-[1.015] lg:max-h-[400px]"
             />
             <span className="btn-mono absolute right-4 bottom-4 bg-black/75 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
               Click to enlarge

@@ -167,6 +167,18 @@
   html {
     background: var(--ink);
     color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  /* Anchor targets stop below the fixed navbar rather than under it. */
+  section[id] {
+    scroll-margin-top: 3.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    section[id] {
+      scroll-margin-top: 4rem;
+    }
   }
 
   body {
