@@ -13,14 +13,14 @@ export function PageBackground() {
       <InteractiveGridPattern
         className="absolute inset-0 bg-transparent"
         cellSize={44}
-        glowColor="rgba(77, 141, 255, 0.35)"
+        glowColor="var(--glow)"
         borderColor="var(--grid-border)"
         proximity={120}
         useWindowMouse
       />
       {/* Dissolve the grid before the hero's bottom edge so it does not end on
           a row of half-cut cells. */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[var(--ink)]" />
     </div>
   );
 }

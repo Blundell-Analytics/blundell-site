@@ -4,13 +4,13 @@ import { FormEvent, useState } from "react";
 
 /** Borderless input sitting in a ruled table row. */
 const FIELD =
-  "w-full bg-transparent py-4 text-sm text-white outline-none placeholder:text-neutral-600 focus:placeholder:text-neutral-500";
+  "w-full bg-transparent py-4 text-sm text-fg outline-none placeholder:text-fg-4 focus:placeholder:text-fg-4";
 
 const ROW =
-  "grid grid-cols-1 border-b border-white/10 md:grid-cols-12 md:items-start md:gap-x-10";
+  "grid grid-cols-1 border-b border-hairline md:grid-cols-12 md:items-start md:gap-x-10";
 
 const LABEL =
-  "pt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-500 md:col-span-3 md:pt-4";
+  "pt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-4 md:col-span-3 md:pt-4";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -53,38 +53,38 @@ export default function ContactSection() {
   return (
     <section id="contact" className="bg-ink relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className="rail border-white/10 py-12 lg:col-span-4 lg:border-r lg:py-16">
+        <div className="rail border-hairline py-12 lg:col-span-4 lg:border-r lg:py-16">
           <p className="eyebrow mb-5">Get in touch</p>
-          <h2 className="display-lg mb-6 max-w-sm text-white">
+          <h2 className="display-lg text-fg mb-6 max-w-sm">
             Your club&apos;s analysis starts here
           </h2>
-          <p className="max-w-sm text-sm leading-relaxed text-neutral-400 lg:text-base">
+          <p className="text-fg-3 max-w-sm text-sm leading-relaxed lg:text-base">
             Tell us about your club and we&apos;ll deliver a tailored report
             within 48 hours.
           </p>
         </div>
 
-        <div className="rail border-t border-white/10 py-12 lg:col-span-8 lg:border-t-0 lg:py-16">
+        <div className="rail border-hairline border-t py-12 lg:col-span-8 lg:border-t-0 lg:py-16">
           {submitted ? (
             <div className="max-w-xl space-y-5">
               <div className="flex items-center gap-2.5">
                 <span className="bg-mark size-1.5" />
-                <span className="font-mono text-[10px] tracking-[0.18em] text-neutral-400 uppercase">
+                <span className="text-fg-3 font-mono text-[10px] tracking-[0.18em] uppercase">
                   Received
                 </span>
               </div>
-              <p className="display-md text-white">
+              <p className="display-md text-fg">
                 Your request is in — we&apos;ll have your report underway within
                 48 hours.
               </p>
-              <p className="text-sm text-neutral-400">
+              <p className="text-fg-3 text-sm">
                 A confirmation has been sent to{" "}
-                <span className="font-mono text-white">{form.clubEmail}</span>
+                <span className="text-fg font-mono">{form.clubEmail}</span>
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="max-w-3xl">
-              <div className="border-t border-white/10">
+              <div className="border-hairline border-t">
                 <div className={ROW}>
                   <label htmlFor="firstName" className={LABEL}>
                     First Name <span className="text-mark">*</span>
@@ -141,8 +141,7 @@ export default function ContactSection() {
 
                 <div className={ROW}>
                   <label htmlFor="clubName" className={LABEL}>
-                    Club Name{" "}
-                    <span className="text-neutral-600">— optional</span>
+                    Club Name <span className="text-fg-4">— optional</span>
                   </label>
                   <div className="md:col-span-9">
                     <input
@@ -159,8 +158,7 @@ export default function ContactSection() {
 
                 <div className={ROW}>
                   <label htmlFor="role" className={LABEL}>
-                    Role / Title{" "}
-                    <span className="text-neutral-600">— optional</span>
+                    Role / Title <span className="text-fg-4">— optional</span>
                   </label>
                   <div className="md:col-span-9">
                     <input
@@ -177,7 +175,7 @@ export default function ContactSection() {
 
                 <div className={ROW}>
                   <label htmlFor="message" className={LABEL}>
-                    Message <span className="text-neutral-600">— optional</span>
+                    Message <span className="text-fg-4">— optional</span>
                   </label>
                   <div className="md:col-span-9">
                     <textarea
@@ -205,7 +203,7 @@ export default function ContactSection() {
                 >
                   {loading ? "Sending…" : "Request a Report"}
                 </button>
-                <span className="font-mono text-[10px] tracking-[0.14em] text-neutral-600 uppercase">
+                <span className="text-fg-4 font-mono text-[10px] tracking-[0.14em] uppercase">
                   No commitment. Responses within 48 hours.
                 </span>
               </div>

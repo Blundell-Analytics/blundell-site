@@ -9,6 +9,13 @@
   /* Surfaces */
   --color-ink: var(--ink);
   --color-panel: var(--panel);
+  --color-well: var(--well);
+  --color-fg: var(--foreground);
+  --color-fg-2: var(--fg-medium);
+  --color-fg-3: var(--fg-muted);
+  --color-fg-4: var(--fg-subtle);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
   --color-surface: var(--surface);
   --color-mark: var(--mark);
 
@@ -89,39 +96,97 @@
 }
 
 /*
- * Single dark palette. Both :root and .dark resolve identically so the site
- * renders correctly regardless of what next-themes puts on <html>.
+ * Light is the base palette on :root; .dark redefines the same tokens.
+ * next-themes toggles the class, so every colour below must be read through a
+ * token — never a literal — or it will only work in one theme.
  */
-:root,
+:root {
+  /* Surfaces — page ground, raised panel, inset well */
+  --ink: #fbfbfa;
+  --panel: #ffffff;
+  --well: #f1f1ef;
+
+  --mark: #1d4ed8;
+  --brand: #1d4ed8;
+  --brand-foreground: #1e40af;
+
+  /* Text ramp */
+  --fg-medium: #27272a;
+  --fg-muted: #52525b;
+  --fg-subtle: #71717a;
+  --fg-faint: #52525b;
+
+  --bg-card: var(--panel);
+  --bg-card-border: rgba(0, 0, 0, 0.1);
+  --hairline: rgba(0, 0, 0, 0.13);
+  --hairline-strong: rgba(0, 0, 0, 0.22);
+
+  --input-bg: rgba(0, 0, 0, 0.02);
+  --input-border: rgba(0, 0, 0, 0.16);
+
+  --btn-primary-bg: #0a0a0a;
+  --btn-primary-fg: #ffffff;
+  --btn-primary-hover: #27272a;
+  --btn-ghost-bg: rgba(0, 0, 0, 0.05);
+  --btn-ghost-hover: rgba(0, 0, 0, 0.09);
+
+  --grid-border: rgba(0, 0, 0, 0.055);
+  --grid-vignette: rgba(251, 251, 250, 0.9);
+  --glow: rgba(29, 78, 216, 0.3);
+  --watermark: rgba(0, 0, 0, 0.055);
+  --cell-bg: rgba(0, 0, 0, 0.035);
+  --cell-bg-strong: rgba(0, 0, 0, 0.07);
+
+  --background: var(--ink);
+  --foreground: #0a0a0a;
+  --card: var(--panel);
+  --card-foreground: #0a0a0a;
+  --popover: var(--panel);
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(0, 0, 0, 0.05);
+  --secondary-foreground: #0a0a0a;
+  --muted: rgba(0, 0, 0, 0.05);
+  --muted-foreground: #52525b;
+  --accent: rgba(0, 0, 0, 0.07);
+  --accent-foreground: #0a0a0a;
+  --destructive: #dc2626;
+  --destructive-foreground: #dc2626;
+  --border: rgba(0, 0, 0, 0.13);
+  --input: rgba(0, 0, 0, 0.16);
+  --ring: rgba(0, 0, 0, 0.35);
+  --radius: 0px;
+
+  --light: var(--foreground);
+  --light-foreground: var(--foreground);
+
+  --shadow: #0000000f;
+  --shadow-strong: #00000022;
+}
+
 .dark {
-  /* Surfaces — outer page, inset panel, raised card */
   --ink: #0a0a0a;
   --panel: #111112;
-  --surface: #18181b;
+  --well: #0e0e0f;
 
-  /* The small square accent marker, in the logo's blue. */
   --mark: #4d8dff;
-
   --brand: #4d8dff;
   --brand-foreground: #8fb7ff;
 
-  /* Text ramp */
   --fg-medium: #d4d4d4;
   --fg-muted: #a3a3a3;
   --fg-subtle: #737373;
   --fg-faint: #a3a3a3;
 
-  /* Panel chrome */
-  --bg-card: var(--surface);
+  --bg-card: #18181b;
   --bg-card-border: rgba(255, 255, 255, 0.08);
   --hairline: rgba(255, 255, 255, 0.1);
   --hairline-strong: rgba(255, 255, 255, 0.2);
 
-  /* Form controls */
   --input-bg: rgba(255, 255, 255, 0.02);
   --input-border: rgba(255, 255, 255, 0.12);
 
-  /* Buttons: primary is white-on-black, ghost is a translucent wash */
   --btn-primary-bg: #ffffff;
   --btn-primary-fg: #000000;
   --btn-primary-hover: #e5e5e5;
@@ -130,10 +195,14 @@
 
   --grid-border: rgba(255, 255, 255, 0.055);
   --grid-vignette: rgba(10, 10, 10, 0.9);
+  --glow: rgba(77, 141, 255, 0.35);
+  --watermark: rgba(255, 255, 255, 0.05);
+  --cell-bg: rgba(255, 255, 255, 0.02);
+  --cell-bg-strong: rgba(255, 255, 255, 0.08);
 
   --background: var(--ink);
   --foreground: #ffffff;
-  --card: var(--surface);
+  --card: #18181b;
   --card-foreground: #ffffff;
   --popover: var(--panel);
   --popover-foreground: #ffffff;
@@ -150,7 +219,6 @@
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.12);
   --ring: rgba(255, 255, 255, 0.3);
-  --radius: 0px;
 
   --light: var(--foreground);
   --light-foreground: var(--foreground);
@@ -166,6 +234,10 @@
 
   html {
     background: var(--ink);
+    color-scheme: light;
+  }
+
+  .dark {
     color-scheme: dark;
   }
 
@@ -305,7 +377,7 @@
 
   .btn-ghost {
     background: var(--btn-ghost-bg);
-    color: #fff;
+    color: var(--foreground);
   }
   .btn-ghost:hover {
     background: var(--btn-ghost-hover);
@@ -314,7 +386,7 @@
   /* ── Data readout cells ───────────────────────────────── */
 
   .cell {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--cell-bg);
     padding: 0.75rem;
   }
 
@@ -329,7 +401,7 @@
   .cell-value {
     font-family: var(--font-ibm-plex-mono), monospace;
     font-size: 0.8125rem;
-    color: #fff;
+    color: var(--foreground);
   }
 }
 

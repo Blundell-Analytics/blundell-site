@@ -24,7 +24,7 @@ export default function FloatingActions() {
           transition={{ duration: 0.25, ease: "easeOut" }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Scroll to top"
-          className="fixed right-5 bottom-5 z-50 flex size-10 items-center justify-center border border-white/10 bg-white/5 text-neutral-300 backdrop-blur-xl transition-colors hover:bg-white/10 hover:text-white"
+          className="border-hairline text-fg-2 hover:text-fg fixed right-5 bottom-5 z-50 flex size-10 items-center justify-center border bg-[var(--btn-ghost-bg)] backdrop-blur-xl transition-colors hover:bg-[var(--btn-ghost-hover)]"
         >
           <ArrowUp className="size-4" />
         </motion.button>

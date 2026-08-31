@@ -38,7 +38,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="display-hero text-white lg:col-span-8"
+              className="display-hero text-fg lg:col-span-8"
             >
               Every transfer decision has a cost. Make it
               <span className="text-mark block">
@@ -66,14 +66,14 @@ export default function Hero() {
               }}
               className="lg:col-span-4"
             >
-              <p className="max-w-md text-sm leading-relaxed text-neutral-400 lg:text-base">
+              <p className="text-fg-3 max-w-md text-sm leading-relaxed lg:text-base">
                 We help clubs make smarter{" "}
-                <span className="text-white">transfer decisions</span> backed by{" "}
-                <span className="text-white">
+                <span className="text-fg">transfer decisions</span> backed by{" "}
+                <span className="text-fg">
                   quantitative models and five-objective scoring
                 </span>
                 . Commission a{" "}
-                <span className="text-white">customised report</span> — tactical
+                <span className="text-fg">customised report</span> — tactical
                 analysis, risk assessments, and shortlists.
               </p>
 
@@ -87,7 +87,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="mt-12 flex items-center gap-2 text-neutral-600">
+          <div className="text-fg-4 mt-12 flex items-center gap-2">
             <ChevronDown className="size-3.5 animate-bounce" />
             <span className="font-mono text-[10px] tracking-[0.18em] uppercase">
               Scroll
@@ -107,9 +107,9 @@ export default function Hero() {
           <div
             key={m.k}
             className={`px-6 py-5 lg:px-10 2xl:px-16 ${
-              i % 2 === 1 ? "border-l border-white/10" : ""
-            } ${i < 2 ? "border-b border-white/10 lg:border-b-0" : ""} ${
-              i === 2 ? "lg:border-l lg:border-white/10" : ""
+              i % 2 === 1 ? "border-hairline border-l" : ""
+            } ${i < 2 ? "border-hairline border-b lg:border-b-0" : ""} ${
+              i === 2 ? "lg:border-hairline lg:border-l" : ""
             }`}
           >
             <dt className="cell-label">{m.k}</dt>
