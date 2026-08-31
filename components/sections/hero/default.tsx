@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { PageBackground } from "@/components/ui/page-background";
+import { handleAnchorClick } from "@/lib/scroll-to";
 import { TypingText } from "@/components/ui/typing-text";
 
 const TYPING_PHRASES = [
@@ -75,6 +76,7 @@ export default function Hero() {
 
               <a
                 href="#contact"
+                onClick={(e) => handleAnchorClick(e, "#contact")}
                 className="btn-mono btn-primary mt-7 inline-block"
               >
                 Request a Report

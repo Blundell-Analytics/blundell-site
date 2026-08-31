@@ -51,9 +51,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-ink relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className="rail border-white/10 py-12 lg:col-span-4 lg:border-r lg:py-20">
+    <section id="contact" className="bg-ink relative z-10 lg:min-h-screen">
+      <div className="grid grid-cols-1 lg:min-h-screen lg:grid-cols-12">
+        <div className="rail border-white/10 py-12 lg:col-span-4 lg:flex lg:flex-col lg:justify-center lg:border-r lg:py-20">
           <p className="eyebrow mb-5">Get in touch</p>
           <h2 className="display-lg mb-6 max-w-sm text-white">
             Your club&apos;s analysis starts here
@@ -64,7 +64,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="rail border-t border-white/10 py-12 lg:col-span-8 lg:border-t-0 lg:py-20">
+        <div className="rail border-t border-white/10 py-12 lg:col-span-8 lg:flex lg:flex-col lg:justify-center lg:border-t-0 lg:py-20">
           {submitted ? (
             <div className="max-w-xl space-y-5">
               <div className="flex items-center gap-2.5">

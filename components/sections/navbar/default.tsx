@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
+import { handleAnchorClick } from "@/lib/scroll-to";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -63,6 +64,7 @@ export default function Navbar({ className }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleAnchorClick(e, link.href)}
               className="flex items-center border-l border-white/10 px-6 font-mono text-[11px] tracking-[0.14em] text-neutral-300 uppercase transition-colors hover:bg-white/5 hover:text-white"
             >
               {link.label}
@@ -72,6 +74,7 @@ export default function Navbar({ className }: NavbarProps) {
 
         <a
           href="#contact"
+          onClick={(e) => handleAnchorClick(e, "#contact")}
           className="hidden items-center border-l border-white/10 bg-white px-7 font-mono text-[11px] tracking-[0.14em] text-black uppercase transition-colors hover:bg-neutral-200 lg:flex"
         >
           Request a Report
@@ -98,7 +101,10 @@ export default function Navbar({ className }: NavbarProps) {
           <a
             key={link.href}
             href={link.href}
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              setOpen(false);
+              handleAnchorClick(e, link.href);
+            }}
             className="block border-t border-white/10 px-6 py-4 font-mono text-[11px] tracking-[0.14em] text-neutral-300 uppercase"
           >
             {link.label}
@@ -106,7 +112,10 @@ export default function Navbar({ className }: NavbarProps) {
         ))}
         <a
           href="#contact"
-          onClick={() => setOpen(false)}
+          onClick={(e) => {
+            setOpen(false);
+            handleAnchorClick(e, "#contact");
+          }}
           className="block border-t border-white/10 bg-white px-6 py-4 font-mono text-[11px] tracking-[0.14em] text-black uppercase"
         >
           Request a Report
