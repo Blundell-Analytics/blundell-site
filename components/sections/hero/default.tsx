@@ -26,7 +26,10 @@ export default function Hero() {
   return (
     <>
       {/* The statement fills exactly one screen; nothing else is in view. */}
-      <section className="relative flex min-h-screen w-full flex-col overflow-hidden pt-14 lg:pt-16">
+      <section
+        id="top"
+        className="relative flex min-h-screen w-full flex-col overflow-hidden pt-14 lg:pt-16"
+      >
         <PageBackground />
 
         <div className="rail relative z-10 flex flex-1 flex-col justify-end pt-12 pb-10 lg:pb-14">
@@ -35,10 +38,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="display-xl text-white lg:col-span-8"
+              className="display-hero text-white lg:col-span-8"
             >
-              Every transfer decision has a cost. Make it{" "}
-              <span className="text-mark">
+              Every transfer decision has a cost. Make it
+              <span className="text-mark block">
                 <TypingText texts={TYPING_PHRASES} />
                 <span
                   aria-hidden

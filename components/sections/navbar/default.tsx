@@ -45,7 +45,7 @@ export default function Navbar({ className }: NavbarProps) {
             src="/logo-mark.png"
             alt=""
             aria-hidden
-            className="h-7 w-auto shrink-0 object-contain lg:h-8"
+            className="h-8 w-auto shrink-0 object-contain"
           />
           <span className="font-mono text-xs font-medium tracking-[0.16em] text-white uppercase">
             Blundell Analytics

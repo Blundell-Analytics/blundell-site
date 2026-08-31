@@ -50,7 +50,11 @@ export default function DashboardShowcase() {
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 border-b border-white/10 lg:grid-cols-12"
         >
-          <div className="rail flex flex-col justify-center border-white/10 py-10 lg:col-span-4 lg:border-r lg:py-14">
+          <div
+            className={`rail flex flex-col justify-center border-white/10 py-10 lg:col-span-4 lg:py-14 ${
+              i % 2 === 1 ? "lg:order-2 lg:border-l" : "lg:border-r"
+            }`}
+          >
             <div className="mb-5 flex items-center gap-3">
               <span className="text-mark font-mono text-[11px] tracking-[0.14em]">
                 {String(i + 1).padStart(2, "0")}
@@ -67,16 +71,15 @@ export default function DashboardShowcase() {
             type="button"
             onClick={() => setEnlarged(view)}
             aria-label={`Enlarge ${view.label} view`}
-            className="group relative flex cursor-zoom-in items-center justify-center overflow-hidden border-t border-white/10 bg-[#0e0e0f] p-5 lg:col-span-8 lg:border-t-0 lg:p-10"
+            className={`group relative flex cursor-zoom-in items-center justify-center overflow-hidden border-t border-white/10 bg-[#0e0e0f] p-5 lg:col-span-8 lg:border-t-0 lg:p-10 ${
+              i % 2 === 1 ? "lg:order-1" : ""
+            }`}
           >
             <img
               src={view.screenshot}
               alt={`${view.label} dashboard view`}
               className="block max-h-[320px] w-auto max-w-full border border-white/10 object-contain transition-transform duration-700 group-hover:scale-[1.015] lg:max-h-[400px]"
             />
-            <span className="btn-mono absolute right-4 bottom-4 bg-black/75 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-              Click to enlarge
-            </span>
           </button>
         </motion.article>
       ))}

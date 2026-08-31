@@ -246,6 +246,15 @@
     color: var(--fg-muted);
   }
 
+  /* Landing statement only — a step above the section headings. */
+  .display-hero {
+    font-family: var(--font-inter-tight), sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  }
+
   .display-xl {
     font-family: var(--font-inter-tight), sans-serif;
     font-weight: 500;
