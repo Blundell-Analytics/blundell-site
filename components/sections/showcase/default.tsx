@@ -95,7 +95,7 @@ export default function DashboardShowcase() {
 
       {/* Application window */}
       <div className="rail py-9 lg:py-11">
-        <div className="border-hairline bg-panel max-w-3xl border">
+        <div className="border-hairline bg-panel mx-auto max-w-4xl border">
           <div className="border-hairline flex items-center justify-between gap-4 border-b px-4 py-3">
             <div className="flex items-center gap-2.5">
               <span className="bg-mark size-1.5 shrink-0" />
@@ -130,7 +130,7 @@ export default function DashboardShowcase() {
           </button>
         </div>
 
-        <p className="text-fg-3 mt-5 max-w-3xl text-sm leading-relaxed">
+        <p className="text-fg-3 mx-auto mt-5 max-w-4xl text-sm leading-relaxed">
           {view.caption}
         </p>
       </div>

@@ -4,33 +4,11 @@ import { motion } from "framer-motion";
 
 import { SectionHeader } from "@/components/ui/section";
 
-/**
- * Names and photographs are taken from the modelling repo (the report author
- * line and reports/presentation/photos).
- *
- * `role` and `bio` are PLACEHOLDERS — there is no verified source for either,
- * and inventing them would put false claims about real people on a live site.
- * Replace both for each person before this ships.
- */
+/** Names and photographs come from the modelling repo; roles from the founders. */
 const PEOPLE = [
-  {
-    name: "Vivaan Jhaveri",
-    photo: "/team-vivaan.jpg",
-    role: "TODO — role",
-    bio: "TODO — two or three sentences. What you did before this, what you own here, and the thing that makes a club comfortable handing you a recruitment brief. Specific beats impressive.",
-  },
-  {
-    name: "Ethan Rajkumar",
-    photo: "/team-ethan.jpg",
-    role: "TODO — role",
-    bio: "TODO — two or three sentences, same shape as above.",
-  },
-  {
-    name: "Nathan Rajkumar",
-    photo: "/team-nathan.jpg",
-    role: "TODO — role",
-    bio: "TODO — two or three sentences, same shape as above.",
-  },
+  { name: "Vivaan Jhaveri", role: "CTO", photo: "/team-vivaan.jpg" },
+  { name: "Ethan Rajkumar", role: "CEO", photo: "/team-ethan.jpg" },
+  { name: "Nathan Rajkumar", role: "CFO", photo: "/team-nathan.jpg" },
 ];
 
 export default function Team() {
@@ -80,10 +58,6 @@ export default function Team() {
               </div>
 
               <h3 className="display-md text-fg mb-4">{person.name}</h3>
-
-              <p className="text-fg-3 max-w-md text-sm leading-relaxed">
-                {person.bio}
-              </p>
             </div>
           </motion.article>
         ))}
