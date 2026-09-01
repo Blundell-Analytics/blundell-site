@@ -67,11 +67,11 @@ export default function Hero() {
               </p>
 
               <a
-                href="#contact"
-                onClick={(e) => handleAnchorClick(e, "#contact")}
+                href="#about"
+                onClick={(e) => handleAnchorClick(e, "#about")}
                 className="btn-mono btn-primary mt-7 inline-block"
               >
-                Request a Report
+                Learn more
               </a>
             </motion.div>
           </div>

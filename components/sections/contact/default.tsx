@@ -2,8 +2,6 @@
 
 import { FormEvent, useState } from "react";
 
-import { SectionHeader } from "@/components/ui/section";
-
 /** Borderless input sitting in a ruled table row. */
 const FIELD =
   "w-full border border-[var(--input-border)] bg-[var(--input-bg)] px-3 py-2.5 text-sm text-fg outline-none transition-colors placeholder:text-fg-4 focus:border-[var(--hairline-strong)]";
@@ -51,16 +49,19 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="bg-ink relative z-10">
-      <SectionHeader
-        label="Get in touch"
-        title="Your club's analysis starts here"
-        lead="Tell us about your club and we'll deliver a tailored report within 48 hours."
-      />
+      <div className="rail rule-t grid grid-cols-1 gap-10 py-11 lg:grid-cols-12 lg:gap-14 lg:py-14">
+        <div className="lg:col-span-5">
+          <p className="eyebrow mb-4">Get in touch</p>
+          <h2 className="display-lg text-fg max-w-md">
+            Your club&apos;s analysis starts here
+          </h2>
+          <p className="text-fg-3 mt-4 max-w-md text-base leading-relaxed">
+            Tell us about your club and we&apos;ll deliver a tailored report
+            within 48 hours.
+          </p>
+        </div>
 
-      <div className="rail rule-t py-11 lg:py-14">
-        <p className="eyebrow mb-6">The brief</p>
-
-        <div>
+        <div className="lg:col-span-7">
           {submitted ? (
             <div className="max-w-xl space-y-5">
               <div className="flex items-center gap-2.5">
@@ -79,7 +80,7 @@ export default function ContactSection() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="max-w-2xl">
+            <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label htmlFor="firstName" className={LABEL}>

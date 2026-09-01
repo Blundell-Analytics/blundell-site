@@ -15,7 +15,7 @@ export function PageBackground() {
         cellSize={44}
         glowColor="var(--glow)"
         borderColor="var(--grid-border)"
-        proximity={120}
+        proximity={55}
         useWindowMouse
       />
       {/* Dissolve the grid before the hero's bottom edge so it does not end on

@@ -148,11 +148,11 @@ export function InteractiveGridPattern({
                       : proximityFactor > 0
                         ? glowColor.replace(
                             /[\d.]+\)$/,
-                            `${proximityFactor * 0.15})`,
+                            `${proximityFactor * 0.09})`,
                           )
                         : "transparent",
                     boxShadow: isHovered
-                      ? `0 0 ${20 * grid.scale}px ${glowColor}, inset 0 0 ${10 * grid.scale}px ${glowColor.replace(/[\d.]+\)$/, "0.2)")}`
+                      ? `0 0 ${8 * grid.scale}px ${glowColor}, inset 0 0 ${4 * grid.scale}px ${glowColor.replace(/[\d.]+\)$/, "0.12)")}`
                       : "none",
                     transitionDuration: isHovered ? "0ms" : "1000ms",
                   }}
