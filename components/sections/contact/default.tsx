@@ -6,12 +6,10 @@ import { SectionHeader } from "@/components/ui/section";
 
 /** Borderless input sitting in a ruled table row. */
 const FIELD =
-  "w-full bg-transparent py-4 text-sm text-fg outline-none placeholder:text-fg-4 focus:placeholder:text-fg-4";
-
-const ROW = "border-b border-hairline py-4";
+  "w-full border border-[var(--input-border)] bg-[var(--input-bg)] px-3 py-2.5 text-sm text-fg outline-none transition-colors placeholder:text-fg-4 focus:border-[var(--hairline-strong)]";
 
 const LABEL =
-  "mb-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-fg-4";
+  "mb-1.5 block font-mono text-[10px] uppercase tracking-[0.14em] text-fg-4";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -81,9 +79,9 @@ export default function ContactSection() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="max-w-3xl">
-              <div className="border-hairline border-t">
-                <div className={ROW}>
+            <form onSubmit={handleSubmit} className="max-w-2xl">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
                   <label htmlFor="firstName" className={LABEL}>
                     First Name <span className="text-mark">*</span>
                   </label>
@@ -99,7 +97,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className={ROW}>
+                <div>
                   <label htmlFor="lastName" className={LABEL}>
                     Last Name <span className="text-mark">*</span>
                   </label>
@@ -115,7 +113,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className={ROW}>
+                <div className="sm:col-span-2">
                   <label htmlFor="clubEmail" className={LABEL}>
                     Club Email Address <span className="text-mark">*</span>
                   </label>
@@ -131,7 +129,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className={ROW}>
+                <div>
                   <label htmlFor="clubName" className={LABEL}>
                     Club Name <span className="text-fg-4">— optional</span>
                   </label>
@@ -146,7 +144,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className={ROW}>
+                <div>
                   <label htmlFor="role" className={LABEL}>
                     Role / Title <span className="text-fg-4">— optional</span>
                   </label>
@@ -161,14 +159,14 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div className={ROW}>
+                <div className="sm:col-span-2">
                   <label htmlFor="message" className={LABEL}>
                     Message <span className="text-fg-4">— optional</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={4}
+                    rows={3}
                     placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
                     value={form.message}
                     onChange={handleChange}

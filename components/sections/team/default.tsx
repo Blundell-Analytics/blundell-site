@@ -6,8 +6,8 @@ import { SectionHeader } from "@/components/ui/section";
 
 /** Names and photographs come from the modelling repo; roles from the founders. */
 const PEOPLE = [
-  { name: "Vivaan Jhaveri", role: "CTO", photo: "/team-vivaan.jpg" },
   { name: "Ethan Rajkumar", role: "CEO", photo: "/team-ethan.jpg" },
+  { name: "Vivaan Jhaveri", role: "CTO", photo: "/team-vivaan.jpg" },
   { name: "Nathan Rajkumar", role: "CFO", photo: "/team-nathan.jpg" },
 ];
 

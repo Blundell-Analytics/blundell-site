@@ -15,7 +15,7 @@ const FIGURES = [
 
 export default function Coverage() {
   return (
-    <section className="bg-ink relative z-10">
+    <section className="bg-band relative z-10">
       <div className="rail rule-t pt-11 pb-8 lg:pt-14 lg:pb-9">
         <p className="eyebrow mb-4">Coverage</p>
         <p className="text-fg-3 max-w-2xl text-base leading-relaxed">

@@ -13,7 +13,7 @@ const SECTIONS = [
 
 export default function FooterSection() {
   return (
-    <footer className="bg-ink rule-t relative z-10">
+    <footer className="bg-band rule-t relative z-10">
       <div className="overflow-hidden">
         <div className="rail grid grid-cols-1 gap-10 py-14 lg:grid-cols-12 lg:gap-10 lg:py-16">
           <div className="lg:col-span-5">

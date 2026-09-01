@@ -10,6 +10,7 @@
   --color-ink: var(--ink);
   --color-panel: var(--panel);
   --color-well: var(--well);
+  --color-band: var(--band);
   --color-fg: var(--foreground);
   --color-fg-2: var(--fg-medium);
   --color-fg-3: var(--fg-muted);
@@ -105,6 +106,7 @@
   --ink: #fbfbfa;
   --panel: #ffffff;
   --well: #f1f1ef;
+  --band: #f4f4f2;
 
   --mark: #1d4ed8;
   --brand: #1d4ed8;
@@ -118,7 +120,7 @@
 
   --bg-card: var(--panel);
   --bg-card-border: rgba(0, 0, 0, 0.1);
-  --hairline: rgba(0, 0, 0, 0.13);
+  --hairline: rgba(0, 0, 0, 0.16);
   --hairline-strong: rgba(0, 0, 0, 0.22);
 
   --input-bg: rgba(0, 0, 0, 0.02);
@@ -169,6 +171,7 @@
   --ink: #0a0a0a;
   --panel: #111112;
   --well: #0e0e0f;
+  --band: #141417;
 
   --mark: #4d8dff;
   --brand: #4d8dff;
@@ -181,7 +184,7 @@
 
   --bg-card: #18181b;
   --bg-card-border: rgba(255, 255, 255, 0.08);
-  --hairline: rgba(255, 255, 255, 0.1);
+  --hairline: rgba(255, 255, 255, 0.14);
   --hairline-strong: rgba(255, 255, 255, 0.2);
 
   --input-bg: rgba(255, 255, 255, 0.02);

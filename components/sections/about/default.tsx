@@ -23,7 +23,7 @@ const STAGES = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-ink relative z-10">
+    <section id="about" className="bg-band relative z-10">
       <SectionHeader
         label="About"
         title="Built for the people who have to justify the signing."

@@ -29,7 +29,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-ink relative z-10">
+    <section id="faq" className="bg-band relative z-10">
       <SectionHeader label="Questions" title="What clubs ask us first." />
 
       <div className="rail">
