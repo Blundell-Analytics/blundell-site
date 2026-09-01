@@ -1,7 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+
+/** Borderless input sitting in a ruled table row. */
+const FIELD =
+  "w-full border border-[var(--input-border)] bg-[var(--input-bg)] px-3 py-2.5 text-sm text-fg outline-none transition-colors placeholder:text-fg-4 focus:border-[var(--hairline-strong)]";
+
+const LABEL =
+  "mb-1.5 block font-mono text-[10px] uppercase tracking-[0.14em] text-fg-4";
 
 export default function ContactSection() {
   const [form, setForm] = useState({
@@ -17,10 +23,8 @@ export default function ContactSection() {
   const [error, setError] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -43,266 +47,155 @@ export default function ContactSection() {
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    height: "48px",
-    borderRadius: "12px",
-    border: "1px solid var(--input-border)",
-    background: "var(--input-bg)",
-    padding: "0 20px",
-    fontSize: "14px",
-    color: "var(--foreground)",
-    outline: "none",
-    fontFamily: "var(--font-jakarta)",
-    transition: "border-color 0.2s",
-  };
-
-  const labelStyle: React.CSSProperties = {
-    fontSize: "11px",
-    fontWeight: 500,
-    color: "var(--fg-muted)",
-    textTransform: "uppercase",
-    letterSpacing: "0.1em",
-    fontFamily: "var(--font-jakarta)",
-    marginBottom: "8px",
-    display: "block",
-  };
-
-  const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.target.style.borderColor = "rgba(0,74,173,0.5)");
-  const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.target.style.borderColor = "var(--input-border)");
-
   return (
-    <section
-      id="contact"
-      style={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "96px 24px",
-        position: "relative",
-        zIndex: 1,
-      }}
-    >
+    <section id="contact" className="bg-ink relative z-10">
+      <div className="rail rule-t grid grid-cols-1 gap-10 py-11 lg:grid-cols-12 lg:gap-14 lg:py-14">
+        <div className="lg:col-span-5">
+          <p className="eyebrow mb-4">Get in touch</p>
+          <h2 className="display-lg text-fg max-w-md">
+            Your club&apos;s analysis starts here
+          </h2>
+          <p className="text-fg-3 mt-4 max-w-md text-base leading-relaxed">
+            Tell us about your club and we&apos;ll deliver a tailored report
+            within 48 hours.
+          </p>
+        </div>
 
-      {/* Header */}
-      <div style={{ textAlign: "center", maxWidth: "36rem", marginBottom: "48px" }}>
-        <p
-          style={{
-            fontSize: "14px",
-            fontWeight: 500,
-            color: "#004aad",
-            textTransform: "uppercase",
-            letterSpacing: "0.15em",
-            fontFamily: "var(--font-jakarta)",
-            marginBottom: "12px",
-          }}
-        >
-          Get in touch
-        </p>
-        <h2
-          style={{
-            fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-            fontWeight: 600,
-            color: "var(--foreground)",
-            lineHeight: 1.15,
-            fontFamily: "var(--font-jakarta)",
-          }}
-        >
-          Your club's analysis starts here
-        </h2>
-        <p
-          style={{
-            marginTop: "12px",
-            fontSize: "14px",
-            color: "var(--fg-muted)",
-            lineHeight: 1.7,
-            fontFamily: "var(--font-jakarta)",
-          }}
-        >
-          Tell us about your club and we'll deliver a tailored report within 48 hours.
-        </p>
-      </div>
-
-      {/* Form card */}
-      <div
-        className=""
-        style={{
-          width: "100%",
-          maxWidth: "720px",
-          background: "var(--bg-card)",
-          border: "1px solid var(--bg-card-border)",
-          borderRadius: "20px",
-          padding: "40px",
-        }}
-      >
-        {submitted ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-              padding: "32px 0",
-              textAlign: "center",
-            }}
-          >
-            <CheckCircle2 size={40} color="#004aad" />
-            <p
-              style={{
-                fontSize: "16px",
-                fontWeight: 500,
-                color: "var(--foreground)",
-                fontFamily: "var(--font-jakarta)",
-              }}
-            >
-              Your request is in — we'll have your report underway within 48 hours.
-            </p>
-            <p
-              style={{
-                fontSize: "13px",
-                color: "var(--fg-muted)",
-                fontFamily: "var(--font-jakarta)",
-              }}
-            >
-              A confirmation has been sent to{" "}
-              <span style={{ color: "var(--fg-medium)" }}>{form.clubEmail}</span>
-            </p>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
-          >
-            {/* First + Last name */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-              <div>
-                <label htmlFor="firstName" style={labelStyle}>
-                  First Name <span style={{ color: "#004aad" }}>*</span>
-                </label>
-                <input
-                  id="firstName" name="firstName" type="text" required
-                  placeholder="Jane"
-                  value={form.firstName} onChange={handleChange}
-                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-                />
+        <div className="lg:col-span-7">
+          {submitted ? (
+            <div className="max-w-xl space-y-5">
+              <div className="flex items-center gap-2.5">
+                <span className="bg-mark size-1.5" />
+                <span className="text-fg-3 font-mono text-[10px] tracking-[0.18em] uppercase">
+                  Received
+                </span>
               </div>
-              <div>
-                <label htmlFor="lastName" style={labelStyle}>
-                  Last Name <span style={{ color: "#004aad" }}>*</span>
-                </label>
-                <input
-                  id="lastName" name="lastName" type="text" required
-                  placeholder="Smith"
-                  value={form.lastName} onChange={handleChange}
-                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-                />
-              </div>
-            </div>
-
-            {/* Club email */}
-            <div>
-              <label htmlFor="clubEmail" style={labelStyle}>
-                Club Email Address <span style={{ color: "#004aad" }}>*</span>
-              </label>
-              <input
-                id="clubEmail" name="clubEmail" type="email" required
-                placeholder="jane@yourclub.com"
-                value={form.clubEmail} onChange={handleChange}
-                style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-              />
-            </div>
-
-            {/* Club name + Role */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-              <div>
-                <label htmlFor="clubName" style={labelStyle}>
-                  Club Name{" "}
-                  <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
-                </label>
-                <input
-                  id="clubName" name="clubName" type="text"
-                  placeholder="FC Example"
-                  value={form.clubName} onChange={handleChange}
-                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-                />
-              </div>
-              <div>
-                <label htmlFor="role" style={labelStyle}>
-                  Role / Title{" "}
-                  <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
-                </label>
-                <input
-                  id="role" name="role" type="text"
-                  placeholder="Head of Recruitment"
-                  value={form.role} onChange={handleChange}
-                  style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-                />
-              </div>
-            </div>
-
-            {/* Message */}
-            <div>
-              <label htmlFor="message" style={labelStyle}>
-                Message{" "}
-                <span style={{ color: "var(--fg-subtle)", fontWeight: 400 }}>— optional</span>
-              </label>
-              <textarea
-                id="message" name="message" rows={4}
-                placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
-                value={form.message} onChange={handleChange}
-                style={{ ...inputStyle, height: "auto", padding: "14px 20px", resize: "none" }}
-                onFocus={onFocus} onBlur={onBlur}
-              />
-            </div>
-
-            {error && (
-              <p style={{ fontSize: "13px", color: "#ef4444", fontFamily: "var(--font-jakarta)" }}>
-                {error}
+              <p className="display-md text-fg">
+                Your request is in — we&apos;ll have your report underway within
+                48 hours.
               </p>
-            )}
+              <p className="text-fg-3 text-sm">
+                A confirmation has been sent to{" "}
+                <span className="text-fg font-mono">{form.clubEmail}</span>
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="firstName" className={LABEL}>
+                    First Name <span className="text-mark">*</span>
+                  </label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    required
+                    placeholder="Jane"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
+                </div>
 
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary"
-              style={{
-                alignSelf: "flex-end",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                height: "48px",
-                padding: "0 28px",
-                borderRadius: "12px",
-                fontSize: "14px",
-                fontWeight: 600,
-                fontFamily: "var(--font-jakarta)",
-                cursor: loading ? "wait" : "pointer",
-                border: "none",
-                opacity: loading ? 0.7 : 1,
-                transition: "opacity 0.2s",
-              }}
-            >
-              {loading ? "Sending…" : "Request a Report"}
-              {!loading && <ArrowRight size={16} />}
-            </button>
-          </form>
-        )}
+                <div>
+                  <label htmlFor="lastName" className={LABEL}>
+                    Last Name <span className="text-mark">*</span>
+                  </label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    required
+                    placeholder="Smith"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="clubEmail" className={LABEL}>
+                    Club Email Address <span className="text-mark">*</span>
+                  </label>
+                  <input
+                    id="clubEmail"
+                    name="clubEmail"
+                    type="email"
+                    required
+                    placeholder="jane@yourclub.com"
+                    value={form.clubEmail}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="clubName" className={LABEL}>
+                    Club Name <span className="text-fg-4">— optional</span>
+                  </label>
+                  <input
+                    id="clubName"
+                    name="clubName"
+                    type="text"
+                    placeholder="FC Example"
+                    value={form.clubName}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="role" className={LABEL}>
+                    Role / Title <span className="text-fg-4">— optional</span>
+                  </label>
+                  <input
+                    id="role"
+                    name="role"
+                    type="text"
+                    placeholder="Head of Recruitment"
+                    value={form.role}
+                    onChange={handleChange}
+                    className={FIELD}
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="message" className={LABEL}>
+                    Message <span className="text-fg-4">— optional</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={3}
+                    placeholder="Tell us about your club, what positions you're looking to fill, or any specific analysis you need…"
+                    value={form.message}
+                    onChange={handleChange}
+                    className={`${FIELD} resize-none`}
+                  />
+                </div>
+              </div>
+
+              {error && (
+                <p className="mt-5 font-mono text-xs text-red-400">{error}</p>
+              )}
+
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-mono btn-primary disabled:cursor-wait disabled:opacity-70"
+                >
+                  {loading ? "Sending…" : "Request a Report"}
+                </button>
+                <span className="text-fg-4 font-mono text-[10px] tracking-[0.14em] uppercase">
+                  No commitment. Responses within 48 hours.
+                </span>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
-
-      <p
-        style={{
-          marginTop: "24px",
-          fontSize: "11px",
-          color: "var(--fg-subtle)",
-          fontFamily: "var(--font-jakarta)",
-        }}
-      >
-        No commitment. Responses within 48 hours.
-      </p>
     </section>
   );
 }

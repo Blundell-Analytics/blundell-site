@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/contexts/theme-provider";
-import { jakarta, playfair } from "@/lib/fonts";
+import { inter, interTight, plexMono } from "@/lib/fonts";
 
 import { siteConfig } from "../config/site";
 
@@ -63,7 +63,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${jakarta.variable} ${playfair.variable} ${jakarta.className} bg-background antialiased`}>
+      <body
+        className={`${inter.variable} ${interTight.variable} ${plexMono.variable} bg-ink antialiased`}
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -4,7 +4,7 @@ export const siteConfig = {
   getStartedUrl: "/#contact",
   ogImage: "https://blundellanalytics.ca/og.jpg",
   description:
-    "Quantitative football transfer intelligence. Five objectives, one composite score. Built for clubs that treat recruitment as capital allocation.",
+    "Transfer intelligence for clubs that treat recruitment as capital allocation. A brief in, a defensible shortlist out.",
   links: {
     twitter: "https://twitter.com/blundellanalytics",
     github: "",

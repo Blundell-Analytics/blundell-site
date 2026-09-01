@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { animate, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
-import Glow from "@/components/ui/glow";
+import { PageBackground } from "@/components/ui/page-background";
+import { handleAnchorClick } from "@/lib/scroll-to";
 import { TypingText } from "@/components/ui/typing-text";
 
 const TYPING_PHRASES = [
@@ -13,101 +14,76 @@ const TYPING_PHRASES = [
   "a data-driven one.",
 ];
 
-const scrollToContact = () => {
-  const el = document.getElementById("contact");
-  if (!el) return;
-  animate(window.scrollY, el.offsetTop, {
-    duration: 0.8,
-    ease: "easeInOut",
-    onUpdate: (v) => window.scrollTo(0, v),
-  });
-};
-
 export default function Hero() {
   return (
-    <section
-      className="relative w-full overflow-hidden flex flex-col items-center justify-center px-6"
-      style={{ height: "100dvh", zIndex: 1 }}
-    >
-      {/* Glow */}
-      <Glow variant="top" className="opacity-40" />
-
-      {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="relative z-10 w-full text-center"
-        style={{
-          maxWidth: "42rem",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "2rem",
-          margin: "0 auto",
-          marginTop: "40px",
-        }}
+    <>
+      {/* The statement fills exactly one screen; nothing else is in view. */}
+      <section
+        id="top"
+        className="relative flex min-h-screen w-full flex-col overflow-hidden pt-14 lg:pt-16"
       >
-        <h1
-          className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight"
-          style={{ fontFamily: "var(--font-jakarta)", color: "var(--foreground)" }}
-        >
-          Every transfer decision has a cost. Make it{" "}
-          <TypingText
-            texts={TYPING_PHRASES}
-            style={{
-              fontStyle: "italic",
-              fontFamily: "var(--font-playfair)",
-              background: "linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
-              display: "inline-block",
-            }}
-          />
-        </h1>
+        <PageBackground />
 
-        <p
-          className="text-sm sm:text-base font-light leading-relaxed max-w-xl"
-          style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-muted)" }}
-        >
-          We help clubs make smarter{" "}
-          <span style={{ fontWeight: 600, color: "var(--fg-medium)" }}>transfer decisions</span>{" "}
-          backed by{" "}
-          <span style={{ fontWeight: 600, color: "var(--fg-medium)" }}>quantitative models and five-objective scoring</span>
-          . Commission a{" "}
-          <span style={{ fontWeight: 600, color: "var(--fg-medium)" }}>customised report</span>{" "}
-          — tactical analysis, risk assessments, and shortlists.
-        </p>
+        <div className="rail relative z-10 flex flex-1 flex-col justify-end pt-12 pb-10 lg:pb-14">
+          <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-10">
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="display-hero text-fg lg:col-span-8"
+            >
+              Every transfer decision has a cost. Make it
+              <span className="text-mark block">
+                <TypingText texts={TYPING_PHRASES} />
+                <span
+                  aria-hidden
+                  className="ml-0.5 inline-block"
+                  style={{
+                    animation: "cursor-blink 1s step-end infinite",
+                    borderLeft: "0.055em solid var(--mark)",
+                    height: "0.78em",
+                    verticalAlign: "-0.04em",
+                  }}
+                />
+              </span>
+            </motion.h1>
 
-        {/* CTA button */}
-        <button
-          onClick={scrollToContact}
-          className="group h-12 shrink-0 flex items-center justify-center gap-2 rounded-xl px-7 text-sm font-semibold btn-primary"
-          style={{ fontFamily: "var(--font-jakarta)" }}
-        >
-          Request a Report
-          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-        </button>
-      </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.75,
+                delay: 0.15,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="lg:col-span-4"
+            >
+              <p className="text-fg-3 max-w-md text-sm leading-relaxed lg:text-base">
+                We help clubs make smarter{" "}
+                <span className="text-fg">transfer decisions</span> backed by{" "}
+                <span className="text-fg">quantitative models</span>. Commission
+                a <span className="text-fg">customised report</span> — tactical
+                analysis, risk assessments, and shortlists.
+              </p>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
-      >
-        <span
-          className="text-[10px] uppercase tracking-widest"
-          style={{ fontFamily: "var(--font-jakarta)", color: "var(--fg-medium)" }}
-        >
-          Scroll
-        </span>
-        <ChevronDown className="size-4 animate-bounce" style={{ color: "var(--foreground)" }} />
-      </motion.div>
-    </section>
+              <a
+                href="#about"
+                onClick={(e) => handleAnchorClick(e, "#about")}
+                className="btn-mono btn-primary mt-7 inline-block"
+              >
+                Learn more
+              </a>
+            </motion.div>
+          </div>
+
+          <div className="text-fg-4 mt-12 flex items-center gap-2">
+            <ChevronDown className="size-3.5 animate-bounce" />
+            <span className="font-mono text-[10px] tracking-[0.18em] uppercase">
+              Scroll
+            </span>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
