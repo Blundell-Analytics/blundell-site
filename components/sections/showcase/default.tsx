@@ -17,14 +17,14 @@ const VIEWS = [
     label: "Player Detail",
     screenshot: "/dashboard-player.png",
     caption:
-      "Deep tactical assessment, injury history, performance trajectory and deal summary — all in one view.",
+      "Tactical assessment, injury history, performance trend, and the deal itself, all on one page.",
     reads: "Assess a target",
   },
   {
     label: "Pareto Analysis",
     screenshot: "/dashboard-pareto.png",
     caption:
-      "Identify best-value targets plotted by tactical fit vs. business case. Bubble size reflects overall fit score.",
+      "The best-value targets, plotted by tactical fit against business case. Bubble size is overall fit.",
     reads: "Find the value",
   },
 ];
@@ -44,7 +44,7 @@ export default function DashboardShowcase() {
       <SectionHeader
         label="The platform"
         title="One score. Every dimension."
-        lead="Every engagement comes with the working platform behind it, not just a document. Three views, one ranked list, and the reasoning attached to each name on it."
+        lead="Every engagement comes with the dashboard itself, not just a PDF. Filter the market, open a player, and see why they're ranked where they are."
       />
 
       <div className="rail grid grid-cols-1 gap-8 py-11 md:grid-cols-12 lg:gap-14 lg:py-14">
@@ -72,7 +72,7 @@ export default function DashboardShowcase() {
                         }`}
                       />
                       <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
-                        {String(i + 1).padStart(2, "0")} — {v.reads}
+                        {String(i + 1).padStart(2, "0")} · {v.reads}
                       </span>
                     </div>
                     <span

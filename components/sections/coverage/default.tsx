@@ -25,9 +25,9 @@ export default function Coverage() {
       <div className="rail rule-t pt-11 pb-8 lg:pt-14 lg:pb-9">
         <p className="eyebrow mb-4">Coverage</p>
         <p className="text-fg-3 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
-          A shortlist is only as good as the field it was drawn from. Ours is
-          built on a decade of player history, rebuilt from source rather than
-          licensed wholesale.
+          Any list is only as good as the players it was drawn from. Ours
+          goes back a decade, and we built it ourselves rather than licensing
+          someone else&apos;s feed.
         </p>
       </div>
 

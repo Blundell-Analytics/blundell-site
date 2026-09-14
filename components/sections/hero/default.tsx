@@ -59,11 +59,12 @@ export default function Hero() {
               className="lg:col-span-4"
             >
               <p className="text-fg-3 max-w-md text-sm leading-relaxed lg:text-base">
-                We help clubs make smarter{" "}
-                <span className="text-fg">transfer decisions</span> backed by{" "}
-                <span className="text-fg">quantitative models</span>. Commission
-                a <span className="text-fg">customised report</span> — tactical
-                analysis, risk assessments, and shortlists.
+                We build our own{" "}
+                <span className="text-fg">player data</span> and run it
+                through our own{" "}
+                <span className="text-fg">models</span>. Ask for a{" "}
+                <span className="text-fg">report</span> and you get tactical
+                analysis, risk flags, and names ranked against your brief.
               </p>
 
               <a

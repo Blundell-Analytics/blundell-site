@@ -56,8 +56,8 @@ export default function ContactSection() {
             Your club&apos;s analysis starts here
           </h2>
           <p className="text-fg-3 mt-4 max-w-md text-base leading-relaxed">
-            Tell us about your club and we&apos;ll deliver a tailored report
-            within 48 hours.
+            Tell us about your club and what you need, and we&apos;ll have a
+            report back to you within 48 hours.
           </p>
         </div>
 
@@ -71,8 +71,8 @@ export default function ContactSection() {
                 </span>
               </div>
               <p className="display-md text-fg">
-                Your request is in — we&apos;ll have your report underway within
-                48 hours.
+                Your request is in. We&apos;ll have your report underway
+                within 48 hours.
               </p>
               <p className="text-fg-3 text-sm">
                 A confirmation has been sent to{" "}
@@ -132,7 +132,7 @@ export default function ContactSection() {
 
                 <div>
                   <label htmlFor="clubName" className={LABEL}>
-                    Club Name <span className="text-fg-4">— optional</span>
+                    Club Name <span className="text-fg-4">(optional)</span>
                   </label>
                   <input
                     id="clubName"
@@ -147,7 +147,7 @@ export default function ContactSection() {
 
                 <div>
                   <label htmlFor="role" className={LABEL}>
-                    Role / Title <span className="text-fg-4">— optional</span>
+                    Role / Title <span className="text-fg-4">(optional)</span>
                   </label>
                   <input
                     id="role"
@@ -162,7 +162,7 @@ export default function ContactSection() {
 
                 <div className="sm:col-span-2">
                   <label htmlFor="message" className={LABEL}>
-                    Message <span className="text-fg-4">— optional</span>
+                    Message <span className="text-fg-4">(optional)</span>
                   </label>
                   <textarea
                     id="message"

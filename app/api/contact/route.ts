@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       from: "Blundell Analytics <noreply@blundellanalytics.ca>",
       to: "info@blundellanalytics.ca",
       replyTo: clubEmail,
-      subject: `Report Request — ${clubName || `${firstName} ${lastName}`}`,
+      subject: `Report Request: ${clubName || `${firstName} ${lastName}`}`,
       html: `
         <div style="font-family: sans-serif; max-width: 560px; color: #111;">
           <h2 style="margin-bottom: 4px;">New Report Request</h2>

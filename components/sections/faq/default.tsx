@@ -9,19 +9,19 @@ import { SectionHeader } from "@/components/ui/section";
 const ITEMS = [
   {
     q: "What do we actually receive?",
-    a: "A ranked shortlist for the brief you set, with the reasoning attached to each name, written to be read in a recruitment meeting rather than by a data scientist. You also get the working platform behind it, so your staff can re-run the filters and see the field for themselves.",
+    a: "A list of names in order, weighed against the brief you gave us and written in plain English, not for a data scientist. You also get the dashboard itself, so your own staff can rerun the filters and check our work.",
   },
   {
     q: "Which leagues and seasons do you cover?",
-    a: "More than sixteen competitions, with squad history reaching back to 2015. If a specific market matters to you and is not already covered, say so in the brief and we will confirm whether it is feasible before any work starts.",
+    a: "37 leagues, with squad histories going back to 2015. If a market you care about isn't already in there, say so in the brief and we'll confirm it's feasible before any work starts.",
   },
   {
     q: "Is our brief confidential?",
-    a: "Yes. What you are looking for, what you can spend and who you are considering stays between us. We will not name you as a client without asking first.",
+    a: "Yes. What you're looking for, what you can spend, and who you're considering doesn't leave this building. We won't use your name as a reference without asking first.",
   },
   {
     q: "How do we start?",
-    a: "Send us a brief through the form below. We reply within 48 hours with scope, timeline and price, before you have committed to anything.",
+    a: "Fill in the form below. We reply within 48 hours with scope, timeline, and price, so you know what you're getting before you commit to anything.",
   },
 ];
 

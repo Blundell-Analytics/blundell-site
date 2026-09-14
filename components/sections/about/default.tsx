@@ -17,7 +17,7 @@ const STAGES = [
   {
     n: "03",
     t: "The report",
-    d: "A ranked shortlist with the reasoning attached, plus the platform behind it.",
+    d: "The names you asked for, ranked and explained, plus the dashboard we used to find them.",
   },
 ];
 
@@ -37,16 +37,16 @@ export default function About() {
             Built for the people who have to justify the signing.
           </h2>
           <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
-            Blundell Analytics is a quantitative football consultancy. We help
-            clubs treat recruitment like capital allocation — every signing
-            weighed against the alternatives, with a case a sporting director
-            can defend in the room.
+            Blundell Analytics is a quantitative football consultancy. We
+            treat recruitment like capital allocation: every signing weighed
+            against the alternatives, with a case a sporting director can
+            defend in the room.
           </p>
           <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
-            Give us a brief — the position, the budget, the way you play — and
-            we return a ranked shortlist with the reasoning behind every name on
-            it. We don&apos;t sell software, and we won&apos;t tell you a
-            signing is guaranteed to work.
+            Tell us the position, the budget, and the way you play. We send
+            back a shortlist ranked against that brief, with the reasoning
+            behind every name on it. We don&apos;t sell software, and we
+            won&apos;t tell you a signing is guaranteed to work.
           </p>
         </div>
 

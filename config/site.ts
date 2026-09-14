@@ -4,7 +4,7 @@ export const siteConfig = {
   getStartedUrl: "/#contact",
   ogImage: "https://blundellanalytics.ca/og.jpg",
   description:
-    "Transfer intelligence for clubs that treat recruitment as capital allocation. A brief in, a defensible shortlist out.",
+    "Quantitative transfer analysis for football clubs. We build the player data ourselves and use it to rank targets against the brief you give us.",
   links: {
     twitter: "https://twitter.com/blundellanalytics",
     github: "",
