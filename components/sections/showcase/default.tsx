@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { SectionHeader } from "@/components/ui/section";
@@ -38,6 +38,15 @@ export default function DashboardShowcase() {
   const [active, setActive] = useState(0);
   const [enlarged, setEnlarged] = useState(false);
   const view = VIEWS[active];
+
+  // Only the active tab's screenshot is mounted, so preload the other two on
+  // mount rather than leaving them to fetch on first click.
+  useEffect(() => {
+    VIEWS.forEach((v) => {
+      const img = new Image();
+      img.src = v.screenshot;
+    });
+  }, []);
 
   return (
     <section id="platform" className="bg-ink relative z-10">
