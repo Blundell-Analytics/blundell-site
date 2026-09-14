@@ -52,9 +52,9 @@ export default function About() {
 
         <div className="md:col-span-5">
           <p className="eyebrow mb-4">How it works</p>
-          <ol className="border-hairline divide-hairline divide-y border-t">
+          <ol className="flex flex-col">
             {STAGES.map((s) => (
-              <li key={s.n} className="py-4">
+              <li key={s.n} className="-mx-3 px-3 py-4">
                 <div className="flex items-baseline gap-3">
                   <span className="text-mark font-mono text-[11px] tracking-[0.14em]">
                     {s.n}

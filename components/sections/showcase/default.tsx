@@ -47,14 +47,14 @@ export default function DashboardShowcase() {
         lead="Every engagement comes with the working platform behind it, not just a document. Three views, one ranked list, and the reasoning attached to each name on it."
       />
 
-      <div className="rail rule-t grid grid-cols-1 gap-8 py-11 md:grid-cols-12 lg:gap-14 lg:py-14">
+      <div className="rail grid grid-cols-1 gap-8 py-11 md:grid-cols-12 lg:gap-14 lg:py-14">
         {/* Tab list */}
         <div
           role="tablist"
           aria-label="Dashboard views"
           className="md:col-span-4"
         >
-          <ol className="border-hairline divide-hairline divide-y border-t">
+          <ol className="flex flex-col">
             {VIEWS.map((v, i) => {
               const selected = i === active;
               return (
@@ -63,7 +63,7 @@ export default function DashboardShowcase() {
                     role="tab"
                     aria-selected={selected}
                     onClick={() => setActive(i)}
-                    className="group w-full cursor-pointer py-5 text-left"
+                    className="group -mx-3 w-full cursor-pointer px-3 py-5 text-left transition-colors hover:bg-[var(--cell-bg)]"
                   >
                     <div className="mb-1.5 flex items-center gap-2.5">
                       <span
