@@ -34,14 +34,7 @@ export default function Coverage() {
       <dl className="rail grid grid-cols-1 gap-x-10 gap-y-8 pb-12 sm:grid-cols-2 lg:grid-cols-4 lg:pb-14">
         {FIGURES.map((f) => (
           <div key={f.label} className="border-hairline border-t pt-6">
-            <dd
-              className="text-fg font-medium tracking-[-0.03em]"
-              style={{
-                fontFamily: "var(--font-inter-tight), sans-serif",
-                fontSize: "clamp(2.75rem, 6vw, 4.5rem)",
-                lineHeight: 0.95,
-              }}
-            >
+            <dd className="display-xl text-fg">
               <CountUp to={f.to} suffix={f.suffix} />
             </dd>
             <dt className="cell-label mt-4">{f.label}</dt>

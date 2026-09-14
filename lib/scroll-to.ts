@@ -4,10 +4,24 @@ import { animate } from "framer-motion";
 const navOffset = () => (window.innerWidth >= 1024 ? 64 : 56);
 
 /**
- * Eased scroll to a section. CSS `scroll-behavior: smooth` hands the duration
- * and curve to the browser, which reads as an abrupt snap over long distances;
- * this keeps both under our control.
+ * Eased scroll to a Y position. CSS `scroll-behavior: smooth` hands the
+ * duration and curve to the browser, which reads as an abrupt snap over long
+ * distances; this keeps both under our control.
  */
+function scrollToY(target: number) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.scrollTo(0, target);
+    return;
+  }
+
+  animate(window.scrollY, target, {
+    duration: 1,
+    ease: [0.22, 1, 0.36, 1],
+    onUpdate: (v) => window.scrollTo(0, v),
+  });
+}
+
+/** Eased scroll to a section by id. */
 export function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -21,16 +35,12 @@ export function scrollToId(id: string) {
     ),
   );
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    window.scrollTo(0, target);
-    return;
-  }
+  scrollToY(target);
+}
 
-  animate(window.scrollY, target, {
-    duration: 1,
-    ease: [0.22, 1, 0.36, 1],
-    onUpdate: (v) => window.scrollTo(0, v),
-  });
+/** Eased scroll back to the top of the page. */
+export function scrollToTop() {
+  scrollToY(0);
 }
 
 /**

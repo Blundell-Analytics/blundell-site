@@ -8,7 +8,7 @@ export interface InteractiveGridPatternProps {
   children?: React.ReactNode;
   /** Size of each grid cell in pixels */
   cellSize?: number;
-  /** Glow color on hover */
+  /** Glow color on hover, as an "R, G, B" triple — each cell picks its own alpha via rgba(glowColor, alpha) */
   glowColor?: string;
   /** Border color of grid lines */
   borderColor?: string;
@@ -22,7 +22,7 @@ export function InteractiveGridPattern({
   className,
   children,
   cellSize = 50,
-  glowColor = "rgba(34, 211, 238, 0.4)",
+  glowColor = "34, 211, 238",
   borderColor = "rgba(63, 63, 70, 0.4)",
   proximity = 100,
   useWindowMouse = false,
@@ -144,15 +144,12 @@ export function InteractiveGridPattern({
                     height: scaledCellSize,
                     borderColor: borderColor,
                     backgroundColor: isHovered
-                      ? glowColor
+                      ? `rgba(${glowColor}, 0.2)`
                       : proximityFactor > 0
-                        ? glowColor.replace(
-                            /[\d.]+\)$/,
-                            `${proximityFactor * 0.09})`,
-                          )
+                        ? `rgba(${glowColor}, ${proximityFactor * 0.09})`
                         : "transparent",
                     boxShadow: isHovered
-                      ? `0 0 ${8 * grid.scale}px ${glowColor}, inset 0 0 ${4 * grid.scale}px ${glowColor.replace(/[\d.]+\)$/, "0.12)")}`
+                      ? `0 0 ${8 * grid.scale}px rgba(${glowColor}, 0.2), inset 0 0 ${4 * grid.scale}px rgba(${glowColor}, 0.12)`
                       : "none",
                     transitionDuration: isHovered ? "0ms" : "1000ms",
                   }}
@@ -175,7 +172,7 @@ export function InteractiveGridPattern({
         style={{
           width: "60vmin",
           height: "60vmin",
-          background: `radial-gradient(circle, ${glowColor.replace(/[\d.]+\)$/, "0.3)")} 0%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(${glowColor}, 0.3) 0%, transparent 70%)`,
         }}
       />
 

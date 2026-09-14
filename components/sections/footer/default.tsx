@@ -56,14 +56,12 @@ export default function FooterSection() {
 
       <div className="h-28 w-full opacity-60 lg:h-32">
         <AnimatedWave
-          preset="Custom"
           barCount={12}
           amplitude={10}
           frequency={0.28}
           speed={0.5}
           waveShape="Soft"
           barSpacing={3}
-          colorMode="Solid"
           barColor="var(--mark)"
           backgroundColor="transparent"
           fadeEdges
