@@ -48,7 +48,7 @@ export default function FooterSection() {
         </a>
       </div>
 
-      <div className="rail rule-t py-5">
+      <div className="rail py-5">
         <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
           © 2026 Blundell Analytics. All rights reserved.
         </span>
