@@ -2,6 +2,7 @@
 
 import { siteConfig } from "@/config/site";
 import { handleAnchorClick } from "@/lib/scroll-to";
+import { AnimatedWave } from "@/components/ui/animated-wave";
 
 const SECTIONS = [
   { label: "About", href: "#about" },
@@ -45,6 +46,23 @@ export default function FooterSection() {
         >
           info@blundellanalytics.ca
         </a>
+      </div>
+
+      <div className="rule-t h-16 w-full lg:h-20">
+        <AnimatedWave
+          preset="Custom"
+          barCount={8}
+          amplitude={7}
+          frequency={0.35}
+          speed={1.2}
+          waveShape="Soft"
+          barSpacing={2}
+          colorMode="Solid"
+          barColor="var(--mark)"
+          backgroundColor="transparent"
+          fadeEdges
+          interactionStrength={1.3}
+        />
       </div>
 
       <div className="rail rule-t py-5">

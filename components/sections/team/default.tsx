@@ -35,7 +35,7 @@ export default function Team() {
         lead="Blundell Analytics is deliberately small. The people who build the work are the people who present it."
       />
 
-      <div className="rail grid grid-cols-1 gap-8 py-11 sm:grid-cols-3 lg:py-14">
+      <div className="rail grid grid-cols-1 gap-8 pb-11 sm:grid-cols-3 lg:pb-14">
         {PEOPLE.map((person, i) => (
           <motion.article
             key={person.name}

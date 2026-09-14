@@ -55,12 +55,7 @@ export default function Navbar({ className }: NavbarProps) {
           </span>
         </a>
 
-        <div className="hidden flex-1 items-center px-8 lg:flex">
-          <span className="text-fg-4 font-mono text-[10px] tracking-[0.18em] uppercase">
-            Quantitative Football Transfer Intelligence
-          </span>
-        </div>
-        <div className="flex-1 lg:hidden" />
+        <div className="flex-1" />
 
         <nav className="hidden items-stretch lg:flex">
           {NAV_LINKS.map((link) => (
