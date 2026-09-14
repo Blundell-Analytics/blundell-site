@@ -48,6 +48,12 @@ export default function FooterSection() {
         </a>
       </div>
 
+      <div className="rail rule-t py-5">
+        <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
+          © 2026 Blundell Analytics. All rights reserved.
+        </span>
+      </div>
+
       <div className="h-28 w-full opacity-60 lg:h-32">
         <AnimatedWave
           preset="Custom"
@@ -63,12 +69,6 @@ export default function FooterSection() {
           fadeEdges
           interactionStrength={1.2}
         />
-      </div>
-
-      <div className="rail rule-t py-5">
-        <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
-          © 2026 Blundell Analytics. All rights reserved.
-        </span>
       </div>
     </footer>
   );
