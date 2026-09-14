@@ -5,7 +5,6 @@ import { handleAnchorClick } from "@/lib/scroll-to";
 
 const SECTIONS = [
   { label: "About", href: "#about" },
-  { label: "How we work", href: "#process" },
   { label: "Platform", href: "#platform" },
   { label: "Team", href: "#team" },
   { label: "Questions", href: "#faq" },
