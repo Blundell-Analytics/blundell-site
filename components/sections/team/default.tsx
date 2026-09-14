@@ -32,7 +32,7 @@ export default function Team() {
               delay: i * 0.08,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="border-hairline bg-panel border"
+            className="border-hairline bg-panel mx-auto w-full max-w-[260px] border"
           >
             <div className="bg-well relative aspect-[4/5] w-full overflow-hidden">
               <img
