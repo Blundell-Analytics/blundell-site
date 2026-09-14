@@ -65,8 +65,16 @@ export default function CountUp({
     return () => io.disconnect();
   }, [to, durationMs]);
 
+  // Tabular figures keep the count-up from jittering in width as digits
+  // change; proportional figures read better once it settles on the final
+  // value — large standalone figures look loose in tabular spacing.
+  const settled = value === to;
+
   return (
-    <span ref={ref} className={`tabular-nums ${className}`}>
+    <span
+      ref={ref}
+      className={`${settled ? "" : "tabular-nums"} ${className}`}
+    >
       {value.toLocaleString("en-GB")}
       {suffix}
     </span>
