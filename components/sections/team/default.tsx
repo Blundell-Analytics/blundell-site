@@ -1,6 +1,5 @@
 "use client";
 
-import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { SectionHeader } from "@/components/ui/section";
@@ -74,9 +73,9 @@ export default function Team() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${person.name} on LinkedIn`}
-                className="text-fg-4 hover:text-fg shrink-0 transition-colors"
+                className="text-fg-4 hover:text-fg shrink-0 font-mono text-[10px] tracking-[0.14em] uppercase transition-colors"
               >
-                <Linkedin className="size-4" />
+                LinkedIn
               </a>
             </div>
           </motion.article>
