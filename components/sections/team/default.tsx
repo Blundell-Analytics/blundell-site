@@ -1,14 +1,30 @@
 "use client";
 
+import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { SectionHeader } from "@/components/ui/section";
 
 /** Names and photographs come from the modelling repo; roles from the founders. */
 const PEOPLE = [
-  { name: "Ethan Rajkumar", role: "CEO", photo: "/team-ethan.jpg" },
-  { name: "Vivaan Jhaveri", role: "CTO", photo: "/team-vivaan.jpg" },
-  { name: "Nathan Rajkumar", role: "CFO", photo: "/team-nathan.jpg" },
+  {
+    name: "Ethan Rajkumar",
+    role: "CEO",
+    photo: "/team-ethan.jpg",
+    linkedin: "https://www.linkedin.com/in/ethanrajkumar/",
+  },
+  {
+    name: "Vivaan Jhaveri",
+    role: "CTO",
+    photo: "/team-vivaan.jpg",
+    linkedin: "https://www.linkedin.com/in/vivaan-jhaveri-892588230/",
+  },
+  {
+    name: "Nathan Rajkumar",
+    role: "CFO",
+    photo: "/team-nathan.jpg",
+    linkedin: "https://www.linkedin.com/in/nathanrajkumar9/",
+  },
 ];
 
 export default function Team() {
@@ -34,7 +50,7 @@ export default function Team() {
             }}
             className="border-hairline bg-panel mx-auto w-full max-w-[260px] border"
           >
-            <div className="bg-well relative aspect-[4/5] w-full overflow-hidden">
+            <div className="bg-well relative aspect-[7/8] w-full overflow-hidden">
               <img
                 src={person.photo}
                 alt={person.name}
@@ -43,14 +59,25 @@ export default function Team() {
               />
             </div>
 
-            <div className="border-hairline border-t px-5 py-4">
-              <h3 className="display-md text-fg">{person.name}</h3>
-              <div className="mt-2 flex items-center gap-2.5">
-                <span className="bg-mark size-1.5" />
-                <span className="text-fg-3 font-mono text-[11px] tracking-[0.16em] uppercase">
-                  {person.role}
-                </span>
+            <div className="border-hairline flex items-center justify-between border-t px-5 py-4">
+              <div>
+                <h3 className="display-md text-fg">{person.name}</h3>
+                <div className="mt-2 flex items-center gap-2.5">
+                  <span className="bg-mark size-1.5" />
+                  <span className="text-fg-3 font-mono text-[11px] tracking-[0.16em] uppercase">
+                    {person.role}
+                  </span>
+                </div>
               </div>
+              <a
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${person.name} on LinkedIn`}
+                className="text-fg-4 hover:text-fg shrink-0 transition-colors"
+              >
+                <Linkedin className="size-4" />
+              </a>
             </div>
           </motion.article>
         ))}
