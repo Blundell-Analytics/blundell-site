@@ -32,11 +32,11 @@ export default function Faq() {
     <section id="faq" className="bg-band relative z-10">
       <SectionHeader label="Questions" title="What clubs ask us first." />
 
-      <div className="rail">
+      <div className="rail divide-hairline divide-y">
         {ITEMS.map((item, i) => {
           const isOpen = open === i;
           return (
-            <div key={item.q} className="border-hairline border-b">
+            <div key={item.q}>
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}

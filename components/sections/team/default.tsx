@@ -20,7 +20,7 @@ export default function Team() {
         lead="Blundell Analytics is deliberately small. The people who build the work are the people who present it."
       />
 
-      <div className="rail rule-t grid grid-cols-1 gap-y-10 py-11 sm:grid-cols-3 sm:gap-x-6 lg:py-14">
+      <div className="rail grid grid-cols-1 gap-y-10 py-11 sm:grid-cols-3 sm:gap-x-6 lg:py-14">
         {PEOPLE.map((person, i) => (
           <motion.article
             key={person.name}
@@ -39,9 +39,7 @@ export default function Team() {
                 src={person.photo}
                 alt={person.name}
                 loading="lazy"
-                width={720}
-                height={900}
-                className="size-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
+                className="size-full object-cover object-top grayscale transition-all duration-700 hover:grayscale-0"
               />
             </div>
 
