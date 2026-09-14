@@ -63,12 +63,9 @@ export default function Team() {
                 {person.name}
               </h3>
               <div className="mt-2 flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <span className="bg-mark size-1.5" />
-                  <span className="text-fg-3 font-mono text-[11px] tracking-[0.16em] uppercase">
-                    {person.role}
-                  </span>
-                </div>
+                <span className="text-mark font-mono text-[11px] tracking-[0.16em] uppercase">
+                  {person.role}
+                </span>
                 <a
                   href={person.linkedin}
                   target="_blank"
