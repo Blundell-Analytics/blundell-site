@@ -20,7 +20,7 @@ export default function Team() {
         lead="Blundell Analytics is deliberately small. The people who build the work are the people who present it."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="rail rule-t grid grid-cols-1 gap-y-10 py-11 sm:grid-cols-3 sm:gap-x-6 lg:py-14">
         {PEOPLE.map((person, i) => (
           <motion.article
             key={person.name}
@@ -32,11 +32,9 @@ export default function Team() {
               delay: i * 0.08,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className={`border-hairline flex flex-col ${
-              i > 0 ? "border-t md:border-t-0 md:border-l" : ""
-            }`}
+            className="flex flex-col items-center px-6 py-4 text-center"
           >
-            <div className="bg-well relative aspect-[4/5] w-full overflow-hidden">
+            <div className="border-hairline bg-well relative size-32 overflow-hidden border lg:size-36">
               <img
                 src={person.photo}
                 alt={person.name}
@@ -47,14 +45,12 @@ export default function Team() {
               />
             </div>
 
-            <div className="rail flex flex-1 items-center justify-between gap-4 py-6">
-              <h3 className="display-md text-fg">{person.name}</h3>
-              <div className="flex shrink-0 items-center gap-2.5">
-                <span className="bg-mark size-1.5" />
-                <span className="text-fg-3 font-mono text-[11px] tracking-[0.16em] uppercase">
-                  {person.role}
-                </span>
-              </div>
+            <h3 className="display-md text-fg mt-5">{person.name}</h3>
+            <div className="mt-2 flex items-center gap-2.5">
+              <span className="bg-mark size-1.5" />
+              <span className="text-fg-3 font-mono text-[11px] tracking-[0.16em] uppercase">
+                {person.role}
+              </span>
             </div>
           </motion.article>
         ))}
