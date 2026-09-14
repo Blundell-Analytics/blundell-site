@@ -1,8 +1,8 @@
 "use client";
 
+import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
-import { LinkedinIcon } from "@/components/ui/linkedin-icon";
 import { SectionHeader } from "@/components/ui/section";
 
 /** Names and photographs come from the modelling repo; roles from the founders. */
@@ -76,7 +76,7 @@ export default function Team() {
                 aria-label={`${person.name} on LinkedIn`}
                 className="text-fg-4 hover:text-fg shrink-0 transition-colors"
               >
-                <LinkedinIcon className="size-4" />
+                <Linkedin className="size-4" />
               </a>
             </div>
           </motion.article>
