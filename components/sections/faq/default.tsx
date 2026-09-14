@@ -32,7 +32,7 @@ export default function Faq() {
     <section id="faq" className="bg-band relative z-10">
       <SectionHeader label="Questions" title="What clubs ask us first." />
 
-      <div className="rail divide-hairline divide-y">
+      <div className="rail divide-hairline divide-y pb-5 lg:pb-8">
         {ITEMS.map((item, i) => {
           const isOpen = open === i;
           return (
