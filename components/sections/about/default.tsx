@@ -29,29 +29,28 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="rail rule-t grid grid-cols-1 gap-10 py-11 lg:grid-cols-12 lg:gap-14 lg:py-14"
+        className="rail rule-t grid grid-cols-1 gap-10 py-11 md:grid-cols-12 md:gap-8 lg:gap-14 lg:py-14"
       >
-        <div className="lg:col-span-7">
+        <div className="md:col-span-7">
           <p className="eyebrow mb-4">About</p>
-          <h2 className="display-lg text-fg max-w-2xl">
+          <h2 className="display-lg text-fg max-w-2xl 2xl:max-w-3xl">
             Built for the people who have to justify the signing.
           </h2>
-          <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed">
-            Blundell Analytics is a quantitative football consultancy. We work
-            with clubs that treat recruitment the way they treat any other use
-            of capital — where a signing competes against every alternative use
-            of the same money, and somebody has to defend the decision in a
-            room.
+          <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
+            Blundell Analytics is a quantitative football consultancy. We help
+            clubs treat recruitment like capital allocation — every signing
+            weighed against the alternatives, with a case a sporting director
+            can defend in the room.
           </p>
-          <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed">
-            We are not a data feed and we are not a video platform. You give us
-            a brief and we return a shortlist you can put in front of a sporting
-            director without translating it first. It will not tell you which
-            signing is guaranteed to work, and we will not claim otherwise.
+          <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
+            Give us a brief — the position, the budget, the way you play — and
+            we return a ranked shortlist with the reasoning behind every name on
+            it. We don&apos;t sell software, and we won&apos;t tell you a
+            signing is guaranteed to work.
           </p>
         </div>
 
-        <div className="lg:col-span-5">
+        <div className="md:col-span-5">
           <p className="eyebrow mb-4">How it works</p>
           <ol className="border-hairline divide-hairline divide-y border-t">
             {STAGES.map((s) => (

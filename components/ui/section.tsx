@@ -28,9 +28,9 @@ export function SectionHeader({
       className="rail rule-t py-11 lg:py-14"
     >
       <p className="eyebrow mb-4">{label}</p>
-      <h2 className="display-lg text-fg max-w-2xl">{title}</h2>
+      <h2 className="display-lg text-fg max-w-2xl 2xl:max-w-3xl">{title}</h2>
       {lead && (
-        <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed">
+        <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
           {lead}
         </p>
       )}

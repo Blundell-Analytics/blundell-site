@@ -36,28 +36,25 @@ export default function Team() {
               i > 0 ? "border-t md:border-t-0 md:border-l" : ""
             }`}
           >
-            <div className="rail pt-10 lg:pt-12">
-              <div className="bg-well relative size-28 overflow-hidden lg:size-32">
-                <img
-                  src={person.photo}
-                  alt={person.name}
-                  loading="lazy"
-                  width={640}
-                  height={640}
-                  className="size-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
-                />
-              </div>
+            <div className="bg-well relative aspect-[4/5] w-full overflow-hidden">
+              <img
+                src={person.photo}
+                alt={person.name}
+                loading="lazy"
+                width={720}
+                height={900}
+                className="size-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
+              />
             </div>
 
-            <div className="rail pt-7 pb-10 lg:pb-12">
-              <div className="mb-5 flex items-center gap-3">
+            <div className="rail flex flex-1 items-center justify-between gap-4 py-6">
+              <h3 className="display-md text-fg">{person.name}</h3>
+              <div className="flex shrink-0 items-center gap-2.5">
                 <span className="bg-mark size-1.5" />
                 <span className="text-fg-3 font-mono text-[11px] tracking-[0.16em] uppercase">
                   {person.role}
                 </span>
               </div>
-
-              <h3 className="display-md text-fg mb-4">{person.name}</h3>
             </div>
           </motion.article>
         ))}
