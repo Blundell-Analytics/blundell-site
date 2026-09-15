@@ -4,7 +4,7 @@ export const siteConfig = {
   getStartedUrl: "/#contact",
   ogImage: "https://blundellanalytics.ca/og.jpg",
   description:
-    "Quantitative transfer analysis for football clubs. We build the player data ourselves and use it to rank targets against the brief you give us.",
+    "Blundell Analytics: every transfer target scored on fit and risk together, not two separate reports.",
   links: {
     twitter: "https://twitter.com/blundellanalytics",
     github: "",

@@ -40,10 +40,7 @@ export default function About() {
             Blundell Analytics is a quantitative football consultancy. We
             treat recruitment like capital allocation: every signing weighed
             against the alternatives, with a case a sporting director can
-            defend in the room. Most tools score a player&apos;s fit and his
-            risk separately and leave you to reconcile the two yourself; we
-            weigh them together, so every name on the list already accounts
-            for both.
+            defend in the room.
           </p>
           <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
             Tell us the position, the budget, and the way you play. We send

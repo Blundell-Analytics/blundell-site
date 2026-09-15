@@ -8,8 +8,12 @@ import { SectionHeader } from "@/components/ui/section";
 /** Company-level questions only — nothing about how the modelling works. */
 const ITEMS = [
   {
+    q: "How is this different from a normal scouting report?",
+    a: "Most reports give you a tactical grade and, separately, a risk note buried in an appendix. We score fit and risk together for every name, so the trade-off is already made by the time you read the list. You're not doing two jobs to reach one decision.",
+  },
+  {
     q: "What do we actually receive?",
-    a: "A list of names in order, weighed against the brief you gave us and written in plain English, not for a data scientist. You also get the dashboard itself, so your own staff can rerun the filters and check our work.",
+    a: "A ranked list of names, weighed against the brief you gave us, written in plain English rather than for a data scientist. You also get the dashboard itself, so your own staff can rerun the filters and check our work.",
   },
   {
     q: "Which leagues and seasons do you cover?",

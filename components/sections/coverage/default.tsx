@@ -26,7 +26,7 @@ export default function Coverage() {
         <p className="eyebrow mb-4">Coverage</p>
         <p className="text-fg-3 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
           Any list is only as good as the players it was drawn from. Ours
-          goes back a decade, and we built it ourselves rather than licensing
+          goes back a decade. We built it ourselves instead of licensing
           someone else&apos;s feed.
         </p>
       </div>

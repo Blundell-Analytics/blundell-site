@@ -59,12 +59,12 @@ export default function Hero() {
               className="lg:col-span-4"
             >
               <p className="text-fg-3 max-w-md text-sm leading-relaxed lg:text-base">
-                We build our own{" "}
-                <span className="text-fg">player data</span> and run it
-                through our own{" "}
-                <span className="text-fg">models</span>. Ask for a{" "}
-                <span className="text-fg">report</span> and you get tactical
-                analysis, risk flags, and names ranked against your brief.
+                Most reports score a player&apos;s{" "}
+                <span className="text-fg">fit</span> and his{" "}
+                <span className="text-fg">risk</span> separately, in two
+                different documents. We score them{" "}
+                <span className="text-fg">together</span>, on one list, so
+                you already know both before you&apos;re in the room.
               </p>
 
               <a

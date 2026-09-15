@@ -53,7 +53,7 @@ export default function DashboardShowcase() {
       <SectionHeader
         label="The platform"
         title="One score. Every dimension."
-        lead="Every engagement comes with the dashboard itself, not just a PDF. Filter the market, open a player, and see why they're ranked where they are."
+        lead="Every engagement comes with the dashboard itself, not just a PDF. Filter the market on fit and risk together, open a player, and see exactly why they're ranked where they are."
       />
 
       <div className="rail grid grid-cols-1 gap-8 py-11 md:grid-cols-12 lg:gap-14 lg:py-14">
