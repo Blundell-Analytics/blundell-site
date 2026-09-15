@@ -1,22 +1,72 @@
+"use client";
+
+import { siteConfig } from "@/config/site";
+import { handleAnchorClick } from "@/lib/scroll-to";
+import { AnimatedWave } from "@/components/ui/animated-wave";
+
+const SECTIONS = [
+  { label: "About", href: "#about" },
+  { label: "Platform", href: "#platform" },
+  { label: "Team", href: "#team" },
+  { label: "Questions", href: "#faq" },
+];
+
 export default function FooterSection() {
   return (
-    <footer
-      className="w-full relative z-10"
-      style={{ fontFamily: "var(--font-jakarta)" }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "24px 24px",
-          borderTop: "1px solid var(--bg-card-border)",
-          background: "var(--bg-card)",
-        }}
-      >
-        <span style={{ fontSize: "11px", color: "var(--fg-muted)", textTransform: "uppercase", letterSpacing: "0.15em" }}>
-          All Rights Reserved. © 2026 Blundell Analytics.
+    <footer className="bg-band rule-t relative z-10">
+      <div className="rail flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
+        <a href="/" className="flex shrink-0 items-center gap-2.5">
+          <img
+            src="/logo-mark.png"
+            alt=""
+            aria-hidden
+            className="h-6 w-auto object-contain"
+          />
+          <span className="text-fg font-mono text-[11px] font-medium tracking-[0.16em] uppercase">
+            Blundell Analytics
+          </span>
+        </a>
+
+        <nav className="flex flex-wrap items-center gap-x-8 gap-y-2">
+          {SECTIONS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleAnchorClick(e, link.href)}
+              className="text-fg-3 hover:text-fg text-sm transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <a
+          href={siteConfig.links.email}
+          className="text-fg-3 hover:text-fg shrink-0 text-sm transition-colors"
+        >
+          info@blundellanalytics.ca
+        </a>
+      </div>
+
+      <div className="rail py-5">
+        <span className="text-fg-4 font-mono text-[10px] tracking-[0.16em] uppercase">
+          © 2026 Blundell Analytics. All rights reserved.
         </span>
+      </div>
+
+      <div className="h-28 w-full opacity-60 lg:h-32">
+        <AnimatedWave
+          barCount={12}
+          amplitude={10}
+          frequency={0.28}
+          speed={0.5}
+          waveShape="Soft"
+          barSpacing={3}
+          barColor="var(--mark)"
+          backgroundColor="transparent"
+          fadeEdges
+          interactionStrength={1.2}
+        />
       </div>
     </footer>
   );

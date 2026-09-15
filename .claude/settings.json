@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w *)",
+      "mcp__github__get_file_contents",
+      "mcp__Claude_Code_Remote__list_repos"
+    ]
+  }
+}

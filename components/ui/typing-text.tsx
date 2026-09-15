@@ -20,7 +20,9 @@ export function TypingText({
   style,
 }: TypingTextProps) {
   const [displayed, setDisplayed] = useState(texts[0]);
-  const [phase, setPhase] = useState<"typing" | "deleting" | "pausing">("pausing");
+  const [phase, setPhase] = useState<"typing" | "deleting" | "pausing">(
+    "pausing",
+  );
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -38,7 +40,10 @@ export function TypingText({
         setPhase("typing");
         return;
       }
-      const t = setTimeout(() => setDisplayed((d) => d.slice(0, -1)), deletingSpeed);
+      const t = setTimeout(
+        () => setDisplayed((d) => d.slice(0, -1)),
+        deletingSpeed,
+      );
       return () => clearTimeout(t);
     }
 
@@ -53,7 +58,15 @@ export function TypingText({
       );
       return () => clearTimeout(t);
     }
-  }, [displayed, phase, index, texts, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [
+    displayed,
+    phase,
+    index,
+    texts,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+  ]);
 
   return (
     <span className={className} style={style}>

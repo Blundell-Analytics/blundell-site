@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/contexts/theme-provider";
-import { jakarta, playfair } from "@/lib/fonts";
+import { inter, interTight, plexMono } from "@/lib/fonts";
 
 import { siteConfig } from "../config/site";
 
@@ -51,7 +51,12 @@ export const metadata: Metadata = {
     creator: "@blundellanalytics",
   },
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
     apple: "/apple-touch-icon.png",
   },
 };
@@ -63,7 +68,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${jakarta.variable} ${playfair.variable} ${jakarta.className} bg-background antialiased`}>
+      <body
+        className={`${inter.variable} ${interTight.variable} ${plexMono.variable} bg-ink antialiased`}
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
