@@ -32,19 +32,22 @@ export default function Hero() {
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
               className="display-hero text-fg lg:col-span-8"
             >
-              Every transfer decision has a cost. Make it
-              <span className="text-mark block">
-                <TypingText texts={TYPING_PHRASES} />
-                <span
-                  aria-hidden
-                  className="ml-0.5 inline-block"
-                  style={{
-                    animation: "cursor-blink 1s step-end infinite",
-                    borderLeft: "0.055em solid var(--mark)",
-                    height: "0.78em",
-                    verticalAlign: "-0.04em",
-                  }}
-                />
+              Every transfer decision has a cost.
+              <span className="block">
+                Make it{" "}
+                <span className="text-mark">
+                  <TypingText texts={TYPING_PHRASES} />
+                  <span
+                    aria-hidden
+                    className="ml-0.5 inline-block"
+                    style={{
+                      animation: "cursor-blink 1s step-end infinite",
+                      borderLeft: "0.055em solid var(--mark)",
+                      height: "0.78em",
+                      verticalAlign: "-0.04em",
+                    }}
+                  />
+                </span>
               </span>
             </motion.h1>
 
