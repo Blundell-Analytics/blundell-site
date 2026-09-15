@@ -55,7 +55,10 @@
   --radius-xl: 0px;
   --radius-2xl: 0px;
 
-  --spacing-shell: 1600px;
+  /* Content shell: rail/hairlines stay edge to edge, but a section's own
+     grid can cap and center here on very wide viewports instead of
+     stretching its columns past a comfortable width. */
+  --container-shell: 1600px;
 
   --line-width: 1px;
 
