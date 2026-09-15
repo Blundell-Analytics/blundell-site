@@ -330,7 +330,7 @@
     font-weight: 500;
     letter-spacing: -0.025em;
     line-height: 1;
-    font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+    font-size: clamp(2.25rem, 3.6vw, 3.5rem);
   }
 
   /* Coverage's stat figures — the largest number on the page. */

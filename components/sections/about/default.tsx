@@ -34,16 +34,16 @@ export default function About() {
         <div className="max-w-shell mx-auto grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8 lg:gap-14">
           <div className="md:col-span-7">
             <p className="eyebrow mb-4">About</p>
-            <h2 className="display-lg text-fg max-w-2xl 2xl:max-w-3xl">
+            <h2 className="display-lg text-fg">
               Built for the people who have to justify the signing.
             </h2>
-            <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
+            <p className="text-fg-3 mt-4 text-base leading-relaxed">
               Blundell Analytics is a quantitative football consultancy. We
               treat recruitment like capital allocation: every signing weighed
               against the alternatives, with a case a sporting director can
               defend in the room.
             </p>
-            <p className="text-fg-3 mt-4 max-w-2xl text-base leading-relaxed 2xl:max-w-3xl">
+            <p className="text-fg-3 mt-4 text-base leading-relaxed">
               Tell us the position, the budget, and the way you play. We send
               back a shortlist ranked against that brief, with the reasoning
               behind every name on it. We don&apos;t sell software, and we
