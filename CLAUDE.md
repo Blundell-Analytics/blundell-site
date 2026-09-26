@@ -40,3 +40,14 @@ When verifying a UI change, `npm run build` first (catches type errors fast), th
 **Scroll behavior** (`lib/scroll-to.ts`): in-page anchor links use an eased scroll (`scrollToId`/`scrollToTop`, built on framer-motion's `animate()`) rather than the browser's native smooth-scroll, because native smooth-scroll reads as an abrupt snap over the length of this page. `handleAnchorClick` is the click handler every nav/footer link uses; reuse it (and `scrollToId`/`scrollToTop`) instead of calling `window.scrollTo` directly.
 
 **Contact form** (`components/sections/contact/default.tsx` → `POST /api/contact`): client-side form posts JSON to the API route, which emails the submission to `info@blundellanalytics.ca` via Resend (`RESEND_API_KEY` env var) and replies-to the submitter's address.
+
+## Design quality & visual verification
+
+**Skills (`.agents/skills/`):** This repo has taste/design skills installed. When writing or modifying frontend code, load and follow the `design-taste-frontend` (or `high-end-visual-design`) skill to ensure output avoids generic AI aesthetics — no default shadows, gratuitous gradients, or rounded-everything. The site's identity is zero-radius, hairline-bordered, typographically led; the skills reinforce that.
+
+**Playwright MCP:** A Playwright MCP server is configured for this project (vision + network + pdf caps). After any visual/UI change:
+1. Build the site (`npm run build`).
+2. Serve it (`npx next start -p 4111`).
+3. Use the Playwright MCP tools to open `http://localhost:4111`, screenshot the affected section(s), and visually verify the change looks correct before reporting done.
+
+This is the primary feedback loop for UI work — use it every time, not just when asked.

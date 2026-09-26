@@ -1,0 +1,200 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - link "Blundell Analytics" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e9]:
+        - link "About" [ref=e10] [cursor=pointer]:
+          - /url: "#about"
+        - link "Platform" [ref=e11] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Team" [ref=e12] [cursor=pointer]:
+          - /url: "#team"
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: "#contact"
+      - button "Switch to light theme" [ref=e14]
+      - link "Request a Report" [ref=e21] [cursor=pointer]:
+        - /url: "#contact"
+    - generic [ref=e23]:
+      - paragraph [ref=e24]: Transfer Intelligence
+      - heading "Every transfer decision has a cost. We make it a calculated one." [level=1] [ref=e25]
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: Fit and risk, scored together on one list—so you know both before you're in the room.
+        - link "Learn more" [ref=e29] [cursor=pointer]:
+          - /url: "#about"
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: The edge
+        - heading "Fit and risk, scored together." [level=2] [ref=e33]
+        - paragraph [ref=e34]: Most recruitment reports hand you a tactical fit score and a risk flag, and leave you to weigh the two yourself. We don't split them. Every name on your shortlist already accounts for both, so the trade-off is made before the report reaches your desk.
+      - blockquote [ref=e36]:
+        - paragraph [ref=e37]: A brilliant tactical fit with a serious injury history. A steady performer nobody else has flagged as undervalued.
+        - paragraph [ref=e38]: Scored separately, that's two spreadsheets and a guess. Scored together, it's a ranked answer.
+    - generic [ref=e41]:
+      - generic [ref=e42]:
+        - paragraph [ref=e43]: About
+        - heading "Built for the people who have to justify the signing." [level=2] [ref=e44]
+        - paragraph [ref=e45]: "Blundell Analytics is a quantitative football consultancy. We treat recruitment like capital allocation: every signing weighed against the alternatives, with a case a sporting director can defend in the room."
+        - paragraph [ref=e46]: Tell us the position, the budget, and the way you play. We send back a shortlist ranked against that brief, with the reasoning behind every name on it. We don't sell software, and we won't tell you a signing is guaranteed to work.
+      - generic [ref=e47]:
+        - paragraph [ref=e48]: How it works
+        - list [ref=e49]:
+          - listitem [ref=e50]:
+            - generic [ref=e51]:
+              - generic [ref=e52]: "01"
+              - generic [ref=e53]: The brief
+            - paragraph [ref=e54]: The position, the budget envelope, and the constraint you are actually solving for.
+          - listitem [ref=e55]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: "02"
+              - generic [ref=e58]: The analysis
+            - paragraph [ref=e59]: We model the market against that brief rather than against a generic average.
+          - listitem [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: "03"
+              - generic [ref=e63]: The report
+            - paragraph [ref=e64]: The names you asked for, ranked and explained, plus the dashboard we used to find them.
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - paragraph [ref=e67]: The platform
+        - heading "One score. Every dimension." [level=2] [ref=e68]
+        - paragraph [ref=e69]: Every engagement comes with the dashboard itself, not just a PDF. Filter the market on fit and risk together, open a player, and see exactly why they're ranked where they are.
+      - generic [ref=e70]:
+        - tablist "Dashboard views" [ref=e71]:
+          - list [ref=e72]:
+            - listitem [ref=e73]:
+              - tab "01 · Search the market Transfer Scout Filter 1,000+ players by position, risk, market value and tactical fit score across every major league." [selected] [ref=e74] [cursor=pointer]:
+                - generic [ref=e75]: 01 · Search the market
+                - generic [ref=e78]: Transfer Scout
+                - paragraph [ref=e79]:
+                  - generic [ref=e80]: Filter 1,000+ players by position, risk, market value and tactical fit score across every major league.
+            - listitem [ref=e81]:
+              - tab "02 · Assess a target Player Detail" [ref=e82] [cursor=pointer]:
+                - generic [ref=e83]: 02 · Assess a target
+                - generic [ref=e86]: Player Detail
+            - listitem [ref=e87]:
+              - tab "03 · Find the value Pareto Analysis" [ref=e88] [cursor=pointer]:
+                - generic [ref=e89]: 03 · Find the value
+                - generic [ref=e92]: Pareto Analysis
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: Transfer Scout
+            - generic [ref=e99]: 01 / 03
+          - button "Enlarge the Transfer Scout view" [ref=e100]:
+            - img "Transfer Scout dashboard view" [ref=e101]
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - paragraph [ref=e104]: Coverage
+        - paragraph [ref=e105]: Any list is only as good as the players it was drawn from. Ours goes back a decade. We built it ourselves instead of licensing someone else's feed.
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - definition [ref=e108]: "0"
+          - term [ref=e109]: Leagues covered
+        - generic [ref=e110]:
+          - definition [ref=e111]:
+            - generic [ref=e112]: 0+
+          - term [ref=e113]: Player-seasons analysed
+        - generic [ref=e114]:
+          - definition [ref=e115]: "0"
+          - term [ref=e116]: Data points per player
+        - generic [ref=e117]:
+          - definition [ref=e118]: "0"
+          - term [ref=e119]: Independent data sources
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - paragraph [ref=e122]: Team
+        - heading "Who you would be working with." [level=2] [ref=e123]
+        - paragraph [ref=e124]: Blundell Analytics is deliberately small. The people who build the work are the people who present it.
+      - generic [ref=e125]:
+        - article [ref=e126]:
+          - img "Ethan Rajkumar" [ref=e128]
+          - generic [ref=e129]:
+            - heading "Ethan Rajkumar" [level=3] [ref=e130]
+            - generic [ref=e131]:
+              - generic [ref=e132]: CEO
+              - link "Ethan Rajkumar on LinkedIn" [ref=e133] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/ethanrajkumar/
+        - article [ref=e136]:
+          - img "Vivaan Jhaveri" [ref=e138]
+          - generic [ref=e139]:
+            - heading "Vivaan Jhaveri" [level=3] [ref=e140]
+            - generic [ref=e141]:
+              - generic [ref=e142]: CTO
+              - link "Vivaan Jhaveri on LinkedIn" [ref=e143] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/vivaan-jhaveri-892588230/
+        - article [ref=e146]:
+          - img "Nathan Rajkumar" [ref=e148]
+          - generic [ref=e149]:
+            - heading "Nathan Rajkumar" [level=3] [ref=e150]
+            - generic [ref=e151]:
+              - generic [ref=e152]: CFO
+              - link "Nathan Rajkumar on LinkedIn" [ref=e153] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/nathanrajkumar9/
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - paragraph [ref=e158]: Questions
+        - heading "What clubs ask us first." [level=2] [ref=e159]
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - button "How is this different from a normal scouting report?" [expanded] [ref=e162] [cursor=pointer]:
+            - generic [aria-hidden] [ref=e164]: +
+          - paragraph [ref=e166]: Most reports give you a tactical grade and, separately, a risk note buried in an appendix. We score fit and risk together for every name, so the trade-off is already made by the time you read the list. You're not doing two jobs to reach one decision.
+        - button "What do we actually receive?" [ref=e168] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e170]: +
+        - button "Which leagues and seasons do you cover?" [ref=e172] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e174]: +
+        - button "Is our brief confidential?" [ref=e176] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e178]: +
+        - button "How do we start?" [ref=e180] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e182]: +
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: Get in touch
+        - heading "Your club's analysis starts here" [level=2] [ref=e187]
+        - paragraph [ref=e188]: Tell us about your club and what you need, and we'll have a report back to you within 48 hours.
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - generic [ref=e193]: First Name *
+            - textbox "First Name *" [ref=e194]:
+              - /placeholder: Jane
+          - generic [ref=e195]:
+            - generic [ref=e196]: Last Name *
+            - textbox "Last Name *" [ref=e197]:
+              - /placeholder: Smith
+          - generic [ref=e198]:
+            - generic [ref=e199]: Club Email Address *
+            - textbox "Club Email Address *" [ref=e200]:
+              - /placeholder: jane@yourclub.com
+          - generic [ref=e201]:
+            - generic [ref=e202]: Club Name (optional)
+            - textbox "Club Name (optional)" [ref=e203]:
+              - /placeholder: FC Example
+          - generic [ref=e204]:
+            - generic [ref=e205]: Role / Title (optional)
+            - textbox "Role / Title (optional)" [ref=e206]:
+              - /placeholder: Head of Recruitment
+          - generic [ref=e207]:
+            - generic [ref=e208]: Message (optional)
+            - textbox "Message (optional)" [ref=e209]:
+              - /placeholder: Tell us about your club, what positions you're looking to fill, or any specific analysis you need…
+        - generic [ref=e210]:
+          - button "Request a Report" [ref=e211] [cursor=pointer]
+          - generic [ref=e212]: No commitment. Responses within 48 hours.
+    - generic [ref=e213]:
+      - generic [ref=e214]:
+        - link "Blundell Analytics" [ref=e215] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e218]:
+          - link "About" [ref=e219] [cursor=pointer]:
+            - /url: "#about"
+          - link "Platform" [ref=e220] [cursor=pointer]:
+            - /url: "#platform"
+          - link "Team" [ref=e221] [cursor=pointer]:
+            - /url: "#team"
+          - link "Questions" [ref=e222] [cursor=pointer]:
+            - /url: "#faq"
+        - link "info@blundellanalytics.ca" [ref=e223] [cursor=pointer]:
+          - /url: mailto:info@blundellanalytics.ca
+      - generic [ref=e224]: © 2026 Blundell Analytics. All rights reserved.
+  - alert [ref=e240]
